@@ -15,16 +15,25 @@
         <div class="w3-bar">
             <div class="w3-right">
                 <button class="w3-btn w3-bar-item w3-round-xxlarge w3-white  w3-margin w3-text-red" onclick="w3.show('#login')">Login</button>
-                <button class="w3-btn w3-bar-item w3-round-xxlarge w3-white  w3-margin w3-text-blue">Sign Up</button>
+                <button class="w3-btn w3-bar-item w3-round-xxlarge w3-white  w3-margin w3-text-blue" onclick="w3.show('#registration')">Sign Up</button>
             </div>
-            <button class="w3-btn w3-bar-item  w3-border-bottom  w3-margin">Menu</button>
+            
+            <div class="w3-dropdown-hover w3-bar-item">
+                <button class="w3-btn   w3-border-bottom ">Menu</button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="#" class="w3-btn w3-hover-green w3-bar-item" onclick="w3.show('#contactUs')">Contact Us</a>
+                    <a href="#" class="w3-btn w3-hover-green w3-bar-item">Term of use</a>
+                    <a href="#" class="w3-btn w3-hover-green w3-bar-item">Abouts us</a>
+                </div>
+            </div>
         </div>
         <div class="w3-center">
             <span class="title">dr bot</span>
             <span class="welcom">where ever you are</span>
         </div>
         <div class="w3-center btnStar">
-            <a href="https://developers.facebook.com/apps/427210107825206/dashboard/" class="w3-btn w3-white w3-round-xxlarge w3-xlarge w3-hover-text-green">Get Started <i class="fa fa-facebook w3-text-blue"></i></a>
+            <a href="https://developers.facebook.com/apps/427210107825206/dashboard/" class="w3-btn w3-white w3-round-xxlarge w3-xlarge w3-hover-text-green">Get Started</a>
+            <a href="" class="w3-button w3-round-xxlarge w3-padding w3-xlarge w3-white start w3-text-blue w3-hover-blue" ><i class="fa fa-facebook "></i></a>
         </div>
     </div>
     <div class="w3-row w3-margin">
@@ -73,7 +82,9 @@
             <form action="" >
                 <div class="w3-margin">
                     <div class="w3-row w3-margin w3-light-gray w3-round-xxlarge">
-                        <div class="w3-col w3-padding" style="width:50px;"><i class="fa fa-user"></i></div>
+                        <div class="w3-col w3-padding" style="width:50px;">
+                            <i class="fa fa-user"></i>
+                        </div>
                         <div class="w3-rest">
                             <input type="text" name="" id="" class="w3-input" placeholder="enter usename or email">
                         </div>
@@ -88,6 +99,112 @@
                 <div class="w3-container w3-row w3-light-gray w3-padding">
                     <button type="submit" class="w3-button w3-col s4 l4 m4 w3-green w3-right">Connection</button>
                     <button type="reset" class="w3-button w3-col s4 l4 m4 w3-red" onclick="w3.hide('#login')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Modal contact us -->
+    <div class="w3-modal" id="contactUs">
+        <div class="w3-modal-content w3-card-4" >
+            <form >
+                <header class="w3-padding w3-green w3-border-bottom">
+                    <h3>Contact Us</h3>
+                </header>
+                <div class="w3-padding ">                
+                   
+                    <input type="text" name="username" id="" class="w3-input w3-border w3-round-large" placeholder="Enter Your name">
+                    <br/>
+                    <input type="email" name="email" id="" class="w3-input w3-border w3-round-large" placeholder="Enter Email">
+                    <br/>
+                    <input type="email" name="email" id="" class="w3-input w3-border w3-round-large" placeholder="Enter subject">
+                    <br/>
+                    <label class="w3-text">Enter message</label><br/>
+                    <textarea name="" id="" cols="30" rows="10" class="w3-input w3-border w3-round-large "></textarea>
+                </div>
+                <div class="w3-light-gray w3-row w3-padding">
+                    <button type="submit" class="w3-button w3-green w3-right w3-col s4 m4 l4 ">Send Message <i class="fa fa-send"></i></button>
+                    <button type="reset" class="w3-button w3-red w3-col s4 m4 l4 " onclick="w3.hide('#contactUs')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Modal Registration -->
+    <div class="w3-modal" id="registration">
+        <div class="w3-modal-content w3-card-4">
+            <form >
+                <header class="w3-padding w3-green w3-border-bottom">
+                    <h3>Registration</h3>
+                </header>
+                <div class="w3-padding ">                
+                    <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
+                        <div class="w3-col w3-padding inputIcon">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="w3-rest">                                
+                            <input type="text" name="userFname" id="" class="w3-input " placeholder="First Name">
+                        </div>
+                    </div>                            
+                    <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
+                        <div class="w3-col w3-padding inputIcon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <div class="w3-rest">                                
+                            <input type="date" name="userbirthday" id="" class="w3-input " placeholder="Birthday">
+                        </div>
+                    </div>                            
+                    <div class="w3-row w3-border-bottom w3-margin-bottom">
+                        <div class="w3-padding">Sexe</div>
+                        <div class="w3-col  s6 w3-padding">
+                            Male <input type="radio" name="userSex" class="w3-radio" id="">
+                        </div>
+                        <div class="w3-col  s6 w3-padding">                               
+                            Female<input type="radio" name="userSex" class="w3-radio">
+                        </div>
+                    </div>                            
+                    <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
+                        <div class="w3-col w3-padding inputIcon">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="w3-rest">                                
+                            <input type="email" name="userEmail" id="" class="w3-input " placeholder="Enter email">
+                        </div>
+                    </div>                            
+                    <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
+                        <div class="w3-col w3-padding inputIcon">
+                            <i class="fa fa-key"></i>
+                        </div>
+                        <div class="w3-rest">                                
+                            <input type="password" name="userPswd" id="" class="w3-input " placeholder="password">
+                        </div>
+                    </div>                            
+                    <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
+                        <div class="w3-col w3-padding inputIcon">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="w3-rest">                                
+                            <input type="number" name="userFname" id="" class="w3-input " placeholder="Nationnal Id">
+                        </div>
+                    </div>                            
+                    <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
+                        <div class="w3-col w3-padding inputIcon">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="w3-rest">                                
+                            <input type="phone" name="userPhoneNumber" id="" class="w3-input " placeholder="Phone Number">
+                        </div>
+                    </div>                            
+                    <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
+                        <div class="w3-col w3-padding inputIcon">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="w3-rest">                                
+                            <input type="text" name="userAdress" id="" class="w3-input " placeholder="Adress">
+                        </div>
+                    </div>                            
+                </div>
+                <div class="w3-light-gray w3-row w3-padding">
+                    <button type="submit" class="w3-button w3-green w3-right w3-col s4 m4 l4 ">Register <i class="fa fa-hammer"></i></button>
+                    <button type="reset" class="w3-button w3-red w3-col s4 m4 l4 " onclick="w3.hide('#registration')">Cancel</button>
                 </div>
             </form>
         </div>
