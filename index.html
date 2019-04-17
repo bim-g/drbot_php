@@ -21,7 +21,7 @@
             <div class="w3-dropdown-hover w3-bar-item">
                 <button class="w3-btn   w3-border-bottom ">Menu</button>
                 <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                    <a href="#" class="w3-btn w3-hover-green w3-bar-item" onclick="w3.show('#contactUs')">Contact Us</a>
+                    <a href="#contactUs" class="w3-btn w3-hover-green w3-bar-item" >Contact Us</a>
                     <a href="#" class="w3-btn w3-hover-green w3-bar-item">Term of use</a>
                     <a href="#" class="w3-btn w3-hover-green w3-bar-item">Abouts us</a>
                 </div>
@@ -37,10 +37,10 @@
         </div>
     </div>
     <div class="w3-row w3-margin">
-        <div class="w3-col s4 l4 m4  ">
+        <div class="w3-col s6 l6 m6  ">
             <div class="w3-card w3-margin">
                 <div class="w3-green w3-padding">
-                    <h3>Element 1</h3>
+                    <h3>Element 1 <i class="fa fa-dribbble w3-text-amber"></i></h3>
                 </div>
                 <div class="w3-container">            
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum assumenda culpa sapiente? Asperiores ipsum repudiandae quae voluptatum et dolorem. Architecto consequuntur sint, deleniti nulla voluptatibus exercitationem dicta doloribus explicabo libero!
@@ -48,10 +48,10 @@
                 </div>
             </div>
         </div>
-        <div class="w3-col s4 l4 m4  ">
+        <div class="w3-col s6 l6 m6  ">
             <div class="w3-card w3-margin">
                 <div class="w3-green w3-padding">
-                    <h3>Element 1</h3>
+                    <h3>Element 1 <i class="fa fa-user"></i></h3>
                 </div>
                 <div class="w3-container">            
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum assumenda culpa sapiente? Asperiores ipsum repudiandae quae voluptatum et dolorem. Architecto consequuntur sint, deleniti nulla voluptatibus exercitationem dicta doloribus explicabo libero!
@@ -59,17 +59,7 @@
                 </div>
             </div>
         </div>
-        <div class="w3-col s4 l4 m4  ">
-            <div class="w3-card w3-margin">
-                <div class="w3-green w3-padding">
-                    <h3>Element 1</h3>
-                </div>
-                <div class="w3-container">            
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum assumenda culpa sapiente? Asperiores ipsum repudiandae quae voluptatum et dolorem. Architecto consequuntur sint, deleniti nulla voluptatibus exercitationem dicta doloribus explicabo libero!
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, ab fuga sint laborum, eum cumque obcaecati, ut iure exercitationem voluptatem hic officia voluptates. Laudantium possimus maxime impedit architecto doloribus esse.</p>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
 
@@ -103,30 +93,28 @@
             </form>
         </div>
     </div>
-    <!-- Modal contact us -->
-    <div class="w3-modal" id="contactUs">
-        <div class="w3-modal-content w3-card-4" >
-            <form >
-                <header class="w3-padding w3-green w3-border-bottom">
-                    <h3>Contact Us</h3>
-                </header>
-                <div class="w3-padding ">                
-                   
-                    <input type="text" name="username" id="" class="w3-input w3-border w3-round-large" placeholder="Enter Your name">
-                    <br/>
-                    <input type="email" name="email" id="" class="w3-input w3-border w3-round-large" placeholder="Enter Email">
-                    <br/>
-                    <input type="email" name="email" id="" class="w3-input w3-border w3-round-large" placeholder="Enter subject">
-                    <br/>
-                    <label class="w3-text">Enter message</label><br/>
-                    <textarea name="" id="" cols="30" rows="10" class="w3-input w3-border w3-round-large "></textarea>
-                </div>
-                <div class="w3-light-gray w3-row w3-padding">
-                    <button type="submit" class="w3-button w3-green w3-right w3-col s4 m4 l4 ">Send Message <i class="fa fa-send"></i></button>
-                    <button type="reset" class="w3-button w3-red w3-col s4 m4 l4 " onclick="w3.hide('#contactUs')">Cancel</button>
-                </div>
-            </form>
-        </div>
+    <!-- contact us -->   
+    <div class="w3-margin contactUs" id="contactUs">
+        <form >
+            <header class="w3-padding w3-black w3-border-bottom">
+                <h3>Contact Us</h3>
+            </header>
+            <div class="w3-padding ">                
+                
+                <input type="text" name="username" id="" class="w3-input w3-border w3-round-large" placeholder="Enter Your name">
+                <br/>
+                <input type="email" name="email" id="" class="w3-input w3-border w3-round-large" placeholder="Enter Email">
+                <br/>
+                <input type="email" name="email" id="" class="w3-input w3-border w3-round-large" placeholder="Enter subject">
+                <br/>
+                <label class="w3-text">Enter message</label><br/>
+                <textarea name="" id="" cols="30" rows="10" class="w3-input w3-border w3-round-large "></textarea>
+            </div>
+            <div class="w3-light-gray w3-row w3-padding">
+                <button type="submit" class="w3-button w3-green w3-right w3-col s4 m4 l4 ">Send Message <i class="fa fa-send"></i></button>
+                <button type="reset" class="w3-button w3-red w3-col s4 m4 l4 " onclick="w3.hide('#contactUs')">Cancel</button>
+            </div>
+        </form>
     </div>
     <!-- Modal Registration -->
     <div class="w3-modal" id="registration">
@@ -208,6 +196,9 @@
                 </div>
             </form>
         </div>
+    </div>
+    <div class="w3-border-top w3-light-gray w3-center w3-padding w3-margin-top">
+        <p class=""> copyright DrBot 2019</p>
     </div>
 </body>
 </html>
