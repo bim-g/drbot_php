@@ -2,7 +2,7 @@
     height:95vh;
     background-image: linear-gradient(to right bottom,rgba(0, 255, 13, 0.384),rgba(255, 255, 255, 0.041)), url("../img/bg.jpg");
     background-size:cover;
-    clip-path: polygon(0 0,100% 0 ,100% 400px ,0 100%);
+    clip-path: polygon(0 0,100% 0 ,100% 550px ,0 100%);
     position: relative;
 }
 
@@ -12,6 +12,8 @@
     font-size:60px;
     font-weight: 400px;
     letter-spacing: 35px;
+    animation-name: moveInLeft;
+    animation-duration: 2s;
 }
 .welcom{
     display: block;
@@ -19,6 +21,48 @@
     font-weight: 400px;
     letter-spacing: 10px;
     text-transform: uppercase;
+    animation-name: moveInRight;
+    animation-duration: 2s;
+}
+
+@keyframes moveInLeft{
+    0%{
+        opacity: 0;
+        transform: translateX(-100px)
+    }
+    80%{
+        transform: translateX(10px)
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+@keyframes moveInRight{
+    0%{
+        opacity: 0;
+        transform: translateX(100px)
+    }
+    80%{
+        transform: translateX(-10px)
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+@keyframes moveInTop{
+    0%{
+        opacity: 0;
+        transform: translateY(30px)
+    }
+    80%{
+        transform: translateY(-10px)
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
 }
 .btnStar{
     margin-top:100px;
@@ -31,5 +75,31 @@
     width:50px;
 }
 .contactUs{
+    height:95vh;
+    background-image: linear-gradient(to right bottom,
+    rgba(169, 255, 57, 0.8),
+    rgba(57, 255, 163, 0.8),
+    rgba(57, 192, 255, 0.8));
+    clip-path: polygon(0 55px,100% 0,100% 100%,0 100%);
+    position: relative;    
+}
+.contactUs .contactUsContent{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
     width:50%;
+    margin:auto;
+}
+.loginavtar{
+    position:relative;
+}
+.loginavtar div{
+    position: relative;
+    left:40%;
+    top:10%;
+    /* transform: translate(-50%,-50%); */
+}
+#login .w3-modal-content{
+    max-height: 600px;
 }
