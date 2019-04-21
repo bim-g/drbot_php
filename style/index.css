@@ -151,3 +151,8 @@
 .pointer{
     cursor: pointer;
 }
+.btn{
+    border:none;
+    text-decoration:none;
+    background:none;
+}
