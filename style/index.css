@@ -17,6 +17,7 @@
 .dasHover{
     border:none;
     background: none;
+    text-decoration: none;
     color:#fff;
 }
 .dasHover:not(:last-child){
