@@ -148,6 +148,9 @@
 .profil-image{
     width:55px;
 }
+.about-image{
+    width:150px;
+}
 .pointer{
     cursor: pointer;
 }
