@@ -159,3 +159,10 @@
     text-decoration:none;
     background:none;
 }
+.btn-go-up{
+    width:60px;
+    height:60px;
+    position:absolute;
+    right:10%;
+    top:5px;
+}

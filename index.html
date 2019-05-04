@@ -11,7 +11,7 @@
     <script src="js/w3.js"></script>
 </head>
 <body>
-    <div class="header w3-text-white">
+    <div class="header w3-text-white" id="home">
         <div class="w3-bar">
             <div class="w3-right">
                 <button class="w3-btn w3-bar-item w3-round-xxlarge w3-white  w3-margin w3-text-red" onclick="w3.show('#login')">Login</button>
@@ -297,9 +297,12 @@
             </form>
         </div>
     </div>
-    <div class="w3-border-top w3-light-gray w3-center w3-padding">
+    <div class="w3-border-top w3-light-gray w3-center w3-padding" style="position: relative;">
         <p class=""> <i class="fa fa-copyright w3-text-green w3-xlarge"></i> copyright DrBot <span id="mydate"></span></p>
+        <a href="#home" class="w3-circle w3-gray btn-go-up w3-padding w3-border" ><i class="fa fa-angle-up w3-xxlarge w3-hover-text-green"></i></a>
     </div>
+    <!-- bouton go up -->
+    
     <script>
         _();
         function changeCadre(val){
