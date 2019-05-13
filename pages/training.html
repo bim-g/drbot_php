@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="">
-        <div class="w3-sidebar w3-bar-block w3-light-grey w3-card dasheader dash-side-menu w3-hide-small" >
+        <div class="w3-sidebar w3-bar-block w3-light-grey w3-card dasheader dash-side-menu w3-hide-small" id="sidemenu">
             <header class="top-bar w3-padding "><i class="fa fa-home w3-xxlarge"></i> <span class="w3-xxlarge">Dr Bot</span></header>
             <div class="w3-padding">
                 <div class="w3-bar-block w3-text-white ">
@@ -22,7 +22,7 @@
                     <a href="list.html" class="w3-bar-item dasHover w3-round "><i class="fa fa-user w3-xlarge w3-margin-right"></i><span class="w3-center"> List</span></a>
                     <a href="list.html" class="w3-bar-item dasHover w3-round"><i class="fa fa-user w3-xlarge w3-margin-right"></i><span class="w3-center"> Statistics</span></a>
                     <div class="w3-dropdown-click  dasHover">
-                        <div class="w3-bar-item dasHover w3-round"  onclick="dropdown('#training')"><i class="fa fa-user w3-xlarge w3-margin-right" ></i><span class="w3-center"></span> Training</div>
+                        <div class="w3-bar-item dasHover w3-round"  onclick="w3.toggleShow('#training')"><i class="fa fa-user w3-xlarge w3-margin-right" ></i><span class="w3-center"></span> Training</div>
                         <div class="w3-dropdown-content w3-bar-block" id="training">
                             <a href="Training.html" class="w3-bar-item w3-btn w3-hover-light-gray w3-hover-text-green"><i class="fa fa-user w3-xlarge w3-margin-right"></i><span class="w3-center"> New Training</span></a>
                             <a href="Training.html" class="w3-bar-item w3-btn w3-hover-light-gray w3-hover-text-green "><i class="fa fa-user w3-xlarge w3-margin-right"></i><span class="w3-center"> Trainings</span></a>
@@ -33,7 +33,7 @@
         </div>
         <div class="dash-containt">
             <div class="w3-bar w3-white  top-bar" style="padding-right:20px;">
-                <a href="#" class="w3-button w3-bar-item"><i class="fa fa-bars w3-xxxlarge"></i></a>
+                <a href="#" class="w3-button w3-bar-item" onclick="w3.toggleShow('#sidemenu')"><i class="fa fa-bars w3-xxxlarge"></i></a>
                 <div class="w3-right"> 
                     <button class="w3-bar-item w3-text-red w3-btn w3-large">LogOut</button>
                     <div class="w3-bar-item w3-text-blue w3-bdtn w3-large"> Ibrahim</div>
@@ -94,14 +94,6 @@
             w3.addClass(".topicStatus",'w3-hide');
             if(id){
                 w3.removeClass(id,"w3-hide ");
-            }
-        }
-        function dropdown(id){
-            var x=w3.getElements(id);           
-            if(x[0].className.indexOf("w3-show")==-1){                 
-                w3.addClass(id,"w3-show");
-            }else{
-                w3.removeClass(id,"w3-show");
             }
         }
     </script>
