@@ -54,6 +54,12 @@
                             </div>
                             <br>
                             <div class="w3-row-padding">
+                                <div class="w3-col s12 m12 l12">
+                                    <label class="w3-text-gray w3-small">USERNAME</label><br>
+                                    <input type="text" class="w3-input w3-border w3-round" placeholder="@drbot">
+                                </div>
+                            </div><br>
+                            <div class="w3-row-padding">
                                 <div class="w3-col s6 l6 m6">
                                     <label class="w3-text-gray w3-small">COMPANY </label><br>
                                     <input type="text" class="w3-input w3-border w3-round">
@@ -63,13 +69,14 @@
                                     <input type="text" class="w3-input w3-border w3-round">
                                 </div>
                             </div>
-                            <br/>
+                            <br/>                            
                             <div class="w3-row-padding">
                                 <div class="w3-col s12 m12 l12">
-                                    <label class="w3-text-gray w3-small">USERNAME</label><br>
-                                    <input type="text" class="w3-input w3-border w3-round" placeholder="@drbot">
+                                    <label class="w3-text-gray w3-small">ADRESS</label><br>
+                                    <input type="text" class="w3-input w3-border w3-round" placeholder="Town   /   Street   /   plot">
                                 </div>
                             </div><br>
+                            
                             <div class="w3-row-padding">
                                 <div class="w3-col s4 l4 m4">
                                     <label class="w3-text-gray w3-small">CITY</label><br>
@@ -85,6 +92,53 @@
                                 </div>
                             </div>
                             <br/>
+                            <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
+                                    <div class="w3-col w3-padding inputIcon">
+                                        <i class="fa fa-user-md"></i>
+                                    </div>
+                                    <div class="w3-rest">
+                                        <select class="w3-select " name="usercadre" id="usercadre" onchange="changeCadre(usercadre.value)">                                
+                                            <option class="w3-large" disabled selected>Grade</option>
+                                            <option value="doctor">Doctor</option>
+                                            <option value="specialist">Specialist</option>
+                                            <option value="nurse">Nurse</option>
+                                        </select>
+                                    </div>
+                                </div>                           
+                                <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom controlHide specialist" >
+                                    <div class="w3-col w3-padding inputIcon">
+                                        <i class="fa fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="w3-rest">
+                                        <select class="w3-select " name="userSpecilist" id="userSpecilist">                                
+                                            <option class="w3-large" disabled selected>Specialization</option>
+                                            <option value="general">General</option>
+                                            <option value="pediatricien">Pediatricien</option>
+                                            <option value="cardiologist">Cardiologist</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom controlHide specialist doctor" >
+                                    <div class="w3-col w3-padding inputIcon">
+                                        <i class="fa fa-id-card-o"></i>
+                                    </div>
+                                    <div class="w3-rest">                                
+                                        <input type="number" name="userNationalId" id="userNationalId" class="w3-input " placeholder="Nationnal Id" >
+                                    </div>
+                                </div>                            
+                                <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom controlHide nurse">
+                                    <div class="w3-col w3-padding inputIcon">
+                                        <i class="fa fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="w3-rest">
+                                        <select class="w3-select " name="userLevelStudie" id="userLevelStudie">                                
+                                            <option class="w3-large" disabled selected>Level Stadies</option>
+                                            <option value="a1" >Graduate A1</option>
+                                            <option value="a2">Diploma A2</option>
+                                            <option value="a3">Diploma A3</option>
+                                        </select>
+                                    </div>
+                                </div>
                             <div class="w3-row-padding">                            
                                 <div class="w3-col s6 l6 m6">
                                     <label class="w3-text-gray w3-small">PHONE NUMBER</label><br>
@@ -129,5 +183,16 @@
             </div>
         </div>
     </div>
+    <script src="../js/w3.js"></script>
+    <script>
+            _();
+            function changeCadre(val){
+                _();
+                w3.removeClass("."+val,'w3-hide')
+            }
+            function _(){
+                w3.addClass('.controlHide','w3-hide');
+            }
+    </script>
 </body>
 </html>
