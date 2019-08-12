@@ -1,0 +1,46 @@
+db_structure
+
+//this will store all information related to the pacient
+//i.e user from facebook
+tb_pacient
+----------
+-idpacient 
+-iduser
+- 
+
+
+
+tb_problem_pacient
+-------------------
+-idprpacient
+-iddoctor
+-phonenumber
+-problem
+-date_create
+
+//allow to record all research of users so get an idean of all request of users
+tb_search
+---------
+-idsearch
+-idpacient
+-date_search
+-messessage
+
+//allow to maneg messages
+tb_messages
+-----------
+-idmessage
+-namesender
+-emailSender
+-objtmsg
+-contentmsg
+-date_create
+-statmsg //allow to know the state of a message [read=1, answer=2, none=0]
+
+//training
+
+tb_training
+-----------
+-idtrain
+-idtopic
+-id
