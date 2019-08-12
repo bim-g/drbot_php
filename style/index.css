@@ -120,6 +120,12 @@
     width:50%;
     margin:auto;
 }
+.w3-txtArea{
+    border:none;
+    border:1px solid gray;
+    min-height: 150px;
+    width: 100%;
+}
 .loginavtar{
     position:relative;
 }
