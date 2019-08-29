@@ -1,186 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../style/w3.css">
-    <link rel="stylesheet" href="../style/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../style/index.css">
-    <style></style>
-    <title>Document</title>
-</head>
-<body>
-    <div class="">
-        <div class="w3-sidebar w3-bar-block w3-light-grey w3-card dasheader dash-side-menu" >
-            <header class="top-bar w3-padding "><i class="fa fa-home w3-xxlarge"></i> <span class="w3-xxlarge">Dr Bot</span></header>
-            <?php include "./menu.php";?>
-        </div>
-        <div class="dash-containt">
-            <div class="w3-bar w3-white  top-bar" style="padding-right:20px;">
-                <a href="#" class="w3-button w3-bar-item"><i class="fa fa-bars w3-xxxlarge"></i></a>
-                <div class="w3-right"> 
-                    <a href="./../index.html" class="w3-bar-item w3-text-blue btn w3-hover-text-red w3-large pointer">LogOut</a>
-                    <div class="w3-bar-item w3-text-blue w3-large"> Ibrahim</div>
-                    <img src="../img/avatar/face-1.jpg" alt="" class="profil-image w3-circle" >  
-                </div>                
-            </div>
-            <div class="w3-light-gray w3-paddding">
-                <div class="w3-row">
-                    <form method="POST" >
-                        <div class="w3-margin w3-padding w3-white w3-round w3-col s8 w3-border">
-                            <h3>Edit Profil</h3>                            
-                            <div class="w3-row-padding">                            
-                                <div class="w3-col s6 l6 m6">
-                                    <label class="w3-text-gray w3-small">FIRST NAME </label><br>
-                                    <input type="text" class="w3-input w3-border w3-round">
-                                </div>
-                                <div class="w3-col s6 l6 m6">
-                                    <label class="w3-text-gray w3-small">LAST NAME </label><br>
-                                    <input type="text" class="w3-input w3-border w3-round">
-                                </div>
+<?php
+     ob_start();
+     $title="Profile";
+?>
+    <div class="w3-light-gray w3-paddding">
+        <div class="w3-row">
+            <form method="POST" >
+                <div class="w3-margin w3-padding w3-white w3-round w3-col s8 w3-border">
+                    <h3>Edit Profil</h3>                            
+                    <div class="w3-row-padding">                            
+                        <div class="w3-col s6 l6 m6">
+                            <label class="w3-text-gray w3-small">FIRST NAME </label><br>
+                            <input type="text" class="w3-input w3-border w3-round">
+                        </div>
+                        <div class="w3-col s6 l6 m6">
+                            <label class="w3-text-gray w3-small">LAST NAME </label><br>
+                            <input type="text" class="w3-input w3-border w3-round">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="w3-row-padding">
+                        <div class="w3-col s12 m12 l12">
+                            <label class="w3-text-gray w3-small">USERNAME</label><br>
+                            <input type="text" class="w3-input w3-border w3-round" placeholder="@drbot">
+                        </div>
+                    </div><br>
+                    <div class="w3-row-padding">
+                        <div class="w3-col s6 l6 m6">
+                            <label class="w3-text-gray w3-small">COMPANY </label><br>
+                            <input type="text" class="w3-input w3-border w3-round">
+                        </div>
+                        <div class="w3-col s6 l6 m6">
+                            <label class="w3-text-gray w3-small">POST OCCUPIED </label><br>
+                            <input type="text" class="w3-input w3-border w3-round">
+                        </div>
+                    </div>
+                    <br/>                            
+                    <div class="w3-row-padding">
+                        <div class="w3-col s12 m12 l12">
+                            <label class="w3-text-gray w3-small">ADRESS</label><br>
+                            <input type="text" class="w3-input w3-border w3-round" placeholder="Town   /   Street   /   plot">
+                        </div>
+                    </div><br>
+                    
+                    <div class="w3-row-padding">
+                        <div class="w3-col s4 l4 m4">
+                            <label class="w3-text-gray w3-small">CITY</label><br>
+                            <input type="text" class="w3-input w3-border w3-round" >
+                        </div>
+                        <div class="w3-col s4 l4 m4">
+                            <label class="w3-text-gray w3-small">COUNTRY</label><br>
+                            <input type="text" class="w3-input w3-border w3-round" >
+                        </div>
+                        <div class="w3-col s4 l4 m4">
+                            <label class="w3-text-gray w3-small">CODE POSTAL</label><br>
+                            <input type="text" class="w3-input w3-border w3-round" placeholder="code postal">
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
+                            <div class="w3-col w3-padding inputIcon">
+                                <i class="fa fa-user-md"></i>
                             </div>
-                            <br>
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12 m12 l12">
-                                    <label class="w3-text-gray w3-small">USERNAME</label><br>
-                                    <input type="text" class="w3-input w3-border w3-round" placeholder="@drbot">
-                                </div>
-                            </div><br>
-                            <div class="w3-row-padding">
-                                <div class="w3-col s6 l6 m6">
-                                    <label class="w3-text-gray w3-small">COMPANY </label><br>
-                                    <input type="text" class="w3-input w3-border w3-round">
-                                </div>
-                                <div class="w3-col s6 l6 m6">
-                                    <label class="w3-text-gray w3-small">POST OCCUPIED </label><br>
-                                    <input type="text" class="w3-input w3-border w3-round">
-                                </div>
+                            <div class="w3-rest">
+                                <select class="w3-select " name="usercadre" id="usercadre" onchange="changeCadre(usercadre.value)">                                
+                                    <option class="w3-large" disabled selected>Grade</option>
+                                    <option value="doctor">Doctor</option>
+                                    <option value="specialist">Specialist</option>
+                                    <option value="nurse">Nurse</option>
+                                </select>
                             </div>
-                            <br/>                            
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12 m12 l12">
-                                    <label class="w3-text-gray w3-small">ADRESS</label><br>
-                                    <input type="text" class="w3-input w3-border w3-round" placeholder="Town   /   Street   /   plot">
-                                </div>
-                            </div><br>
-                            
-                            <div class="w3-row-padding">
-                                <div class="w3-col s4 l4 m4">
-                                    <label class="w3-text-gray w3-small">CITY</label><br>
-                                    <input type="text" class="w3-input w3-border w3-round" >
-                                </div>
-                                <div class="w3-col s4 l4 m4">
-                                    <label class="w3-text-gray w3-small">COUNTRY</label><br>
-                                    <input type="text" class="w3-input w3-border w3-round" >
-                                </div>
-                                <div class="w3-col s4 l4 m4">
-                                    <label class="w3-text-gray w3-small">CODE POSTAL</label><br>
-                                    <input type="text" class="w3-input w3-border w3-round" placeholder="code postal">
-                                </div>
+                        </div>                           
+                        <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom controlHide specialist" >
+                            <div class="w3-col w3-padding inputIcon">
+                                <i class="fa fa-graduation-cap"></i>
                             </div>
-                            <br/>
-                            <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
-                                    <div class="w3-col w3-padding inputIcon">
-                                        <i class="fa fa-user-md"></i>
-                                    </div>
-                                    <div class="w3-rest">
-                                        <select class="w3-select " name="usercadre" id="usercadre" onchange="changeCadre(usercadre.value)">                                
-                                            <option class="w3-large" disabled selected>Grade</option>
-                                            <option value="doctor">Doctor</option>
-                                            <option value="specialist">Specialist</option>
-                                            <option value="nurse">Nurse</option>
-                                        </select>
-                                    </div>
-                                </div>                           
-                                <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom controlHide specialist" >
-                                    <div class="w3-col w3-padding inputIcon">
-                                        <i class="fa fa-graduation-cap"></i>
-                                    </div>
-                                    <div class="w3-rest">
-                                        <select class="w3-select " name="userSpecilist" id="userSpecilist">                                
-                                            <option class="w3-large" disabled selected>Specialization</option>
-                                            <option value="general">General</option>
-                                            <option value="pediatricien">Pediatricien</option>
-                                            <option value="cardiologist">Cardiologist</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom controlHide specialist doctor" >
-                                    <div class="w3-col w3-padding inputIcon">
-                                        <i class="fa fa-id-card-o"></i>
-                                    </div>
-                                    <div class="w3-rest">                                
-                                        <input type="number" name="userNationalId" id="userNationalId" class="w3-input " placeholder="Nationnal Id" >
-                                    </div>
-                                </div>                            
-                                <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom controlHide nurse">
-                                    <div class="w3-col w3-padding inputIcon">
-                                        <i class="fa fa-graduation-cap"></i>
-                                    </div>
-                                    <div class="w3-rest">
-                                        <select class="w3-select " name="userLevelStudie" id="userLevelStudie">                                
-                                            <option class="w3-large" disabled selected>Level Stadies</option>
-                                            <option value="a1" >Graduate A1</option>
-                                            <option value="a2">Diploma A2</option>
-                                            <option value="a3">Diploma A3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            <div class="w3-row-padding">                            
-                                <div class="w3-col s6 l6 m6">
-                                    <label class="w3-text-gray w3-small">PHONE NUMBER</label><br>
-                                    <input type="number" class="w3-input w3-border w3-round">
-                                </div>
-                                <div class="w3-col s6 l6 m6">
-                                    <label class="w3-text-gray w3-small">EMAIL ADRESS</label><br>
-                                    <input type="email" class="w3-input w3-border w3-round">
-                                </div>
-                            </div><br>
-                            <div class="w3-row-padding">
-                                <div class="w3-col s12 l12 m12">
-                                    <label class="w3-text-gray w3-small">ABOUT</label><br>
-                                    <textarea name="" id="" cols="30" rows="6" class="w3-input w3-round w3-col s12 m12 l12 w3-border"></textarea>
-                                </div>
-                            </div>
-                            <div class="w3-bar w3-margin">
-                                <input type="submit" value="Update" class="w3-button w3-blue w3-round">
+                            <div class="w3-rest">
+                                <select class="w3-select " name="userSpecilist" id="userSpecilist">                                
+                                    <option class="w3-large" disabled selected>Specialization</option>
+                                    <option value="general">General</option>
+                                    <option value="pediatricien">Pediatricien</option>
+                                    <option value="cardiologist">Cardiologist</option>
+                                </select>
                             </div>
                         </div>
-                    </form>
-                    <div class="w3-margin w3-padding w3-white w3-round w3-col s3 w3-center w3-border">
-                        <div class="w3-display-container " style="min-width:150px;">
-                            <img src="../img/avatar/face-1.jpg" alt="" class="w3-image w3-circle w3-border " style="width:150px;">
-                            <form method="POST">
-                                <label class="w3-display-right w3-padding w3-text-blue w3-hover-text-red pointer" ><i class="fa fa-camera w3-xxlarge"></i>
-                                <input type="file" name="profilePricture" id="profilePricture" hidden></label>
-                            
+                        <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom controlHide specialist doctor" >
+                            <div class="w3-col w3-padding inputIcon">
+                                <i class="fa fa-id-card-o"></i>
+                            </div>
+                            <div class="w3-rest">                                
+                                <input type="number" name="userNationalId" id="userNationalId" class="w3-input " placeholder="Nationnal Id" >
+                            </div>
+                        </div>                            
+                        <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom controlHide nurse">
+                            <div class="w3-col w3-padding inputIcon">
+                                <i class="fa fa-graduation-cap"></i>
+                            </div>
+                            <div class="w3-rest">
+                                <select class="w3-select " name="userLevelStudie" id="userLevelStudie">                                
+                                    <option class="w3-large" disabled selected>Level Stadies</option>
+                                    <option value="a1" >Graduate A1</option>
+                                    <option value="a2">Diploma A2</option>
+                                    <option value="a3">Diploma A3</option>
+                                </select>
+                            </div>
                         </div>
-                        <h3 class="w3-text-gray">Ibrahim Mussa</h3>
-                        <p class="w3-text-gray">It & Webdevelloper at JusticeBot.com</p>
-                        <hr class="w3-margin-top">
-                        <div class="w3-bar">
-                            <input type="submit" value="Update Picture" class="w3-green w3-button">
+                    <div class="w3-row-padding">                            
+                        <div class="w3-col s6 l6 m6">
+                            <label class="w3-text-gray w3-small">PHONE NUMBER</label><br>
+                            <input type="number" class="w3-input w3-border w3-round">
                         </div>
-                    </form>
+                        <div class="w3-col s6 l6 m6">
+                            <label class="w3-text-gray w3-small">EMAIL ADRESS</label><br>
+                            <input type="email" class="w3-input w3-border w3-round">
+                        </div>
+                    </div><br>
+                    <div class="w3-row-padding">
+                        <div class="w3-col s12 l12 m12">
+                            <label class="w3-text-gray w3-small">ABOUT</label><br>
+                            <textarea name="" id="" cols="30" rows="6" class="w3-input w3-round w3-col s12 m12 l12 w3-border"></textarea>
+                        </div>
+                    </div>
+                    <div class="w3-bar w3-margin">
+                        <input type="submit" value="Update" class="w3-button w3-blue w3-round">
                     </div>
                 </div>
-            </div>
-            <div class="w3-border-top w3-center" style="height: 50px;">
-                <p class=""> <i class="fa fa-copyright w3-text-green w3-xlarge"></i> copyright DrBot <span id="mydate"></span></p>
+            </form>
+            <div class="w3-margin w3-padding w3-white w3-round w3-col s3 w3-center w3-border">
+                <div class="w3-display-container " style="min-width:150px;">
+                    <img src="../img/avatar/face-1.jpg" alt="" class="w3-image w3-circle w3-border " style="width:150px;">
+                    <form method="POST">
+                        <label class="w3-display-right w3-padding w3-text-blue w3-hover-text-red pointer" ><i class="fa fa-camera w3-xxlarge"></i>
+                        <input type="file" name="profilePricture" id="profilePricture" hidden></label>
+                    
+                </div>
+                <h3 class="w3-text-gray">Ibrahim Mussa</h3>
+                <p class="w3-text-gray">It & Webdevelloper at JusticeBot.com</p>
+                <hr class="w3-margin-top">
+                <div class="w3-bar">
+                    <input type="submit" value="Update Picture" class="w3-green w3-button">
+                </div>
+            </form>
             </div>
         </div>
     </div>
-    <script src="../js/w3.js"></script>
-    <script>
-            _();
-            function changeCadre(val){
-                _();
-                w3.removeClass("."+val,'w3-hide')
-            }
-            function _(){
-                w3.addClass('.controlHide','w3-hide');
-            }
-    </script>
-</body>
-</html>
+<?php
+$contentpages = ob_get_clean();
+include "./template.php";
+?>
+    
