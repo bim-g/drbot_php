@@ -4,11 +4,25 @@ header("Access-Control-Allow-Origin: *");
     include '../config/connection.php';
     include_once '../class/users.php';
 
-    $id=NULL;
-    $name=NULL;
-    $dest=NULL;
-    $numpage=NULL;
-    
+    $id=null;
+    $fname=null;
+    $lname=null;
+    $sexe=null;
+    $birthday=null;
+    $phonenumber=null;   
+    $company=null;
+    $country=null;
+    $city=null;
+    $address=null;
+    $nationalId=null;
+    $grade=null;
+    $speciliation=null;
+    $levelStudies=null;
+    $username=null;
+    $email=null;
+    $about=null;   
+    $password=null;   
+    $iddomain=null;   
 
     if(isset($_POST['user'])){
         switch($_POST['user']){
@@ -16,11 +30,26 @@ header("Access-Control-Allow-Origin: *");
             $conf = new users($connexion);
             $conf->adduser();
             break;
-            case 'updateuser':
-            $id=$_POST['idDepart'];
-            $name=$_POST['NameService'];
-            $conf = new users($connexion);
-            //$conf->updateuser();
+            case 'updateuser':           
+                $id=$_POST['iduser'];
+                $fname=$_POST['fname'];
+                $lname=$_POST['lname'];
+                $phonenumber=$_POST['phonenumber'];
+                $company=$_POST['company'];
+                $country=$_POST['country'];
+                $city=$_POST['city'];
+                $address=$_POST['address'];
+                $nationalId=$_POST['nationalid'];
+                $grade=$_POST['grade'];
+                $levelStudies=$_POST['levelstudies'];
+                $username=$_POST['username'];
+                $email=$_POST['email'];
+                $about=$_POST['about'];
+                $iddomain=$_POST['domain'];               
+                $conf = new users($connexion);
+                $conf=init($id,$fname,$lname,$sexe,$birthday,$phonenumber,$company,$country,$city,$address,$nationalId,$grade,$levelStudies,$username,$email,$about,$iddomain);
+                $conf->updateuser();            
+            header("location:../pages/profil.php");
             break;
             case 'connection': 
             if(!empty($_POST['loginusername']) && !empty($_POST['loginpassword'])){          
@@ -42,6 +71,7 @@ header("Access-Control-Allow-Origin: *");
             break;
         }
     }
+    
     if(isset($_GET['user'])){
         switch($_GET['user']){
             case 'getAllusers':

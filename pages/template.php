@@ -1,5 +1,6 @@
 <?php 
-  session_start();
+    $fullname=$_SESSION['fname']." ".$_SESSION['lname'];
+    $avatar="../".$_SESSION['avatar'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,9 +24,10 @@
             <div class="w3-bar w3-white  top-bar" style="padding-right:20px;">
                 <a href="#" class="w3-button w3-bar-item"><i class="fa fa-bars w3-xxxlarge"></i></a>
                 <div class="w3-right"> 
-                    <a href="./../index.html" class="w3-bar-item w3-text-blue btn w3-hover-text-red w3-large pointer">LogOut</a>
-                    <div class="w3-bar-item w3-text-blue w3-large"> Ibrahim</div>
-                    <img src="../img/avatar/face-1.jpg" alt="" class="profil-image w3-circle" >  
+                    <a href="../controller/logout.php" class="w3-bar-item w3-text-blue btn w3-hover-text-red w3-large pointer">LogOut</a>
+                    <?php
+                    echo "<div class=\"w3-bar-item w3-text-blue w3-large\">$fullname</div>";
+                    echo "<img src=\"$avatar\" alt=\"\" class=\"profil-image w3-circle\" >";?>
                 </div>                
             </div>
             <?php echo $contentpages; ?>

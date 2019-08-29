@@ -2,19 +2,23 @@
     class users{
         private $bdd;
         private $iduser;
-        private $Fnameuser;
-        private $Lnameuser;
-        private $sexeuser;
-        private $birthdayuser;
-        private $addresCountryuser;
-        private $addressLocaluser;
+        private $fname;
+        private $lname;
+        private $sexe;
+        private $birthday;
+        private $phonenumber;
+        private $company;
+        private $country;
+        private $address;
+        private $city;
         private $nationalId;
-        private $gradeuser;
-        private $speciliationuser;
-        private $levelStudiesuser;
+        private $grade;
+        private $levelStudies;
         private $username;
         private $email;
-        private $passworduser;
+        private $about;
+        private $password;
+        private $iddomain;
 
         function __construct($db)
         {
@@ -26,21 +30,24 @@
         function getID(){
             return $this->iduser;
         }
-        function init($id,$Fname,$Lname,$sexe,$birthday,$addresCountry,$addressLocal,$nationalId,$grade,$speciliation,$levelStudies,$username,$email,$password){
-        $this->id=$id;
-        $this->Fname=$Fname;
-        $this->Lname=$Lname;
-        $this->sexe=$sexe;
-        $this->birthday=$birthday;
-        $this->addresCountry=$addresCountry;
-        $this->addressLocal=$addressLocal;
-        $this->nationalId=$nationalId;
-        $this->grade=$grade;
-        $this->speciliation=$speciliation;
-        $this->levelStudies=$levelStudies;
-        $this->username=$username;
-        $this->email=$email;
-        $this->password=$password;
+        function init($id,$fname,$lname,$sexe,$birthday,$phonenumber,$company,$country,$city,$address,$nationalId,$grade,$levelStudies,$username,$email,$about,$iddomain){
+            $this->iduser=$id;
+            $this->fname=$fname;
+            $this->fname=$lname;
+            $this->sexe=$sexe;
+            $this->birthday=$birthday;
+            $this->phonenumber=$phonenumber;
+            $this->company=$company;
+            $this->country=$country;
+            $this->city=$city;
+            $this->address=$address;
+            $this->nationalId=$nationalId;
+            $this->grade=$grade;
+            $this->levelStudies=$levelStudies;
+            $this->username=$username;
+            $this->email=$email;
+            $this->about=$about;
+            $this->iddomain=$iddomain;
         }
         function connexion($username,$password){
             $this->username=$username;
@@ -61,53 +68,79 @@
             $sql="INSERT INTO users () VALUES ()";
             $req=$this->bdd->prepare($sql);
         }
-        function updateuser($id){
+        function updateuser(){              
+            try{            
+                $sql="UPDATE users SET fname=?,lname=?,phonenumber=?,email=?,username=? WHERE iduser=?";
+                $req=$this->bdd->prepare($sql);
+                $req->bindparam(1,$this->fname);
+                $req->bindparam(2,$this->lname);
+                $req->bindparam(3,$this->phonenumber);
+                $req->bindparam(4,$this->email);
+                $req->bindparam(5,$this->username);
+                $req->bindparam(6,$this->iduser);
+                $req->execute();                 
+                try{
+                    $sql="UPDATE account SET iddomain=?,company=?,about=?,city=?,country=?,adress=? WHERE iduser=?";
+                    $areq=$this->bdd->prepare($sql);
+                    $areq->bindparam(1,$this->iddomain);
+                    $areq->bindparam(2,$this->company);
+                    $areq->bindparam(3,$this->about);
+                    $areq->bindparam(4,$this->city);
+                    $areq->bindparam(5,$this->country);
+                    $areq->bindparam(6,$this->address);
+                    $areq->bindparam(7,$this->iduser);
+                    $areq->execute();      
+                }catch(Exception $ex){
+                    echo $ex->getMessage();
+                    die();
+                }
+            }catch(Exception $ex){
+                echo $ex->getMessage();
+                die();
+            }          
             
-            $sql="UPDATE users SET WHERE iduser=?";
-            $req=$this->bdd->prepare($sql);
         }        
-        function registerUser(){}
+        function registerUser(){
+            try{
+                
+            }catch(Exception $ex){
+                echo $ex->getMessage();
+            }
+        }
         //allow to delete a user and if the is no parametres 
         //is going to clean up teh tables users and all
-        function deleteUser($id=0){
+        function deleteUser($id){
+            
             $q="DELETE FROM users";
-            if($id!=0){
-                $this->id_u=$id;
-                $q.=" WHERE iduser=?";
-            }
-        }
-        function totalPages(){
-            $sql="SELECT id FROM users ";
-            $req=$this->bdd->prepare($sql);
-            $req->execute();
-            $result=$req->fetchAll();
-            return array(
-                "totalPage"=>count($result)
-            );
-        }
-        /*allow to select information about a user when a paramatre is defened 
-        //dotherwise it will display all the users 
-        //{{$islimit}} allow to define if there is a limit when display many users
-        //{{$npage}} allow to determine the position of the page where we want to get data,
-        id workin when {{$islimit}} is set to true, so you have to pass the position of the page.
-        */
-        function getusers($id=0,$islimit=true,$npage=0){
-            $sql="SELECT * FROM users";
-            if($id!=0 && $id>0){
-                $this->iduser=$id;
-                $sql.=" WHERE iduser=?";
-            }
-            //allow to define the limite of record to display if there is not parameter
-            if($islimit==true){
-                $sql.=" LIMIT 50";
-            }
+            
+            try{
 
-            if($npage!=0 && $npage>0){
-                $sql.=" OFFSET $this->totalPages()";
+            }catch(Exception $ex){
+                echo $ex->getMessage();
+                die();
             }
-            $req=$this->bdd->prepare($sql);
-
+            
         }
+        
+       /**
+        *  */
+        function getusers($id){
+            $sql="SELECT u.iduser,u.fname,u.lname,";
+            if($id!=null){
+                $this->id=$id;
+                $sql.="u.sexe,u.birthday,u.phonenumber,u.email,u.username,a.grade,d.designation,a.company,a.about,a.city,a.country,a.adress,m.link as avatar FROM users u LEFT JOIN account a ON u.iduser=a.iduser LEFT JOIN usersdomaine d ON a.iddomain=d.iddomain LEFT jOIN media m ON u.idavatar=m.idmedia WHERE u.iduser=?";
+                $req=$this->bdd->prepare($sql);
+                $req->bindparam(1,$this->id);
+                $req->execute();
+                return $req->fetchAll();
+            }
+            else{
+                $sql=" SELECT u.iduser,u.fname,u.lname,u.patientid as src,a.city,a.country,a.grade,a.company,m.link as avatar,u.dateregister,l.designation as level FROM users u LEFT JOIN account a ON u.iduser=a.iduser LEFT jOIN media m ON u.idavatar=m.idmedia LEFT JOIN userlevel l ON u.iduserlevel=l.iduserlevel ORDER BY u.iduser DESC";
+                $req=$this->bdd->query($sql);
+                return $req->fetchAll();
+            }
+        }
+        
         // allow to set the credention of a use
         // to define if its a admin, manager or a user
         function setCredential(){}
