@@ -6,6 +6,6 @@
      */
 
     define("HOST","localhost");
-    define("DATABASE","sentinel");
-    define("USER","root");
-    define("PASSWORD","");
+    define("DATABASE","drbot_db");
+    define("USER","drbot_user");
+    define("PASSWORD","@yes8made1t");

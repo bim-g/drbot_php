@@ -1,0 +1,93 @@
+drbot_db
+
+tables
+=======
+#users
+------
+-iduser // auto_increment
+-fname
+-lname
+-language
+-pacientid
+-sexe
+-phonenumber
+-email //unique
+-username //unique
+-password 
+-language
+-longitude
+-latitude
+-idstate //foreign key reference state =>idstate
+-iduserlevel //foreign key reference userlevel=>iduserlevel
+-idavatar //foregn key reference media=>idmedia
+-dateregister
+
+#account
+--------
+-iduser //unique:foreign key reference users=>iduser 
+-grade 
+-company
+-about
+-city
+-country
+-adress
+-datelastupdate
+
+#userlevel
+----------
+-iduserlevel //primary key auto increment
+-designation
+-dateregister
+
+#state
+-------
+-idstate //auto_increment
+-designation
+-dateregister
+
+#messages
+-idmessage //auto_increment
+-sendername
+-emailsender
+-objtmsg
+-contentmsg
+-statemsg
+-dateregister
+
+#cases
+------
+-idcase //auto_increment
+-problem 
+-idresearch // foreign key reference research=>idresearch
+-iddoctor // foreign key reference users=>iduser : this is reference of the doctor
+-idpacient // foreign key reference users=>iduser : this is reference of the user on chatbot
+-statescase
+-dateassign_case
+-datelastupdate
+
+#media
+-------
+-idmedia //auto_increment
+-name
+-extension
+-link
+-iduser //foreign key
+-dateupload
+
+#topic
+------
+-idtopic //auto_increment
+-titletopic
+-iduser //foreign key
+-statetopic
+-summary
+-questions
+-dateregister
+
+#solution
+---------
+-idsolution //auto_increment
+-idtopic // foreign key reference 
+-description
+-step
+-datelastupdate

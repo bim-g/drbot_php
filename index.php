@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    $avatar="./img/avatar/face-0.jpg";
+    if(isset($_SESSION['connexionStatus']) && $_SESSION['connexionStatus']=="ON"){
+        if($_SESSION['avatar']!=null OR $_SESSION['avatar']!=""){
+            $avatar=$_SESSION['avatar'];
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,21 +18,31 @@
     <link rel="stylesheet" href="style/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style/index.css">
     <script src="js/w3.js"></script>
+    <?php
+        if(isset($_GET['error']) && isset($_GET['Type'])){
+            switch($_GET['error']){
+                case 1: echo "<script>document.getElementById('error').style.display='block';</script>";
+            }
+        }
+    ?>
 </head>
 <body>
     <div class="header w3-text-white" id="home">
         <div class="w3-bar">
-            <div class="w3-right">
-                <button class="w3-btn w3-bar-item w3-round-xxlarge w3-white  w3-margin w3-text-red" onclick="w3.show('#login')">Login</button>
-                <button class="w3-btn w3-bar-item w3-round-xxlarge w3-white  w3-margin w3-text-blue" onclick="w3.show('#registration')">Sign Up</button>
+            <div class="w3-right">                
                 <a href="#" class="w3-btn w3-bar-item w3-round-xxlarge w3-white w3-margin" onclick="w3.show('#aboutus')">Abouts us</a>
+            <?php if(isset($_SESSION['connexionStatus']) && $_SESSION['connexionStatus']=="ON"){ ?>
                 <div class="w3-dropdown-hover w3-bar-item">
-                        <img src="img/avatar/face-1.jpg" alt="" class="profil-image w3-circle" >
+                    <?php echo "<img src=\"".$avatar."\" alt=\"\" class=\"profil-image w3-circle\">"; ?>
                     <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-rounf-large" style="right:0">
                         <a href="./pages/profil.html" class="w3-btn w3-bar-item" >profil</a>
-                        <a href="./pages/profil.html" class="w3-btn w3-bar-item w3-text-red w3-light-gray w3-border-top" ><i class="fa fa-power-off w3-xlarge w3-margin-right"></i> Logout</a>
+                        <a href="./controller/logout.php" class="w3-btn w3-bar-item w3-text-red w3-light-gray w3-border-top" ><i class="fa fa-power-off w3-xlarge w3-margin-right"></i> Logout</a>
                     </div>
                 </div>
+            <?php }else{ ?>
+                <button class="w3-btn w3-bar-item w3-round-xxlarge w3-white  w3-margin w3-text-red" onclick="w3.show('#login')">Login</button>
+                <button class="w3-btn w3-bar-item w3-round-xxlarge w3-white  w3-margin w3-text-blue" onclick="w3.show('#registration')">Sign Up</button>
+            <?php } ?>
             </div>
             
             <div class="w3-dropdown-hover w3-bar-item">
@@ -100,14 +119,14 @@
                     <i class="fa fa-user-o w3-jumbo"></i>
                 </div>
             </div>
-            <form method="POST" >
+            <form method="POST" action="controller/users.php">
                 <div class="w3-margin">
                     <div class="w3-row w3-margin w3-light-gray w3-round-xxlarge">
                         <div class="w3-col w3-padding" style="width:50px;">
                             <i class="fa fa-user"></i>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="logiUserName" id="logiUserName" class="w3-input" placeholder="enter email">
+                            <input type="text" name="loginusername" id="loginusername" class="w3-input" placeholder="enter email">
                         </div>
                     </div>
                     <div class="w3-row w3-margin w3-light-gray w3-round-xxlarge">
@@ -118,7 +137,7 @@
                     </div>
                 </div>
                 <div class="w3-bar w3-padding">
-                    <button type="submit" class="w3-button w3-bar-item w3-green w3-right">Connection</button>
+                    <button type="submit" class="w3-button w3-bar-item w3-green w3-right" name="user" value="connection">Connection</button>
                 </div>
                 <div class="w3-container  w3-light-gray w3-padding">
                     <a href="#" class=" w3-right" onclick="w3.hide('#login',w3.show('#registration'))">Don't have an account</a>
@@ -227,6 +246,12 @@
                     <button type="reset" class="w3-button w3-red " onclick="w3.hide('#registration')">Cancel</button>
                 </div>
             </form>
+        </div>
+    </div>
+    <!-- Modal Erreur Connexion -->
+    <div class="w3-modal" id="error">
+        <div class="w3-modal-content w3-card-4">
+            <p class="w3-text-red w3-jumbo">Error connexion</p>
         </div>
     </div>
     <div class="w3-border-top w3-light-gray w3-center w3-padding" style="position: relative;">

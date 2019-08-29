@@ -42,17 +42,19 @@
         $this->email=$email;
         $this->password=$password;
         }
-        function connexion(){
-            $sql="SELECT * FROM users WHERE (username='?' OR email='?') AND password='?'";
+        function connexion($username,$password){
+            $this->username=$username;
+            $this->password=md5($password);
+            $sql="SELECT u.iduser,u.fname,u.lname,l.designation,m.link FROM users u LEFT JOIN userlevel l ON u.iduserlevel=l.iduserlevel LEFT JOIN media m ON u.idavatar=m.idmedia WHERE (username=? OR email=?) AND password=?";
             $req=$this->bdd->prepare($sql);
-            $req->bindParams($this->username);
-            $req->bindParams($this->username);
-            $req->bindParams($this->password);
+            $req->bindparam(1,$this->username);
+            $req->bindparam(2,$this->username);
+            $req->bindparam(3,$this->password);
             try{
                 $req->execute();
-                echo json_encode($req->fetchAll());
+                return $req->fetchAll();
             }catch(Exception $ex){
-                echo json_encode(array("errorConnexion"=>$ex->getMessage()));
+                echo "errorConnexion::".$ex->getMessage();
             }
         }
         function adduser(){

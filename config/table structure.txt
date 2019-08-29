@@ -19,12 +19,14 @@ tb_problem_pacient
 -date_create
 
 //allow to record all research of users so get an idean of all request of users
-tb_search
+tb_research
 ---------
--idsearch
--idpacient
--date_search
+-idresearch
+-iduser
+-date_research
 -messessage
+-stateResultgoten
+-[answer]
 
 //allow to maneg messages
 tb_messages
@@ -35,7 +37,7 @@ tb_messages
 -objtmsg
 -contentmsg
 -date_create
--statmsg //allow to know the state of a message [read=1, answer=2, none=0]
+-statemsg //allow to know the state of a message [read=1, answer=2, none=0]
 
 //training
 
@@ -44,3 +46,12 @@ tb_training
 -idtrain
 -idtopic
 -id
+
+tb_topic
+--------
+-idtopic
+-titletopic
+-iduser
+-statetopic
+-summary
+-
