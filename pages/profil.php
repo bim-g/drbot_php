@@ -54,6 +54,9 @@
     }
     
 ?>
+
+    <script>activatemenu();</script>
+    
     <div class="w3-light-gray w3-paddding">
         <div class="w3-row">
             <form method="POST" action="../controller/users.php">

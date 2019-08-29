@@ -9,6 +9,7 @@
     $profil="../img/avatar/face-0.jpg";
 
 ?>
+<script>activatemenu();</script>
     <div class="w3-margin w3-padding w3-large-round w3-border w3-white w3-hide" id="searchopt">
         <form method="post">
             <div class="w3-row">
@@ -56,7 +57,7 @@
             <?php
                 foreach($rows as $item){
                     if($item['avatar']!=null){
-                        $profil=$item['avatar'];
+                        $profil="../".$item['avatar'];
                     }
             ?>
             <tr>
