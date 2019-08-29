@@ -33,7 +33,7 @@
         function init($id,$fname,$lname,$sexe,$birthday,$phonenumber,$company,$country,$city,$address,$nationalId,$grade,$levelStudies,$username,$email,$about,$iddomain){
             $this->iduser=$id;
             $this->fname=$fname;
-            $this->fname=$lname;
+            $this->lname=$lname;
             $this->sexe=$sexe;
             $this->birthday=$birthday;
             $this->phonenumber=$phonenumber;
@@ -64,9 +64,36 @@
                 echo "errorConnexion::".$ex->getMessage();
             }
         }
-        function adduser(){
-            $sql="INSERT INTO users () VALUES ()";
+        function adduser($password){
+            $this->password=md5($password);
+            $sql="INSERT INTO users (fname,lname,language,sexe,phonenumber,username,email,password,idstate,iduserlevel,dateregister) 
+            VALUES (?,?,'en_us',?,?,?,?,?,1,2,NOW())";
             $req=$this->bdd->prepare($sql);
+            $req->bindparam(1,$this->fname);
+            $req->bindparam(2,$this->lname);
+            $req->bindparam(3,$this->sexe);
+            $req->bindparam(4,$this->phonenumber);
+            $req->bindparam(5,$this->username);
+            $req->bindparam(6,$this->email);
+            $req->bindparam(7,$this->password);
+            try{
+                $req->execute();
+                $iduser=$this->bdd->lastInsertId();
+                $sql="INSERT INTO account (iduser,datelastupdate) VALUE (?,NOW())";
+                $req=$this->bdd->prepare($sql);
+                try{
+                    $req->bindparam(1,$iduser);
+                    $req->execute();
+                    echo "success";
+                }catch(Exception $ex){
+                    echo $ex->getMessage();
+                    die();
+                }
+                
+            }catch(Exception $ex){
+                echo $ex->getMessage();
+                die();
+            }  
         }
         function updateuser(){              
             try{            
@@ -79,27 +106,31 @@
                 $req->bindparam(5,$this->username);
                 $req->bindparam(6,$this->iduser);
                 $req->execute();                 
-                try{
-                    $sql="UPDATE account SET iddomain=?,company=?,about=?,city=?,country=?,adress=? WHERE iduser=?";
-                    $areq=$this->bdd->prepare($sql);
-                    $areq->bindparam(1,$this->iddomain);
-                    $areq->bindparam(2,$this->company);
-                    $areq->bindparam(3,$this->about);
-                    $areq->bindparam(4,$this->city);
-                    $areq->bindparam(5,$this->country);
-                    $areq->bindparam(6,$this->address);
-                    $areq->bindparam(7,$this->iduser);
-                    $areq->execute();      
-                }catch(Exception $ex){
-                    echo $ex->getMessage();
-                    die();
-                }
+                $this->updateaccount();
             }catch(Exception $ex){
                 echo $ex->getMessage();
                 die();
             }          
             
-        }        
+        } 
+        
+        private function updateaccount(){
+            try{
+                $sql="UPDATE account SET iddomain=?,company=?,about=?,city=?,country=?,adress=? WHERE iduser=?";
+                $req=$this->bdd->prepare($sql);
+                $req->bindparam(1,$this->iddomain);
+                $req->bindparam(2,$this->company);
+                $req->bindparam(3,$this->about);
+                $req->bindparam(4,$this->city);
+                $req->bindparam(5,$this->country);
+                $req->bindparam(6,$this->address);
+                $req->bindparam(7,$this->iduser);
+                $req->execute();      
+            }catch(Exception $ex){
+                echo $ex->getMessage();
+                die();
+            }
+        }
         function registerUser(){
             try{
                 

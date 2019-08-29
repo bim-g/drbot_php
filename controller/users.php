@@ -26,10 +26,19 @@ header("Access-Control-Allow-Origin: *");
 
     if(isset($_POST['user'])){
         switch($_POST['user']){
-            case 'adduser':            
-            $conf = new users($connexion);
-            $conf->adduser();
-            break;
+            case 'adduser': 
+                $fname=$_POST['fname'];
+                $lname=$_POST['lname'];
+                $phonenumber=$_POST['phonenumber'];            
+                $sexe=$_POST['sexe'];
+                $username=$_POST['username'];
+                $email=$_POST['email'];         
+                $password=$_POST['password'];      
+                $conf = new users($connexion);
+                $conf->init($id,$fname,$lname,$sexe,$birthday,$phonenumber,$company,$country,$city,$address,$nationalId,$grade,$levelStudies,$username,$email,$about,$iddomain);
+                $conf->adduser($password);
+                header("location:../");
+                break;
             case 'updateuser':           
                 $id=$_POST['iduser'];
                 $fname=$_POST['fname'];
@@ -47,9 +56,9 @@ header("Access-Control-Allow-Origin: *");
                 $about=$_POST['about'];
                 $iddomain=$_POST['domain'];               
                 $conf = new users($connexion);
-                $conf=init($id,$fname,$lname,$sexe,$birthday,$phonenumber,$company,$country,$city,$address,$nationalId,$grade,$levelStudies,$username,$email,$about,$iddomain);
+                $conf->init($id,$fname,$lname,$sexe,$birthday,$phonenumber,$company,$country,$city,$address,$nationalId,$grade,$levelStudies,$username,$email,$about,$iddomain);
                 $conf->updateuser();            
-            header("location:../pages/profil.php");
+                //header("location:../pages/profil.php");
             break;
             case 'connection': 
             if(!empty($_POST['loginusername']) && !empty($_POST['loginpassword'])){          

@@ -35,7 +35,6 @@
     $ctrl = new Control($connexion);
     $domain = $ctrl->getDomain(-1);
     foreach($rows as $item){
-
         $fname=$item['fname'];
         $lname=$item['lname'];
         $sexe=$item['sexe'];

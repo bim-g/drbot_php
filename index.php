@@ -35,7 +35,7 @@
                 <div class="w3-dropdown-hover w3-bar-item">
                     <?php echo "<img src=\"".$avatar."\" alt=\"\" class=\"profil-image w3-circle\">"; ?>
                     <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-rounf-large" style="right:0">
-                        <a href="./pages/profil.php" class="w3-btn w3-bar-item" >profil</a>
+                        <a href="./pages/profil.php" class="w3-btn w3-bar-item" ><i class="fa fa-dashboard"> profil</i></a>
                         <a href="./controller/logout.php" class="w3-btn w3-bar-item w3-text-red w3-light-gray w3-border-top" ><i class="fa fa-power-off w3-xlarge w3-margin-right"></i> Logout</a>
                     </div>
                 </div>
@@ -175,7 +175,7 @@
     <!-- Modal Registration -->
     <div class="w3-modal" id="registration">
         <div class="w3-modal-content w3-card-4">
-            <form method="POST">
+            <form method="POST" action="./controller/users.php">
                 <header class="w3-padding w3-green w3-border-bottom">
                     <h3>Registration</h3>
                 </header>
@@ -185,7 +185,7 @@
                             <i class="fa fa-user"></i>
                         </div>
                         <div class="w3-rest">                                
-                            <input type="text" name="userFname" id="userFname" class="w3-input " placeholder="First Name">
+                            <input type="text" name="fname" id="fname" class="w3-input " placeholder="First Name">
                         </div>
                     </div>                            
                     <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
@@ -193,7 +193,7 @@
                             <i class="fa fa-user"></i>
                         </div>
                         <div class="w3-rest">                                
-                            <input type="text" name="userLname" id="userLname" class="w3-input " placeholder="Last Name">
+                            <input type="text" name="lname" id="lname" class="w3-input " placeholder="Last Name">
                         </div>
                     </div>                            
                     <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
@@ -201,16 +201,16 @@
                             <i class="fa fa-calendar"></i>
                         </div>
                         <div class="w3-rest">                                
-                            <input type="date" name="userbirthday" id="userbirthday" class="w3-input " placeholder="Birthday">
+                            <input type="date" name="birthday" id="birtday" class="w3-input " placeholder="Birthday">
                         </div>
                     </div>                            
                     <div class="w3-row w3-border-bottom w3-margin-bottom">
                         <div class="w3-padding"><i class="fa fa-intersex w3-text-blue w3-xlarge"></i> Sexe</div>
                         <div class="w3-col  s6 w3-padding">
-                            Male <i class="fa fa-male w3-xlarge"></i> <input type="radio" name="userSex" class="w3-radio">
+                            Male <i class="fa fa-male w3-xlarge"></i> <input type="radio" value="male" name="sexe" class="w3-radio" required>
                         </div>
                         <div class="w3-col  s6 w3-padding">                               
-                            Female <i class="fa fa-female w3-xlarge"></i> <input type="radio" name="userSex" class="w3-radio">
+                            Female <i class="fa fa-female w3-xlarge"></i> <input type="radio" value="female" name="sexe" class="w3-radio" required>
                         </div>
                     </div>                                                        
                     <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
@@ -218,15 +218,23 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="w3-rest">                                
-                            <input type="phone" name="userPhoneNumber" id="userPhoneNumber" class="w3-input " placeholder="Phone Number" required>
+                            <input type="phone" name="phonenumber" id="phonenumber" class="w3-input " placeholder="Phone Number" required>
                         </div>
                     </div>
+                    <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
+                        <div class="w3-col w3-padding inputIcon">
+                            <i class="fa fa-user-secret"></i>
+                        </div>
+                        <div class="w3-rest">                                
+                            <input type="text" name="username" id="username" class="w3-input " placeholder="Enter your username" required>
+                        </div>
+                    </div>                            
                     <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
                         <div class="w3-col w3-padding inputIcon">
                             <i class="fa fa-envelope"></i>
                         </div>
                         <div class="w3-rest">                                
-                            <input type="email" name="userEmail" id="userEmail" class="w3-input " placeholder="Enter email" required>
+                            <input type="email" name="email" id="email" class="w3-input " placeholder="Enter email" required>
                         </div>
                     </div>                            
                     <div class="w3-row w3-light-gray w3-round-xxlarge w3-margin-bottom">
@@ -234,12 +242,12 @@
                             <i class="fa fa-key"></i>
                         </div>
                         <div class="w3-rest">                                
-                            <input type="password" name="userPswd" id="userPswd" class="w3-input " placeholder="password" required>
+                            <input type="password" name="password" id="password" class="w3-input " placeholder="password" required>
                         </div>
                     </div>                
                 </div>
                 <div class="w3-bar w3-padding ">
-                    <button type="submit" class="w3-button w3-green w3-right ">Register <i class="fa fa-legal w3-xlarge"></i></button>
+                    <button type="submit" class="w3-button w3-green w3-right " name="user" value="adduser">Register <i class="fa fa-legal w3-xlarge"></i></button>
                 </div>
                 <div class="w3-light-gray  w3-padding">
                     <a href="#" class="w3-right" onclick="w3.hide('#registration',w3.show('#login'))">I have a count</a>
