@@ -48,17 +48,25 @@ header("Access-Control-Allow-Origin: *");
                 $country=$_POST['country'];
                 $city=$_POST['city'];
                 $address=$_POST['address'];
-                $nationalId=$_POST['nationalid'];
-                $grade=$_POST['grade'];
-                $levelStudies=$_POST['levelstudies'];
+                if(isset($_POST['nationalId'])){
+                    $nationalId=$_POST['nationalId'];
+                }
+                if(isset($_POST['grade'])){
+                    $grade=$_POST['grade'];
+                }
+                if(isset($_POST['levelstudies'])){
+                    $levelStudies=$_POST['levelstudies'];
+                }               
+                if(isset($_POST['domain'])){
+                    $iddomain=$_POST['domain']; 
+                }               
                 $username=$_POST['username'];
                 $email=$_POST['email'];
-                $about=$_POST['about'];
-                $iddomain=$_POST['domain'];               
+                $about=$_POST['about'];           
                 $conf = new users($connexion);
                 $conf->init($id,$fname,$lname,$sexe,$birthday,$phonenumber,$company,$country,$city,$address,$nationalId,$grade,$levelStudies,$username,$email,$about,$iddomain);
                 $conf->updateuser();            
-                //header("location:../pages/profil.php");
+                header("location:../pages/profil.php");
             break;
             case 'connection': 
             if(!empty($_POST['loginusername']) && !empty($_POST['loginpassword'])){          

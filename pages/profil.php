@@ -49,7 +49,7 @@
         $email=$item['email'];
         $about=$item['about'];
         if($item['avatar']!=null){
-            $avatar=$item['avatar'];
+            $avatar="../".$item['avatar'];
         }
     }
     
@@ -67,7 +67,7 @@
                         </div>
                         <div class="w3-col s6 l6 m6">
                             <label class="w3-text-gray w3-small">LAST NAME </label><br>
-                            <?php echo "<input type=\"text\" class=\"w3-input w3-border w3-round\" name=\"lanme\" value=\"$lname\">"; ?>
+                            <?php echo "<input type=\"text\" class=\"w3-input w3-border w3-round\" name=\"lname\" value=\"$lname\">"; ?>
                         </div>
                     </div> <br>
                     <div class="w3-row-padding">
@@ -113,7 +113,8 @@
                         <div class="w3-rest">
                             <select class="w3-select " name="grade" id="usercadre" onchange="changeCadre(usercadre.value)">                                
                                 <?php echo "<option class=\"w3-large\" disabled selected>Grade</option>";
-                                if($grade!=null) echo "<option class=\"w3-large\" disabled selected>Grade</option>";?>
+                                if($grade!=null) echo "<option class=\"w3-large\" value=\"$grade\" disabled selected>$grade</option>";?>
+                                <option value=" ">None</option>
                                 <option value="doctor">Doctor</option>
                                 <option value="specialist">Specialist</option>
                                 <option value="nurse">Nurse</option>
@@ -125,8 +126,8 @@
                             <i class="fa fa-graduation-cap"></i>
                         </div>
                         <div class="w3-rest">
-                            <select class="w3-select " name="domain" id="userSpecilist"> 
-                                <option class="w3-large" disabled selected>Specialization</option>
+                            <select class="w3-select " name="domain" id="domain"> 
+                                <option class="w3-large" value="" disabled selected>Specialization</option>
                                 <?php
                                     foreach($domain as $dmn){
                                         echo "<option value=\"".$dmn['idomain']."\" >".$dmn['designation']."</option>";
@@ -149,7 +150,7 @@
                             </div>
                             <div class="w3-rest">
                                 <select class="w3-select " name="levelStudies" id="levelStudies">                                
-                                    <option class="w3-large" disabled selected>Level Stadies</option>
+                                    <option class="w3-large" value="" disabled selected>Level Stadies</option>
                                     <option value="a1" >Graduate A1</option>
                                     <option value="a2">Diploma A2</option>
                                     <option value="a3">Diploma A3</option>
@@ -173,7 +174,7 @@
                         </div>
                     </div>
                     <div class="w3-bar w3-margin">
-                        <input type="submit" value="Update" class="w3-button w3-blue w3-round" name="user" value="updateuser">
+                        <input type="submit" class="w3-button w3-blue w3-round" name="user" value="updateuser">
                     </div>
                 </div>
             </form>
@@ -182,8 +183,7 @@
                     <?php echo "<img src=\"$avatar\" alt=\"\" class=\"w3-image w3-circle w3-border \" style=\"width:150px;\">"; ?>
                     <form method="POST">
                         <label class="w3-display-right w3-padding w3-text-blue w3-hover-text-red pointer" ><i class="fa fa-camera w3-xxlarge"></i>
-                        <?php echo "<input type=\"file\" name=\"profilePricture\" id=\"profilePricture\" value=\"$iduser\" hidden></label>";?>
-                    
+                        <?php echo "<input type=\"file\" name=\"profilePricture\" id=\"profilePricture\" value=\"$iduser\" hidden></label>";?>                    
                 </div>
                 <?php echo "<h3 class=\"w3-text-gray\">$fname $lname</h3>";?>
                 <p class="w3-text-gray">It & Webdevelloper at JusticeBot.com</p>
