@@ -56,6 +56,12 @@
             function _(){
                 w3.addClass('.controlHide','w3-hide');
             }
+            function managTopicName(id){
+            w3.addClass(".topicStatus",'w3-hide');
+            if(id){
+                w3.removeClass(id,"w3-hide ");
+            }
+        }
     </script>
 </body>
 </html>

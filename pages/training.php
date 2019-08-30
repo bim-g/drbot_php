@@ -1,97 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../style/w3.css">
-    <link rel="stylesheet" href="../style/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../style/index.css">
-    <style></style>
-    <title>Document</title>
-</head>
-<body>
-    <div class="">
-        <div class="w3-sidebar w3-bar-block w3-light-grey w3-card dasheader dash-side-menu w3-hide-small" id="sidemenu">
-            <header class="top-bar w3-padding "><i class="fa fa-home w3-xxlarge"></i> <span class="w3-xxlarge">Dr Bot</span></header>
-            <div class="w3-padding">
-                    <div class="w3-bar-block w3-text-white ">
-                            <a href="profil.html" class="w3-bar-item dasHover w3-round "><i class="fa fa-user-md w3-xlarge w3-margin-right"></i><span class="w3-center"> Profil</span></a>
-                            <a href="list.html" class="w3-bar-item dasHover w3-round"><i class="fa fa-user w3-xlarge w3-margin-right"></i><span class="w3-center"> Notification</span></a>
-                            <a href="message.html" class="w3-bar-item dasHover w3-round"><i class="fa fa-envelope w3-xlarge w3-margin-right"></i><span class="w3-center"> Message</span></a>
-                            <a href="list.html" class="w3-bar-item dasHover w3-round "><i class="fa fa-address-card w3-xlarge w3-margin-right"></i><span class="w3-center"> List</span></a>
-                            <a href="list.html" class="w3-bar-item dasHover w3-round"><i class="fa fa-user w3-xlarge w3-margin-right"></i><span class="w3-center"> Statistics</span></a>
-                            <a href="training.html" class="w3-bar-item dasHover w3-round active"><i class="fa fa-user w3-xlarge w3-margin-right"></i><span class="w3-center"> Training</span></a>
-                            <a href="security.html" class="w3-bar-item dasHover w3-round"><i class="fa fa-expeditedssl w3-xlarge w3-margin-right"></i><span class="w3-center"> security</span></a>
-                        </div>
-            </div>
+<?php
+    session_start();
+    ob_start();
+    $title="Training";
+    include_once "../class/training.php";
+    include "../config/connection.php";
+    
+    $train=new Training($connexion);
+    $rows=$train->getTopics(null);
+?>
+    <div class="w3-light-gray w3-padding w3-row">
+    <?php include "./control.php";?>
+        <div class="w3-margin w3-border w3-round w3-white " id="showmsg">
+            <div class="w3-container w3-text-gray w3-border-bottom">
+                <a href="./topic.php" class="w3-right w3-button w3-blue "><i class="fa fa-plus"></i></a>
+                <h3>Diplay Topic Registered</h3>
+            </div>            
+            <table class="w3-table-all w3-hoverable w3-border-0">
+                <thead>
+                    <tr class="w3-light-grey w3-text-gray">
+                    <th>No</th>
+                    <th >Topic Title</th>                          
+                    <th >Intent</th> 
+                    <th >Statetopic</th> 
+                    <th >Summary</th> 
+                    <th >Questions</th> 
+                    <th >Owner</th> 
+                    <th >Date Register</th> 
+                    <th >Operations</th> 
+                    </tr>
+                </thead> 
+                <?php
+                    $i=1;
+                    foreach($rows as $item){                
+                echo "<tr >
+                    <td >$i</td>
+                    <td >".$item['titletopic']."</td>
+                    <td >".$item['intent']."</td>
+                    <td >".$item['statetopic']."</td>
+                    <td >".$item['summary']."</td>
+                    <td >".$item['questions']."</td>
+                    <td >".$item['username']."</td>
+                    <td >".$item['dateregister']."</td>                            
+                    <td class=\"w3-row\">
+                        <a class=\"w3-button w3-padding w3-xlarge w3-text-blue w3-col s6 m6 l6\" href=\"./topic.php?training=detail&src=".$item['idtopic']."\"><i class=\"fa fa-stethoscope\"></i></a>
+                        <a class=\"w3-button w3-padding w3-xlarge w3-text-red w3-col s6 m6 l6\" href=\"../controller/training.php?training=delete&src=".$item['idtopic']."\"><i class=\"fa fa-trash\"></i></a>                        
+                    </td>
+                </tr>";
+                 $i++;
+                    }
+                ?>
+            </table>
         </div>
-        <div class="dash-containt">
-            <div class="w3-bar w3-white  top-bar" style="padding-right:20px;">
-                <a href="#" class="w3-button w3-bar-item" onclick="w3.toggleShow('#sidemenu')"><i class="fa fa-bars w3-xxxlarge"></i></a>
-                <div class="w3-right"> 
-                    <button class="w3-bar-item w3-text-red w3-btn w3-large">LogOut</button>
-                    <div class="w3-bar-item w3-text-blue w3-bdtn w3-large"> Ibrahim</div>
-                    <img src="../img/avatar/face-1.jpg" alt="" class="profil-image w3-circle" >  
-                </div>                
-            </div>
-            <div class="w3-light-gray w3-padding">
-                <div class=" w3-container w3-padding " style="width:750px;">
-                    <div class="w3-margin contactUsContent w3-light-gray w3-card w3-round" id="contactUs">
-                        <form method="POST" class="w3-padding ">
-                            <h3>Training</h3> 
-                            <input type="text" name="categorieTopic" id="categorieTopic" class="w3-input w3-border w3-round" placeholder="Category Topic">
-                            <br/>
-                            <div class=" w3-border"> 
-                                <p class="w3-text-gray w3-margin-left">Status Topic</p>
-                                <div class="w3-row w3-padding">                       
-                                    <div class="w3-col s6 m6 l6">
-                                        New Topic <input type="radio" name="topicStatus" value="old" id="topicStatus" class="w3-radio w3-margin-left" onclick="managTopicName('#nameNewTopic')">
-                                    </div>
-                                    <div class="w3-col s6 m6 l6">
-                                        Existing Topic <input type="radio" name="topicStatus" value="new" id="topicStatus" class="w3-radio w3-margin-left" onclick="managTopicName('#nameOldTopic')">
-                                    </div>
-                                </div>  
-                            </div>                            
-                            <br/>
-                            <div class="w3-hide topicStatus" id="nameOldTopic">
-                                <select name="nameOldTopc"  class="w3-select w3-border w3-round w3-margin-bottom">
-                                    <option value="" class="w3-text" disabled selected>Select Topic</option>
-                                    <option value="malaria" class="w3-text" >malaria</option>
-                                    <option value="headeck" class="w3-text" >headeck</option>
-                                </select>
-                            </div>
-                            <div class="w3-hide topicStatus" id="nameNewTopic">
-                                <input type="text" name="nameNewTopic"  class="w3-input w3-border w3-round" placeholder="Name of Your topic">
-                                <br/>
-                            </div>
-                            <input type="text" name="questionTopic" id="questionTopic" class="w3-input w3-border w3-round" placeholder="Topic Question">
-                            <br/>
-                            <label class="w3-large w3-text-gray w3-round">Enter response <span class="w3-text-blue">*</span></label><br/>
-                            <textarea name="contactmessage" id="contactmessage" cols="10" rows="5" class="w3-input w3-border w3-margin-bottom"></textarea>
-                            <button type="submit" class="w3-button w3-blue">Save Topic <i class="fa fa-save"></i></button>
-                        </form>
-                        <div class="w3-padding">
-                            <span class="w3-text-blue">*</span><span class="w3-tiny w3-text-gray">for different learning value, you have to separeate with a semi-colom ";" </span>
-
-                        </div>
-                    </div>
-                </div> 
-            </div>
-            <div class="w3-border-top w3-center" style="height: 50px;">
-                <p class=""> <i class="fa fa-copyright w3-text-green w3-xlarge"></i> copyright DrBot <span id="mydate"></span></p>
-            </div>
-        </div>
-        
     </div>
-    <script>
-        function managTopicName(id){
-            w3.addClass(".topicStatus",'w3-hide');
-            if(id){
-                w3.removeClass(id,"w3-hide ");
-            }
-        }
-    </script>
-    <script src="../js/w3.js"></script>
-</body>
-</html>
+<?php
+    $contentpages=ob_get_clean();
+    include "./template.php";
+?>

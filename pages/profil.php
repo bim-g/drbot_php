@@ -173,7 +173,7 @@
                     <div class="w3-row-padding">
                         <div class="w3-col s12 l12 m12">
                             <label class="w3-text-gray w3-small">ABOUT</label><br>
-                            <?php echo "<textarea name=\"about\" cols=\"30\" rows=\"6\" class=\"w3-input w3-round w3-col s12 m12 l12 w3-border\" value=\"$about\"></textarea>";?>
+                            <textarea name="about" cols="30" rows="6" class="w3-input w3-round w3-col s12 m12 l12 w3-border" ><?php echo $about;?></textarea>
                         </div>
                     </div>
                     <div class="w3-bar w3-margin">
