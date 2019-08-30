@@ -34,7 +34,7 @@
             <div class="w3-bar w3-white  top-bar" style="padding-right:20px;">
                 <a href="#" class="w3-button w3-bar-item"><i class="fa fa-bars w3-xxxlarge"></i></a>
                 <div class="w3-right"> 
-                    <a href="../controller/logout.php" class="w3-bar-item w3-text-blue btn w3-hover-text-red w3-large pointer">LogOut</a>
+                    <a href="../controller/logout.php" class="w3-bar-item w3-text-blue btn w3-hover-text-red w3-large pointer">Logout</a>
                     <?php
                     echo "<div class=\"w3-bar-item w3-text-blue w3-large\">$fullname</div>";
                     echo "<img src=\"$avatar\" alt=\"\" class=\"profil-image w3-circle\" >";?>

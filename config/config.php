@@ -6,6 +6,8 @@
      */
 
     define("HOST","localhost");
-    define("DATABASE","drbot_db");
-    define("USER","drbot_user");
+    define("DATABASE","seraphin_drbot_db");
+    define("USER","seraphin_drbot");
+    // define("DATABASE","drbot_db");
+    // define("USER","drbot_user");
     define("PASSWORD","@yes8made1t");

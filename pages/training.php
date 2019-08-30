@@ -20,11 +20,11 @@
                     <tr class="w3-light-grey w3-text-gray">
                     <th>No</th>
                     <th >Topic Title</th>                          
-                    <th >Intent</th> 
-                    <th >Statetopic</th> 
                     <th >Summary</th> 
                     <th >Questions</th> 
+                    <th >Intent</th> 
                     <th >Owner</th> 
+                    <th >State</th> 
                     <th >Date Register</th> 
                     <th >Operations</th> 
                     </tr>
@@ -35,11 +35,11 @@
                 echo "<tr >
                     <td >$i</td>
                     <td >".$item['titletopic']."</td>
-                    <td >".$item['intent']."</td>
-                    <td >".$item['statetopic']."</td>
                     <td >".$item['summary']."</td>
                     <td >".$item['questions']."</td>
+                    <td >".$item['intent']."</td>
                     <td >".$item['username']."</td>
+                    <td >".$item['statetopic']."</td>
                     <td >".$item['dateregister']."</td>                            
                     <td class=\"w3-row\">
                         <a class=\"w3-button w3-padding w3-xlarge w3-text-blue w3-col s6 m6 l6\" href=\"./topic.php?training=detail&src=".$item['idtopic']."\"><i class=\"fa fa-stethoscope\"></i></a>
