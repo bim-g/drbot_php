@@ -92,14 +92,33 @@ header("Access-Control-Allow-Origin: *");
     if(isset($_GET['user'])){
         switch($_GET['user']){
             case 'getAllusers':
-            $numpage=$_GET['numpages'];
-            $conf = new users($connexion);
-            $conf->getusers(0,true,$numpage);
+            if(is_int($_GET['numpages'])){
+                $numpage=$_GET['numpages'];
+                $conf = new users($connexion);
+                $conf->getusers(0,true,$numpage);
+            }else{
+                header("location:../pages/users.php");
+            }
             break;
             case 'getNotification':
-            $id=$_GET['iduser'];
-            $conf = new users($connexion);
-            $conf->getNotification($id);
+                if(is_int($_GET['idcase'])){
+                    $id=$_GET['iduser'];
+                    $conf = new users($connexion);
+                    $conf->getNotification($id);
+                }else{
+                    header("location:../pages/notification.php");
+                }
+            break;
+            case 'updatecase':
+            if(isset($_GET['case'])){
+                $id=(int)$_GET['case'];
+                $type=$_GET['type'];
+                $conf = new users($connexion);
+                $conf->stateCase($id,$type);
+                header("location:../pages/notification.php");
+            }else{
+                header("location:../pages/notification.php?error=123");
+            }
             break;
         }   
     }

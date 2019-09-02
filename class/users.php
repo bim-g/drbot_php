@@ -155,7 +155,7 @@
         }
         
         function getNotification($iddoc){
-            $sql="SELECT CONCAT(u.fname,\" \",u.lname) as pacient,c.statecase,c.dateassign ";
+            $sql="SELECT c.idcase,CONCAT(u.fname,\" \",u.lname) as pacient,c.statecase,c.dateassign,c.datelastupdate ";
             $this->iduser=$iddoc;
             if($iddoc==null){
                 $sql.=",(SELECT CONCAT( d.fname,\" \",d.lname) as drname FROM users d JOIN cases cd ON d.iduser=cd.iddoctor WHERE cd.iddoctor=c.iddoctor AND cd.idpacient=c.idpacient LIMIT 1) as specialist FROM users u JOIN cases c ON u.iduser=c.idpacient ORDER BY c.idcase DESC";
@@ -187,7 +187,30 @@
                 return $req->fetchAll();
             }
         }
-        
+        function stateCase($id,$type){
+            $state=$this->_case($type);
+            $sql="UPDATE cases SET statecase=?,datelastupdate=NOW() WHERE idcase=?";
+            $req=$this->bdd->prepare($sql);
+            try{
+                $req->bindparam(1,$state);
+                $req->bindparam(2,$id);
+                $req->execute();
+            }catch(Exception $ex){
+                echo $ex->getMessage();
+                die();
+            }            
+        }
+        private function _case($case){
+            if($case=="WorkingOn"){
+                return 1;
+            }
+            elseif($case=="Resolved"){
+                return 2;
+            }
+            elseif($case=="Reject"){
+                return -1;
+            }
+        }
         // allow to set the credention of a use
         // to define if its a admin, manager or a user
         function setCredential(){}
