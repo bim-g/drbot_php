@@ -141,11 +141,13 @@
         //allow to delete a user and if the is no parametres 
         //is going to clean up teh tables users and all
         function deleteUser($id){
-            
-            $q="DELETE FROM users";
+            $this->iduser=$id;
+            $q="DELETE FROM users WHERE iduser =?";
             
             try{
-
+                $q=$this->bdd->prepare($sql);
+                $q->bindparam(1,$this->iduser);
+                $q->execute();
             }catch(Exception $ex){
                 echo $ex->getMessage();
                 die();
