@@ -86,6 +86,15 @@ header("Access-Control-Allow-Origin: *");
                 header("location:../index.php?error=1&Type=emptyInput");
             }
             break;
+            case 'contact': 
+            if(!empty($_POST['emailsender']) && !empty($_POST['emailsender'])){          
+                $conf = new users($connexion);
+                $conf->storemessage($_POST['namesender'],$_POST['emailsender'],$_POST['objtmsg'],$_POST['contentmsg']);              
+                header("location:../");
+            }else{
+                header("location:../index.php?error=1&Type=emptyInput");
+            }
+            break;
         }
     }
     

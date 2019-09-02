@@ -211,6 +211,20 @@
                 return -1;
             }
         }
+        function storemessage($namesender,$emailsender,$objtmsg,$contentmsg){
+            $sql="INSERT INTO message(namesender,emailsender,objtmsg,contentmsg,statemsg,dateregister) VALUES (?,?,?,?,0,NOW())";
+            try{
+                $q=$this->bdd->prepare($sql);
+                $q->bindparam(1,$namesender);
+                $q->bindparam(2,$emailsender);
+                $q->bindparam(3,$objtmsg);
+                $q->bindparam(4,$contentmsg);
+                $q->execute();
+            }catch(Exception $ex){
+                echo $ex->getMessage();
+                die();
+            }
+        }
         // allow to set the credention of a use
         // to define if its a admin, manager or a user
         function setCredential(){}

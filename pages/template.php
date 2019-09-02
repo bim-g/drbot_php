@@ -27,7 +27,8 @@
 <body>
     <div class="">
         <div class="w3-sidebar w3-bar-block w3-light-grey w3-card dasheader dash-side-menu" >
-            <header class="top-bar w3-padding "><i class="fa fa-home w3-xxlarge"></i> <span class="w3-xxlarge">Dr Bot</span></header>
+            <header class="top-bar w3-padding ">
+                <a href="../"><i class="fa fa-home w3-xxlarge"></i></a><span class="w3-xxlarge">Dr Bot</span></header>
             <?php include "./menu.php";?>
         </div>
         <div class="dash-containt">

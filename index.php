@@ -93,17 +93,17 @@
 <!-- contact us -->  
     <div class=" w3-container w3-padding contactUs ">
         <div class="w3-margin contactUsContent w3-light-gray w3-card w3-round" id="contactUs">
-            <form method="POST" class="w3-padding ">
+            <form method="POST" class="w3-padding " action="./controller/users.php">
                 <h3>Contact Us</h3> 
-                <input type="text" name="contactusername" id="contactusername" class="w3-input w3-border" placeholder="Enter Your name">
+                <input type="text" name="namesender" id="namesender" class="w3-input w3-border" placeholder="Enter Your name" require>
                 <br/>
-                <input type="email" name="contactemail" id="contactemail" class="w3-input w3-border" placeholder="Enter Email">
+                <input type="email" name="emailsender" id="emailsender" class="w3-input w3-border" placeholder="Enter Email" require>
                 <br/>
-                <input type="text" name="contactsubject" id="contactsubject" class="w3-input w3-border" placeholder="Enter subject">
+                <input type="text" name="objtmsg" id="objtmsg" class="w3-input w3-border" placeholder="Enter subject" require>
                 <br/>
                 <label class="w3-xlarge">Enter message</label><br/>
-                <textarea name="contactmessage" id="contactmessage" cols="10" rows="5" class="w3-input w3-border w3-margin-bottom"></textarea>
-                <button type="submit" class="w3-button w3-green">Send Message <i class="fa fa-send"></i></button>
+                <textarea name="contentmsg" id="contentmsg" cols="10" rows="5" class="w3-input w3-border w3-margin-bottom"></textarea>
+                <button type="submit" class="w3-button w3-green" name="user" value="contact">Send Message <i class="fa fa-send"></i></button>
             </form>
         </div>
     </div> 
