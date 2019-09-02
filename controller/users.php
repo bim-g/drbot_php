@@ -96,5 +96,10 @@ header("Access-Control-Allow-Origin: *");
             $conf = new users($connexion);
             $conf->getusers(0,true,$numpage);
             break;
+            case 'getNotification':
+            $id=$_GET['iduser'];
+            $conf = new users($connexion);
+            $conf->getNotification($id);
+            break;
         }   
     }

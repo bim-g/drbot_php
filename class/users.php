@@ -142,8 +142,7 @@
         //is going to clean up teh tables users and all
         function deleteUser($id){
             $this->iduser=$id;
-            $q="DELETE FROM users WHERE iduser =?";
-            
+            $q="DELETE FROM users WHERE iduser = ? ";            
             try{
                 $q=$this->bdd->prepare($sql);
                 $q->bindparam(1,$this->iduser);
@@ -155,6 +154,21 @@
             
         }
         
+        function getNotification($iddoc){
+            $sql="SELECT CONCAT(u.fname,\" \",u.lname) as pacient,c.statecase,c.dateassign ";
+            $this->iduser=$iddoc;
+            if($iddoc==null){
+                $sql.=",(SELECT CONCAT( d.fname,\" \",d.lname) as drname FROM users d JOIN cases cd ON d.iduser=cd.iddoctor WHERE cd.iddoctor=c.iddoctor AND cd.idpacient=c.idpacient LIMIT 1) as specialist FROM users u JOIN cases c ON u.iduser=c.idpacient ORDER BY c.idcase DESC";
+                $q=$this->bdd->query($sql);
+                return $q->fetchAll();
+            }else{
+                $sql.=" FROM users u JOIN cases c ON u.iduser =c.iddoctor WHERE c.iddoctor=? ORDER BY c.idcase DESC";
+                $q=$this->bdd->prepare($sql);
+                $q->bindparam(1,$this->iduser);
+                $q->execute();
+                return $q->fetchAll();                
+            }
+        }
        /**
         *  */
         function getusers($id){
