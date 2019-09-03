@@ -1,7 +1,33 @@
 <?php
     session_start();
     ob_start();
+    include_once "../class/users.php";
+    include "../config/connection.php";
     $title="Message";
+    $user = new users($connexion);
+    $rows = $user->getMessages();
+    $avatar="../img/avatar/face-0.jpg";
+//     idmessage
+// namesender
+// emailsender
+// objtmsg
+// contentmsg
+// statemsg
+// dateregister
+    $idmessage=null;
+    $namesender=null;
+    $emailsender=null;
+    $objtmsg=null;
+    $contentmsg=null;
+    $statemsg=null;
+    $dateregister=null;
+     function selectMessage($id,$name,$email,$objt,$content){
+        $idmessage=$id;
+        $namesender=$name;
+        $emailsender=$email;
+        $objtmsg=$objt;
+        $contentmsg=$content;
+     }
 ?>
     <div class="w3-light-gray w3-padding w3-row">
         <div class="w3-bar">
@@ -48,34 +74,26 @@
                     <th ></th> 
                     </tr>
                 </thead> -->
-                <tr onclick="w3.addClass('#showmsg',' w3-col s7 l7 m7',w3.removeClass('#resmsg','w3-hide'));" >
+                <?php
+                    foreach($rows as $item){
+                         echo "<tr onclick=\"w3.addClass('#showmsg',' w3-col s7 l7 m7',w3.removeClass('#resmsg','w3-hide'));
+                         showMessage(".$item['idmessage'].",'".$item['namesender']."','".$item['emailsender']."','".$item['objtmsg']."','".$item['contentmsg']."')\">" ;
+                ?>
                     <td >
                         <div class="w3-center w3-image">
-                            <img src="../img/avatar/face-01.jpg" alt="" class="profil-image w3-circle">
+                            <img src="<?php echo $avatar;?>" alt="" class="profil-image w3-circle">
                         </div>
                     </td>
-                    <td >
-                        <div class="w3-small w3-text-gray w3-right">12-04-2019</div>
-                        <div class="w3-xlarge">Jill Smith</div>
-                        <div class="w3-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                    </td>                            
-                    <td ><a class="w3-button w3-padding w3-xlarge w3-text-red "><i class="fa fa-trash"></i></a>
+                    <?php 
+                    echo "<td >
+                        <div class=\"w3-small w3-text-gray w3-right\">".$item['dateregister']."</div>
+                        <div class=\"w3-xlarge\">".$item['namesender']."</div>
+                        <div class=\"w3-medium\">".$item['contentmsg']."</div>
+                    </td> " ;?>                         
+                    <td><a class="w3-button w3-padding w3-xlarge w3-text-red " href="#"><i class="fa fa-trash"></i></a>
                     </td>
-                </tr>                        
-                <tr>
-                    <td>
-                        <div class="w3-center w3-image">
-                            <img src="../img/avatar/face-2.jpg" alt="" class="profil-image w3-circle">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="w3-small w3-text-gray w3-right">12-04-2019</div>
-                        <div class="w3-xlarge  ">Drake smith</div>
-                        <div class="w3-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                    </td>                            
-                    <td ><a class="w3-button w3-padding s3 l3 m3 w3-xlarge w3-text-red "><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr>                
+                </tr>                      
+<?php } ?>             
             </table>
         </div>
         <div class="w3-margin w3-border w3-round w3-white w3-hide w3-col s4 l4 m4 w3-animate-right" id="resmsg">
@@ -86,24 +104,25 @@
             </div>
             <div id="readmsg" class="w3-animate-opacity">
                 <div class="w3-padding">
-                    <div class="w3-border-bottom">
-                        <p>Name:<b>Jill Smith</b></p>
-                        <p>From:anonymous@drbot.com</p>
-                        <p>Objet:lorem ipsum</p>
+                    <div class="w3-border-bottom">                   
+                    <p>Name:<b id="namesender">{{namesender}}</b></p>
+                        <p>From:<span id="emailsender">{{emailsender}}</span></p>
+                        <p>Objet:<span id="objtmsg">{{objtmsg}}</span></p>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, incidunt. Vitae labore deserunt quia expedita corporis possimus tenetur, ipsa commodi! Obcaecati quisquam rem officiis accusantium explicabo aliquid maiores similique perferendis?</p>
+                    <p id="r-contentmsg">{{contentmsg}}</p>
                 </div>
                 <div class="w3-bar w3-light-gray w3-border-top w3-padding">
                     <button class=" w3-bar-item w3-button w3-green w3-right" onclick="w3.addClass('#readmsg',' w3-hide',w3.removeClass('#respondmsg','w3-hide'));">Respond</button>
                 </div>
             </div>
             <div id="respondmsg" class="w3-hide w3-animate-opacity">
-                <form method="POST">
+                <form method="POST" >
+                    <input type="hidden" name="idmessage" value="" id="idmessage">
                     <div class="w3-padding">                                
-                        Name:<input type="text" disabled class="w3-input" value="Jill Smith"/><br/>
-                        To:<input type="text" disabled class="w3-input" value="anonymous@drbot.com"/><br/>
-                        Objet:<input type="text" disabled class="w3-input" value="lorem ipsum"/><br/>                                
-                        <textarea class="w3-input w3-round w3-border"></textarea>
+                        Name:<input type="text" name="namesender" disabled class="w3-input" value="{{namesender}}"/><br/>
+                        To:<input type="text" name="emailsender" disabled class="w3-input" value="{{emailsender}}"/><br/>
+                        Objet:<input type="text" name="objtmsg" disabled class="w3-input" value="{{objtmsg}}"/><br/>                      
+                        <textarea class="w3-input w3-round w3-border" name="contentmsg"></textarea>
                     </div>
                 <div class="w3-bar w3-light-gray w3-border-top w3-padding">
                     <button type="submit" class="w3-button w3-bar-item w3-blue w3-right"> Send <i class="fa fa-send"></i></button>
@@ -113,6 +132,21 @@
             </div>
         </div>
     </div>
+    <script>
+        function showMessage(id,name,email,objt,content){
+            
+            var myobject={
+                "idmessage":id,
+                "namesender":name,
+                "emailsender":email,
+                "objtmsg":objt,
+                "contentmsg":content
+                };
+                w3.displayObject("readmsg",myobject);
+                w3.displayObject("respondmsg",myobject);
+    
+        }
+    </script>
 <?php
 
     $contentpages=ob_get_clean();

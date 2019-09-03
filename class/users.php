@@ -225,6 +225,17 @@
                 die();
             }
         }
+        function getMessages(){
+            $sql="SELECT * FROM message";
+            try{
+                $q=$this->bdd->query($sql);
+                $q->execute();
+                return $q->fetchAll();
+            }catch(Exception $ex){
+                echo $ex->getMessage();
+                die();
+            }
+        }
         // allow to set the credention of a use
         // to define if its a admin, manager or a user
         function setCredential(){}
