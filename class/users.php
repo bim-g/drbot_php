@@ -236,6 +236,17 @@
                 die();
             }
         }
+        function deleteMessage($id){
+            $sql="DELETE FROM message WHERE idmessage=?";
+            try{
+                $q=$this->bdd->prepare($sql);
+                $q->bindparam(1,$id);
+                $q->execute();
+            }catch(Exception $ex){
+                echo $ex->getMessage();
+                die();
+            }
+        }
         // allow to set the credention of a use
         // to define if its a admin, manager or a user
         function setCredential(){}

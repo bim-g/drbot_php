@@ -129,5 +129,16 @@ header("Access-Control-Allow-Origin: *");
                 header("location:../pages/notification.php?error=123");
             }
             break;
+            //user=delMessage&id
+            case 'delMessage':
+            if(isset($_GET['message'])){
+                $id=(int)$_GET['message'];                
+                $conf = new users($connexion);
+                $conf->deleteMessage($id);
+                header("location:./../pages/message.php");
+            }else{
+                header("location:../pages/message.php?error=123");
+            }
+            break;
         }   
     }

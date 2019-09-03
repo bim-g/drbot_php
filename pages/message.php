@@ -14,27 +14,14 @@
 // contentmsg
 // statemsg
 // dateregister
-    $idmessage=null;
-    $namesender=null;
-    $emailsender=null;
-    $objtmsg=null;
-    $contentmsg=null;
-    $statemsg=null;
-    $dateregister=null;
-     function selectMessage($id,$name,$email,$objt,$content){
-        $idmessage=$id;
-        $namesender=$name;
-        $emailsender=$email;
-        $objtmsg=$objt;
-        $contentmsg=$content;
-     }
+    
 ?>
     <div class="w3-light-gray w3-padding w3-row">
         <div class="w3-bar">
             <button class="w3-button w3-bar-item w3-right" onclick="w3.toggleClass('#searchopt',' ','w3-hide',w3.toggleClass('#iconbtn',' fa-close w3-text-red','fa-search'))"><i class="fa fa-search" id="iconbtn"></i></button>
 
         </div>
-        <div class="w3-margin w3-padding w3-large-round w3-border w3-white w3-hide" id="searchopt">
+        <!-- <div class="w3-margin w3-padding w3-large-round w3-border w3-white w3-hide" id="searchopt">
             <form method="post">
                 <div class="w3-row">
 
@@ -60,20 +47,13 @@
                     </div>
                 </div>
             </form>
-        </div>
+        </div> -->
         <div class="w3-margin w3-border w3-round w3-white " id="showmsg">
             <div class="w3-container w3-text-gray w3-border-bottom">
                 <h3>Recieved Messages</h3>
             </div>
             
-            <table class="w3-table-all w3-hoverable w3-border-0">
-                <!-- <thead>
-                    <tr class="w3-light-grey w3-text-gray">
-                    <th></th>
-                    <th ></th>                          
-                    <th ></th> 
-                    </tr>
-                </thead> -->
+            <table class="w3-table-all w3-hoverable w3-border-0">               
                 <?php
                     foreach($rows as $item){
                          echo "<tr onclick=\"w3.addClass('#showmsg',' w3-col s7 l7 m7',w3.removeClass('#resmsg','w3-hide'));
@@ -89,8 +69,8 @@
                         <div class=\"w3-small w3-text-gray w3-right\">".$item['dateregister']."</div>
                         <div class=\"w3-xlarge\">".$item['namesender']."</div>
                         <div class=\"w3-medium\">".$item['contentmsg']."</div>
-                    </td> " ;?>                         
-                    <td><a class="w3-button w3-padding w3-xlarge w3-text-red " href="#"><i class="fa fa-trash"></i></a>
+                    </td>                        
+                    <td><a class=\"w3-button w3-padding w3-xlarge w3-text-red \" href=\"../controller/users/php?user=delMessage&message=".$item['idmessage']."\"><i class=\"fa fa-trash\"></i></a> " ;?> 
                     </td>
                 </tr>                      
 <?php } ?>             
