@@ -29,10 +29,10 @@
             <thead>
                 <tr class="w3-light-grey w3-text-gray">
                 <th></th>
-                <th>Full Name</th>
-                <th>Compagny</th>
-                <th>City/Country</th>
-                <th>Grade</th>
+                <th onclick="w3.sortHTML('#usersList','.useritem', 'td:nth-child(1)')"class="pointer">Full Name</th>
+                <th onclick="w3.sortHTML('#usersList','.useritem', 'td:nth-child(2)')"class="pointer">Compagny</th>
+                <th >City/Country</th>
+                <th >Grade</th>
                 <th>Status</th>
                 <th>From</th>
                 <th class="w3-center">Control</th>
