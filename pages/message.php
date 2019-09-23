@@ -3,10 +3,12 @@
     ob_start();
     include_once "../class/users.php";
     include "../config/connection.php";
+    include "./sessioncontrol.php";
     $title="Message";
     $user = new users($connexion);
     $rows = $user->getMessages();
     $avatar="../img/avatar/face-0.jpg";
+
 //     idmessage
 // namesender
 // emailsender

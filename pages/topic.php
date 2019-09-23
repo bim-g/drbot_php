@@ -4,7 +4,7 @@
     
     include_once "../class/training.php";
     include "../config/connection.php";
-
+    include "./sessioncontrol.php";
     $title="Training Topic";
     $iduser=$_SESSION['iduser'];
     $titletopic=null;

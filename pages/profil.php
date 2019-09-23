@@ -3,8 +3,8 @@
      ob_start();
     include_once "../class/users.php";
     include_once "../class/control.php";
-    include "../config/connection.php";
-    
+    include "../config/connection.php";    
+    include "./sessioncontrol.php";
     $title="Profile"; 
     $avatar="../img/avatar/face-0.jpg";
     if(isset($_GET['user']) && !empty($_GET['user'])){

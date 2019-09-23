@@ -58,8 +58,8 @@
             <span class="welcom">where ever you are</span>
         </div>
         <div class="w3-center btnStar">
-            <a href="https://developers.facebook.com/apps/427210107825206/dashboard/" class="w3-btn w3-white w3-round-xxlarge w3-xlarge w3-hover-text-green btn-animated">Get Started</a>
-            <a href="" class="w3-button w3-round-xxlarge w3-padding w3-xlarge w3-white start w3-text-blue w3-hover-blue btn-animated-fb" ><i class="fa fa-facebook "></i></a>
+            <a href="https://m.me/304271846878283" class="w3-btn w3-white w3-round-xxlarge w3-xlarge w3-hover-text-green btn-animated">Get Started</a>
+            <a href="https://web.facebook.com/Drbot-304271846878283/" class="w3-button w3-round-xxlarge w3-padding w3-xlarge w3-white start w3-text-blue w3-hover-blue btn-animated-fb" ><i class="fa fa-facebook "></i></a>
         </div>
     </div>
     <div class="w3-row w3-margin">

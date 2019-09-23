@@ -4,7 +4,7 @@
     $title="Topic Solution";
     include_once "../class/training.php";
     include "../config/connection.php";
-    
+    include "./sessioncontrol.php";
     if(isset($_GET['training']) && !empty($_GET['training']) && $_GET['training']=="detailS" && is_integer($_GET['src'])){
         $train=new Training($connexion);
         $rows=$train->getSolutions($_GET['src']);

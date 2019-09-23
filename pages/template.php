@@ -1,6 +1,6 @@
 <?php 
     $fullname=$_SESSION['fname']." ".$_SESSION['lname'];
-    $avatar="../".$_SESSION['avatar'];
+    $avatar="../".$_SESSION['avatar'];   
 ?>
 <!DOCTYPE html>
 <html lang="en">

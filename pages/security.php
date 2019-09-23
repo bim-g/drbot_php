@@ -2,6 +2,7 @@
     session_start();
     ob_start();
     $title="Security";
+    include "./sessioncontrol.php";
 
 ?>
             <div class="w3-light-gray w3-paddding" >   

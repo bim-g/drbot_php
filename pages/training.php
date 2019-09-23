@@ -3,8 +3,8 @@
     ob_start();
     $title="Training";
     include_once "../class/training.php";
-    include "../config/connection.php";
-    
+    include "../config/connection.php";    
+    include "./sessioncontrol.php";
     $train=new Training($connexion);
     $rows=$train->getTopics(null);
 ?>
