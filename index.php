@@ -251,24 +251,25 @@
         </div>
     </div>
     <!-- Modal Erreur Connexion -->
-    <div class="w3-modal" id="error">
+    <?php
+        if(isset($_GET['error'])){
+            require './alert/message.php';
+            require './alert/danger.php';
+        }
+    ?>
+    <!-- <div class="w3-modal" id="error">
         <div class="w3-modal-content w3-card-4">
             <p class="w3-text-red w3-jumbo">Error connexion</p>
         </div>
-    </div>
+    </div> -->
     <div class="w3-border-top w3-light-gray w3-center w3-padding" style="position: relative;">
         <p class=""> <i class="fa fa-copyright w3-text-green w3-xlarge"></i> copyright DrBot <span id="mydate"></span></p>
         <a href="#home" class="w3-circle w3-gray btn-go-up w3-padding w3-border" ><i class="fa fa-angle-up w3-xxlarge w3-hover-text-green"></i></a>
     </div>
     <!-- bouton go up -->
-    <?php
-        if(isset($_GET['error']) && isset($_GET['Type'])){
-            switch($_GET['error']){
-                case 1: echo "<script>document.getElementById('error').style.display='block';</script>";
-            }
-        }
-    ?>
+    
     <script>
+        w3.show('#errorModal');
         _();
         function changeCadre(val){
             _();

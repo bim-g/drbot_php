@@ -72,18 +72,22 @@ header("Access-Control-Allow-Origin: *");
             if(!empty($_POST['loginusername']) && !empty($_POST['loginpassword'])){          
                 $conf = new users($connexion);
                 $record=$conf->connexion($_POST['loginusername'],$_POST['loginpassword']);
-                foreach($record as $item){
-                    session_start();
-                    $_SESSION['connexionStatus']="ON";
-                    $_SESSION['iduser']=$item['iduser'];
-                    $_SESSION['fname']=$item['fname'];
-                    $_SESSION['lname']=$item['lname'];
-                    $_SESSION['level']=$item['designation'];
-                    $_SESSION['avatar']=$item['link'];
+                if(count($record)>0){
+                    foreach($record as $item){
+                        session_start();
+                        $_SESSION['connexionStatus']="ON";
+                        $_SESSION['iduser']=$item['iduser'];
+                        $_SESSION['fname']=$item['fname'];
+                        $_SESSION['lname']=$item['lname'];
+                        $_SESSION['level']=$item['designation'];
+                        $_SESSION['avatar']=$item['link'];
+                    }
+                    header("location:../");
+                }else{
+                    header("location:../index.php?error=2");
                 }
-                header("location:../");
             }else{
-                header("location:../index.php?error=1&Type=emptyInput");
+                header("location:../index.php?error=1");
             }
             break;
             case 'contact': 
