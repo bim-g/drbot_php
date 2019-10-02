@@ -18,13 +18,7 @@
     <link rel="stylesheet" href="style/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style/index.css">
     <script src="js/w3.js"></script>
-    <?php
-        if(isset($_GET['error']) && isset($_GET['Type'])){
-            switch($_GET['error']){
-                case 1: echo "<script>document.getElementById('error').style.display='block';</script>";
-            }
-        }
-    ?>
+    
 </head>
 <body>
     <div class="header w3-text-white" id="home">
@@ -267,7 +261,13 @@
         <a href="#home" class="w3-circle w3-gray btn-go-up w3-padding w3-border" ><i class="fa fa-angle-up w3-xxlarge w3-hover-text-green"></i></a>
     </div>
     <!-- bouton go up -->
-    
+    <?php
+        if(isset($_GET['error']) && isset($_GET['Type'])){
+            switch($_GET['error']){
+                case 1: echo "<script>document.getElementById('error').style.display='block';</script>";
+            }
+        }
+    ?>
     <script>
         _();
         function changeCadre(val){
