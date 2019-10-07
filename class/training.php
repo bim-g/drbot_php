@@ -133,5 +133,10 @@
                 die();
             }
         }
+        function randomtopic(){
+            $sql="SELECT t.titletopic,t.summary,m.link  FROM topic t JOIN media m ON t.imagerefernce=m.idmedia ORDER BY RAND() LIMIT 2";
+            $req=$this->bdd->query($sql);
+            return $req->fetchAll();
+        }
     }
 ?>

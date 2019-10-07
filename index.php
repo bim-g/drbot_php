@@ -56,32 +56,28 @@
             <a href="https://web.facebook.com/Drbot-304271846878283/" class="w3-button w3-round-xxlarge w3-padding w3-xlarge w3-white start w3-text-blue w3-hover-blue btn-animated-fb" ><i class="fa fa-facebook "></i></a>
         </div>
     </div>
-    <div class="w3-row w3-margin">
-        <div class="w3-col s6 l6 m6  ">
+    <div class="w3-row w3-margin">        
+        <?php
+            require './config/connection.php';
+            require './class/training.php';
+
+            $train=new Training($connexion);
+            $topic = $train->randomtopic();
+
+            foreach($topic as $item){
+        ?>
+        <div class="w3-col s6 l6 m6  " id="getstarted" >
             <div class="w3-card w3-margin">
                 <div class="w3-black w3-padding">
-                    <h3>Element 1 </h3>
+                    <h3><?php echo $item['titletopic'];?></h3>
                 </div>
-                <img src="./img/elem/tm-700x350-01.jpg" alt="demo picture" class="w3-image">
+                <img src="<?php echo $item['link'];?>" alt="demo picture" class="w3-image" style="width:100%;">
                 <div class="w3-container">            
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum assumenda culpa sapiente? Asperiores ipsum repudiandae quae voluptatum et dolorem. Architecto consequuntur sint, deleniti nulla voluptatibus exercitationem dicta doloribus explicabo libero!
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, ab fuga sint laborum, eum cumque obcaecati, ut iure exercitationem voluptatem hic officia voluptates. Laudantium possimus maxime impedit architecto doloribus esse.</p>
+                    <p><?php echo $item['summary'];?></p>
                 </div>
             </div>
         </div>
-        <div class="w3-col s6 l6 m6  ">
-            <div class="w3-card w3-margin">
-                <div class="w3-black w3-padding">
-                    <h3>Element 1</h3>
-                </div>
-                <img src="./img/elem/tm-700x350-02.jpg" alt="demo picture" class="w3-image">
-                <div class="w3-container">            
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum assumenda culpa sapiente? Asperiores ipsum repudiandae quae voluptatum et dolorem. Architecto consequuntur sint, deleniti nulla voluptatibus exercitationem dicta doloribus explicabo libero!
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, ab fuga sint laborum, eum cumque obcaecati, ut iure exercitationem voluptatem hic officia voluptates. Laudantium possimus maxime impedit architecto doloribus esse.</p>
-                </div>
-            </div>
-        </div>
-        
+            <?php }?>
     </div>
 
 <!-- contact us -->  
@@ -269,6 +265,7 @@
     <!-- bouton go up -->
     
     <script>
+        
         w3.show('#errorModal');
         _();
         function changeCadre(val){
@@ -278,6 +275,8 @@
         function _(){
             w3.addClass('.controlHide','w3-hide');
         }
+        //starting
+        
         w3.getElements('#mydate')[0].innerHTML=new Date().getFullYear();
     </script>
 </body>
