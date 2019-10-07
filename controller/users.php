@@ -99,6 +99,15 @@ header("Access-Control-Allow-Origin: *");
                 header("location:../index.php?error=1&Type=emptyInput");
             }
             break;
+            case 'UpdateLevel': 
+            if(!empty($_POST['userlevel']) && !empty($_POST['leveluserid'])){          
+                $conf = new users($connexion);
+                $conf->updatelevel($_POST['userlevel'],$_POST['leveluserid']);              
+                header("location:../pages/profil.php?user=".$_POST['leveluserid']);
+            }else{
+                header("location:../pages/profil.php?user=".$_POST['leveluserid']."&error=1");
+            }
+            break;
         }
     }
     

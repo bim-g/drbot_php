@@ -17,27 +17,34 @@
     $procedure=null;
     $assistence=null;
     $produceM=null;
-    if(isset($_GET['training']) && !empty($_GET['training']) && is_integer($_GET['src'])){
-        $train=new Training($connexion);
-        $rows=$train->getTopics($_GET['src']);
-        foreach($rows as $item){
-            $idtopic=$item['idtopic'];
-            $titletopic=$item['titletopic'];
-            $intent=$item['intent'];
-            $summary=$item['summary'];
-            $questions=$item['questions'];
-            switch($item['intent']){
-                case "infos":$infos="checked";
-                break;
-                case "procedure":$procedure="checked";
-                break;
-                case "assistance":$assistence="checked";
-                break;
-                case "procedure_more":$produceM="checked";
-                break;
+    //detail&src=8
+    if(isset($_GET['training']) && !empty($_GET['training'])){
+        if((int)$_GET['src']){
+            $train=new Training($connexion);
+            $rows=$train->getTopics((int)$_GET['src']);
+            foreach($rows as $item){
+                $idtopic=$item['idtopic'];
+                $titletopic=$item['titletopic'];
+                $intent=$item['intent'];
+                $summary=$item['summary'];
+                $questions=$item['questions'];
+                switch($item['intent']){
+                    case "infos":$infos="checked";
+                    break;
+                    case "procedure":$procedure="checked";
+                    break;
+                    case "assistance":$assistence="checked";
+                    break;
+                    case "procedure_more":$produceM="checked";
+                    break;
+                }
             }
+        }else{
+            header("location:./topic.php?error=11");
         }
         
+    }else{
+        header("location:./topic.php?error=10");
     }
 ?>
     <div class="w3-light-gray w3-padding">
@@ -48,6 +55,7 @@
                 <form method="POST" class="w3-padding" action="../controller/training.php">
                 <?php if(isset($_GET['training']) && !empty($_GET['training'])){
                     echo "<a href=\"./solution.php?training=detailS&src=".$_GET['src']."\" class=\"w3-button w3-right  w3-blue\"><i class=\"fa fa-reply-all\"></i></a>";
+                    echo"<input type=\"hidden\" name=\"idtopic\" value=\"$idtopic\">";
                  } ?>
                     <h3>Training Topics</h3> 
                     <?php echo"<input type=\"hidden\" name=\"iduser\" value=\"$iduser\">";?>
@@ -58,16 +66,16 @@
                         <p class="w3-gray w3-padding w3-center">Topic Intent</p>
                         <div class="w3-row w3-padding">                       
                             <div class="w3-col s2 m2 l2 w3-border-right">
-                                Infos <input type="radio" name="intent" value="infos" id="intent" class="w3-radio w3-margin-left" >
+                                Infos <input type="radio" name="intent" value="infos" id="intent" class="w3-radio w3-margin-left" <?php echo $infos;?>>
                             </div>
                             <div class="w3-col s3 m3 l3 w3-border-right">
-                                Procedure <input type="radio" name="intent" value="procedure" id="intent" class="w3-radio w3-margin-left" >
+                                Procedure <input type="radio" name="intent" value="procedure" id="intent" class="w3-radio w3-margin-left" <?php echo $procedure;?>>
                             </div>
                             <div class="w3-col s3 m3 l3 w3-border-right">
-                                Assistance<input type="radio" name="intent" value="assistance" id="intent" class="w3-radio w3-margin-left" >
+                                Assistance<input type="radio" name="intent" value="assistance" id="intent" class="w3-radio w3-margin-left" <?php echo $assistence;?>>
                             </div>
                             <div class="w3-col s4 m4 l4">
-                                Procedure Assist<input type="radio" name="intent" value="procedure_more" id="intent" class="w3-radio w3-margin-left" >
+                                Procedure Assist<input type="radio" name="intent" value="procedure_more" id="intent" class="w3-radio w3-margin-left" <?php echo $produceM;?>>
                             </div>
                         </div>  
                     </div> 

@@ -16,6 +16,10 @@
             break;
             case 6: $message=array('type'=>'error input','errorText'=>'there is a field fitch is empty');
             break;
+            case 10: $message=array('type'=>'error param','errorText'=>'information is not correct');
+            break;
+            case 11: $message=array('type'=>'error data','errorText'=>'error on datatype');
+            break;
         }        
         return $message;
     }
@@ -24,7 +28,9 @@
         $message=null;
         switch($val){
 
-            case 1: $message==array('type'=>'error input','text'=>'there is a field fitch is empty');;
+            case 1: $message==array('type'=>'success operation','text'=>'There is no data available');;
+            break; 
+            case 2: $message==array('type'=>'error input','text'=>'there is a field fitch is empty');;
             break; 
         }
         return $message;        

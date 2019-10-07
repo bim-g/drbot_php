@@ -39,6 +39,22 @@
                 die();
             }
         }
+        function updateTopic(){
+            $sql="UPDATE topic SET titletopic=?,intent=?,iduser=?,summary=?,questions=?,dateregister=NOW() WHERE idtopic=?";
+            try{                
+                $req=$this->bdd->prepare($sql);
+                $req->bindparam(1,$this->titletopic);
+                $req->bindparam(2,$this->intent);
+                $req->bindparam(3,$this->iduser);
+                $req->bindparam(4,$this->summary);
+                $req->bindparam(5,$this->questions);
+                $req->bindparam(6,$this->idtopic);
+                $req->execute();
+            }catch(Exception $ex){
+                echo $ex->getMessage();
+                die();
+            }
+        }
         function getTopics($id){
             if($id!=null && is_integer($id)){
                 $this->idtopic=$id;
@@ -84,6 +100,32 @@
             $sql="DELETE FROM topic WHERE idtopic=?";
             $req=$this->bdd->prepare($sql);
             $req->bindparam(1,$this->idtopic);
+            try{
+                $req->execute();
+            }catch(Exception $ex){
+                echo $ex->getMessage();
+                die();
+            }
+        }
+        function addSolution($step){
+            $sql="INSERT INTO solution (idtopic,description,step,datelastupdate) VALUES (?,?,?,NOW())";
+            $req=$this->bdd->prepare($sql);
+            $req->bindparam(1,$this->idtopic);
+            $req->bindparam(2,$this->description);
+            $req->bindparam(3,$step);
+            try{
+                $req->execute();
+            }catch(Exception $ex){
+                echo $ex->getMessage();
+                die();
+            }
+        }
+        function updateSolution($step){
+            $sql="UPDATE solution SET description=?,step=?,datelastupdate=NOW() WHERE idsolution=?";
+            $req=$this->bdd->prepare($sql);
+            $req->bindparam(1,$this->description);
+            $req->bindparam(2,$step);
+            $req->bindparam(3,$this->idsolution);
             try{
                 $req->execute();
             }catch(Exception $ex){

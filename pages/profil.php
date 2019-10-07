@@ -34,6 +34,7 @@
     $rows = $user->getusers($iduser);
     $ctrl = new Control($connexion);
     $domain = $ctrl->getDomain(-1);
+    $levels=$ctrl->getlevels();
     foreach($rows as $item){
         $fname=$item['fname'];
         $lname=$item['lname'];
@@ -48,6 +49,7 @@
         $phonenumber=$item['phonenumber'];
         $email=$item['email'];
         $about=$item['about'];
+        $level=$item['level'];
         if($item['avatar']!=null){
             $avatar="../".$item['avatar'];
         }
@@ -191,13 +193,36 @@
                 <?php echo "<h3 class=\"w3-text-gray\">$fname $lname</h3>";?>
                 <p class="w3-text-gray">It & Webdevelloper at JusticeBot.com</p>
                 <hr class="w3-margin-top">
+                <?php if($iduser==$_SESSION['iduser']){?>
                 <div class="w3-bar">
-                    <input type="submit" value="Update Picture" class="w3-green w3-button">
+                    <input type="submit" name="updateProfile" value="Update Picture" class="w3-green w3-button">
                 </div>
+                <?php }?>
             </form>
+            
+            </div>
+            <div class="w3-margin w3-padding w3-white w3-round w3-col s3 w3-center w3-border">
+            <p class="w3-text-gray" id="activlevel">Level <b><?php echo $level ;?></b></p>
+            <?php if ($_SESSION['level']=="admin"){?>
+            <form action="../controller/users.php" method="POST">
+                <input type="hidden" name="leveluserid" value="<?php echo $level;?>">
+                <select name="userlevel" id="userlevel" class="w3-select">
+                    <?php
+                        echo "<option id='userlevel' disabled>".$level."</option>";
+                        foreach($levels as $levl){
+                            echo "<option value=\"".$levl['iduserlevel']."\">".$levl['designation']."</option>";
+                        }
+                    ?>                    
+                </select>
+                <div class="w3-bar w3-margin-top">
+                    <button type="submit" name="user" value="UpdateLevel" class="w3-green w3-button">Update Level</button>
+                </div> 
+            </form>
+            <?php }?>
             </div>
         </div>
     </div>
+    
 <?php
 $contentpages = ob_get_clean();
 include "./template.php";

@@ -47,8 +47,15 @@
             </div>
         </div>
     </div>
+    <?php
+        if(isset($_GET['error'])){
+            require '../alert/message.php';
+            require '../alert/danger.php';
+        }
+    ?>
     <script src="../js/w3.js"></script>
     <script>
+            w3.show('#errorModal');
             _();
             function changeCadre(val){
                 _();
@@ -64,5 +71,6 @@
             }
         }
     </script>
+
 </body>
 </html>

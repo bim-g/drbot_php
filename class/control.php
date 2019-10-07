@@ -15,6 +15,12 @@
             }
         }
 
+        function getlevels(){
+            $sql="SELECT iduserlevel,designation FROM userlevel WHERE designation<>'facebook'";
+            $req=$this->bdd->query($sql);
+            return $req->fetchAll();
+        }
+
         function addDomaine(){
             $sql="";
         }

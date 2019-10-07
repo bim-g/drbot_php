@@ -175,7 +175,7 @@
             $sql="SELECT u.iduser,u.fname,u.lname,";
             if($id!=null){
                 $this->id=$id;
-                $sql.="u.sexe,u.birthday,u.phonenumber,u.email,u.username,a.grade,d.designation,a.company,a.about,a.city,a.country,a.adress,m.link as avatar FROM users u LEFT JOIN account a ON u.iduser=a.iduser LEFT JOIN usersdomaine d ON a.iddomain=d.iddomain LEFT jOIN media m ON u.idavatar=m.idmedia WHERE u.iduser=?";
+                $sql.="u.sexe,u.birthday,u.phonenumber,u.email,u.username,a.grade,d.designation,a.company,a.about,a.city,a.country,a.adress,m.link as avatar,l.designation as level FROM users u LEFT JOIN account a ON u.iduser=a.iduser LEFT JOIN usersdomaine d ON a.iddomain=d.iddomain LEFT jOIN media m ON u.idavatar=m.idmedia JOIN userlevel l ON u.iduserlevel=l.iduserlevel WHERE u.iduser=?";
                 $req=$this->bdd->prepare($sql);
                 $req->bindparam(1,$this->id);
                 $req->execute();
@@ -246,6 +246,20 @@
                 echo $ex->getMessage();
                 die();
             }
+        }
+
+        function updatelevel($level,$id){
+            $sql="UPDATE users SET iduserlevel=? WHERE iduser=?";
+            $req=$this->bdd->prepare($sql);
+            $req->bindparam(1,$level);
+            $req->bindparam(2,$id);
+            try{
+            $req->execute();
+            }catch(Exception $ex){
+                echo $ex->getMessage();
+                die();
+            }
+
         }
         // allow to set the credention of a use
         // to define if its a admin, manager or a user
