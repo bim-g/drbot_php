@@ -8,16 +8,33 @@
     $title="Addsolution";
     $iduser=$_SESSION['iduser'];
     $titletopic=null;
-    $intent=null;
-    $summary=null;
-    $questions=null;
-    //
+    $idsolution=null;
     $topic=null;
     $idtopic=null;
     $position=null;
     $description=null;
-    $produceM=null;
-    if((isset($_GET['idtopic']) && !empty($_GET['idtopic'])) && (isset($_GET['topic']) && !empty($_GET['topic']))){
+    if(isset($_GET['solution']) && (int)$_GET['solution']){
+        $train = new Training($connexion);
+        $result=$train->detailSolution((int)$_GET['solution']);
+        if(!isset($result['ErrorExeption']) ){
+            if(count($result)>0){
+                foreach($result as $item){
+                    $topic=$item['titletopic'];
+                    $idsolution=$item['idsolution'];
+                    $position=$item['step'];
+                    $description=$item['description'];
+                }
+            }else{
+                $_SESSION['warning']=1;
+            }
+        }else{
+            if(isset($result['ErrorExeption'])){
+                $_SESSION['error']=6;
+                $_SESSION['errorMessage']=$result['ErrorExeption'];
+            }
+        }
+    }
+    elseif((isset($_GET['idtopic']) && !empty($_GET['idtopic'])) && (isset($_GET['topic']) && !empty($_GET['topic']))){
         $topic=$_GET['topic'];
         $idtopic=$_GET['idtopic'];
     }else{
@@ -32,7 +49,9 @@
             <?php include "./control.php";?>
             <div class="w3-margin contactUsContent w3-light-gray w3-card w3-round" id="contactUs">
                 <form method="POST" class="w3-padding" action="../controller/training.php">                
-                 <?php echo"<input type=\"hidden\" name=\"idtopic\" value=\"$idtopic\">";?>
+                    <?php   echo"<input type=\"hidden\" name=\"idtopic\" value=\"$idtopic\">";
+                            echo"<input type=\"hidden\" name=\"idsolution\" value=\"$idsolution\">";
+                        ?>
                     <div class="w3-row-padding">
                         <div class="w3-col s9 l9 m9">
                         <label class="w3-text-gray w3-small">TRAINING TOPIC</label><br>
@@ -56,7 +75,7 @@
                    
                     <div class="w3-padding">
                         <?php
-                            if(isset($_GET['trainingSolution']) && !empty($_GET['trainingSolution'])){
+                            if(isset($_GET['solution']) && !empty($_GET['solution'])){
                                 echo "<button type=\"submit\" class=\"w3-button w3-blue\" name=\"training\" value=\"updatesolution\">Update solution <i class=\"fa fa-save\"></i></button>";
                             }else{
                                 echo "<button type=\"submit\" class=\"w3-button w3-blue\" name=\"training\" value=\"addsolution\">Save solution <i class=\"fa fa-save\"></i></button>";

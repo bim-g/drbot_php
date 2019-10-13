@@ -61,7 +61,7 @@
                 $req->execute();
                 return $req->fetchAll();
             }catch(Exception $ex){
-                $this->exception($ex);
+                return $this->exception($ex);
             }
         }
         function adduser($password){
@@ -91,7 +91,7 @@
                 }
                 
             }catch(Exception $ex){
-                $this->exception($ex);
+                return $this->exception($ex);
             }  
         }
         function updateuser(){              
@@ -107,7 +107,7 @@
                 $req->execute();                 
                 $this->updateaccount();
             }catch(Exception $ex){
-                $this->exception($ex);
+                return $this->exception($ex);
             }          
             
         } 
@@ -126,28 +126,28 @@
                 $req->execute();  
                 return true;    
             }catch(Exception $ex){
-                $this->exception($ex);
+                return $this->exception($ex);
             }
         }
         function registerUser(){
             try{
                 
             }catch(Exception $ex){
-                $this->exception($ex);
+                return $this->exception($ex);
             }
         }
         //allow to delete a user and if the is no parametres 
         //is going to clean up teh tables users and all
         function deleteUser($id){
             $this->iduser=$id;
-            $q="DELETE FROM users WHERE iduser = ? ";            
+            $sql="DELETE FROM users WHERE iduser = ? ";            
             try{
                 $q=$this->bdd->prepare($sql);
                 $q->bindparam(1,$this->iduser);
                 $q->execute();
                 return true;
             }catch(Exception $ex){
-                $this->exception($ex);
+                return $this->exception($ex);
             }
             
         }
@@ -195,7 +195,7 @@
                 $req->execute();
                 return true;
             }catch(Exception $ex){
-                $this->exception($ex);
+                return $this->exception($ex);
             }            
         }
         private function _case($case){
@@ -220,7 +220,7 @@
                 $q->execute();
                 return true;
             }catch(Exception $ex){
-                $this->exception($ex);
+                return $this->exception($ex);
             }
         }
         function getMessages(){
@@ -230,7 +230,7 @@
                 $q->execute();
                 return $q->fetchAll();
             }catch(Exception $ex){
-                $this->exception($ex);
+                return $this->exception($ex);
             }
         }
         function deleteMessage($id){
@@ -241,7 +241,7 @@
                 $q->execute();
                 return true;
             }catch(Exception $ex){
-                $this->exception($ex);
+                return $this->exception($ex);
             }
         }
 
@@ -254,7 +254,7 @@
             $req->execute();
             return true;
             }catch(Exception $ex){
-                $this->exception($ex);
+                return $this->exception($ex);
             }
 
         }
@@ -262,7 +262,7 @@
         // to define if its a admin, manager or a user
         function setCredential(){}
         function exception($ex){
-            $this->exception($ex);
+           return array("ErrorExeption"=>$ex->getMessage());
         }
     }
 ?>

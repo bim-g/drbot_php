@@ -10,7 +10,7 @@
 ?>
     <div class="w3-light-gray w3-padding w3-row">
     <?php include "./control.php";?>
-        <a class="w3-margin w3-border w3-round w3-white " id="showmsg">
+        <div class="w3-margin w3-border w3-round w3-white " id="showmsg">
             <div class="w3-container w3-text-gray w3-border-bottom">
                 <a href="./topic.php" class="w3-right w3-button w3-blue "><i class="fa fa-plus"></i></a>
                 <h3>Diplay Topic Registered</h3>
@@ -45,9 +45,9 @@
                     <td >".$item['statetopic']."</td>
                     <td >".$item['dateregister']."</td>                            
                     <td class=\"w3-row\">
-                        <a class=\"w3-button w3-padding w3-xlarge w3-text-blue w3-col s4 m4 l4\" href=\"./addsolution.php?idtopic=".$item['idtopic']."&topic=".$item['titletopic']."\"><i class=\"fa fa-plus\"></i></a>
-                        <a class=\"w3-button w3-padding w3-xlarge w3-text-blue w3-col s4 m4 l4\" href=\"./topic.php?training=detail&src=".$item['idtopic']."\"><i class=\"fa fa-stethoscope\"></i></a>
-                        <a class=\"w3-button w3-padding w3-xlarge w3-text-red w3-col s4 m4 l4\" href=\"../controller/training.php?training=delete&src=".$item['idtopic']."\"><i class=\"fa fa-trash\"></i></a>                        
+                        <a class=\"w3-button w3-padding w3-xlarge w3-text-blue s4 m4 l4\" href=\"./addsolution.php?idtopic=".$item['idtopic']."&topic=".$item['titletopic']."\"><i class=\"fa fa-plus\"></i></a>
+                        <a class=\"w3-button w3-padding w3-xlarge w3-text-blue s4 m4 l4\" href=\"./topic.php?training=detail&src=".$item['idtopic']."\"><i class=\"fa fa-stethoscope\"></i></a>
+                        <button class=\"w3-button w3-padding s4 m4 l4 w3-xlarge w3-text-red \"  onclick=\"getId(".$item['idtopic'].",'training');w3.show('#deleteQ')\"><i class=\"fa fa-trash\"></i></button>              
                     </td>
                 </tr>";
                  $i++;

@@ -3,7 +3,7 @@
 header("Access-Control-Allow-Origin: *");
     include '../config/connection.php';
     include_once '../class/users.php';
-
+session_start();
     $id=null;
     $fname=null;
     $lname=null;
@@ -23,7 +23,7 @@ header("Access-Control-Allow-Origin: *");
     $about=null;   
     $password=null;   
     $iddomain=null;   
-    session_start();
+    
     if(isset($_POST['user'])){
         switch($_POST['user']){
             case 'adduser': 
@@ -36,7 +36,12 @@ header("Access-Control-Allow-Origin: *");
                 $password=$_POST['password'];      
                 $conf = new users($connexion);
                 $conf->init($id,$fname,$lname,$sexe,$birthday,$phonenumber,$company,$country,$city,$address,$nationalId,$grade,$levelStudies,$username,$email,$about,$iddomain);
-                $conf->adduser($password);
+                $result=$conf->adduser($password);
+                if($result){
+                    $_SESSION['success']="apdated";
+                }else{
+                    $_SESSION['success']="apdated";
+                }
                 header("location:../");
                 break;
             case 'updateuser':           
@@ -67,9 +72,9 @@ header("Access-Control-Allow-Origin: *");
                 $conf->init($id,$fname,$lname,$sexe,$birthday,$phonenumber,$company,$country,$city,$address,$nationalId,$grade,$levelStudies,$username,$email,$about,$iddomain);
                 $result=$conf->updateuser();   
                 if($result){
-                    $_SESSION['success']="apdated";
+                    $_SESSION['success']=2;
                 }else{
-                    $_SESSION['success']="apdated";
+                    $_SESSION['error']=4;
                 }     
                 header("location:../pages/profil.php");
             break;
@@ -130,6 +135,19 @@ header("Access-Control-Allow-Origin: *");
                 header("location:../pages/users.php");
             }
             break;
+            case 'deleteItem':
+                $iduser=$_GET['iduser'];                
+                $conf = new users($connexion);
+                $result=$conf->deleteUser($iduser);            
+                if($result===true){
+                    $_SESSION['success']=3;                    
+                }else{                             
+                    $_SESSION['error']=5;
+                    $_SESSION['errorMessage']=$result['ErrorExeption']; 
+                }
+                header("location:../pages/users.php");
+           
+            break;
             case 'getNotification':
                 if(is_int($_GET['idcase'])){
                     $id=$_GET['iduser'];
@@ -145,21 +163,33 @@ header("Access-Control-Allow-Origin: *");
                 $type=$_GET['type'];
                 $conf = new users($connexion);
                 $conf->stateCase($id,$type);
-                header("location:../pages/notification.php");
+                if($result===true){
+                    $_SESSION['success']=2;                    
+                }else{                             
+                    $_SESSION['error']=4;
+                    $_SESSION['errorMessage']=$result['ErrorExeption']; 
+                }
             }else{
-                header("location:../pages/notification.php?error=123");
+                $_SESSION['error']=123;
             }
+            header("location:../pages/notification.php");
             break;
             //user=delMessage&id
             case 'delMessage':
             if(isset($_GET['message'])){
                 $id=(int)$_GET['message'];                
                 $conf = new users($connexion);
-                $conf->deleteMessage($id);
-                header("location:./../pages/message.php");
+                $result=$conf->deleteMessage($id);
+                if($result===true){
+                    $_SESSION['success']=2;                    
+                }else{                             
+                    $_SESSION['error']=4;
+                    $_SESSION['errorMessage']=$result['ErrorExeption']; 
+                }
             }else{
-                header("location:../pages/message.php?error=123");
+                $_SESSION['error']=123;
             }
+            header("location:./../pages/message.php");
             break;
         }   
     }

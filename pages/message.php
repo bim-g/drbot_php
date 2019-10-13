@@ -8,14 +8,6 @@
     $user = new users($connexion);
     $rows = $user->getMessages();
     $avatar="../img/avatar/face-0.jpg";
-
-//     idmessage
-// namesender
-// emailsender
-// objtmsg
-// contentmsg
-// statemsg
-// dateregister
     
 ?>
     <div class="w3-light-gray w3-padding w3-row">
@@ -23,33 +15,6 @@
             <button class="w3-button w3-bar-item w3-right" onclick="w3.toggleClass('#searchopt',' ','w3-hide',w3.toggleClass('#iconbtn',' fa-close w3-text-red','fa-search'))"><i class="fa fa-search" id="iconbtn"></i></button>
 
         </div>
-        <!-- <div class="w3-margin w3-padding w3-large-round w3-border w3-white w3-hide" id="searchopt">
-            <form method="post">
-                <div class="w3-row">
-
-                    <div class="w3-col m5 l4 w3-border-right">
-                        <h3 class="w3-text-gray">Display Option</h3>
-                        unread <input type="radio" name="statemsg" class="w3-radio" value="0" id="">
-                        read <input type="radio" name="statemsg" class="w3-radio" value="1" id="">
-                        respond <input type="radio" name="statemsg" class="w3-radio" value="2" id="">
-                    </div>
-                    <div class="w3-col m6 l8 w3-margin-left">
-                        <h3 class="w3-text-gray">Search Option</h3>
-                        by text <input type="radio" name="searchmsg" class="w3-radio" value="text" id="">
-                        by Date <input type="radio" name="searchmsg" class="w3-check" id="">
-                    </div>
-                </div><br />
-                <div class="w3-row w3-border w3-round">
-                    <button type="submit" class="w3-button w3-col w3-right w3-round" style="width: 50px;">
-                        <i class="fa fa-search"></i></button>
-                    <div class="w3-col w3-center w3-padding w3-gray" style="width: 50px;">
-                        <i class="fa fa-user"></i></div>
-                    <div class="w3-rest ">
-                        <input type="text" name="searchinput" id="" class="w3-input">
-                    </div>
-                </div>
-            </form>
-        </div> -->
         <div class="w3-margin w3-border w3-round w3-white " id="showmsg">
             <div class="w3-container w3-text-gray w3-border-bottom">
                 <h3>Recieved Messages</h3>
@@ -114,21 +79,6 @@
             </div>
         </div>
     </div>
-    <script>
-        function showMessage(id,name,email,objt,content){
-            
-            var myobject={
-                "idmessage":id,
-                "namesender":name,
-                "emailsender":email,
-                "objtmsg":objt,
-                "contentmsg":content
-                };
-                w3.displayObject("readmsg",myobject);
-                w3.displayObject("respondmsg",myobject);
-    
-        }
-    </script>
 <?php
 
     $contentpages=ob_get_clean();

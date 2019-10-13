@@ -34,9 +34,9 @@
                 $req->bindparam(4,$this->summary);
                 $req->bindparam(5,$this->questions);
                 $req->execute();
+                return true;
             }catch(Exception $ex){
-                echo $ex->getMessage();
-                die();
+                return $this->exception($ex);
             }
         }
         function updateTopic(){
@@ -50,50 +50,72 @@
                 $req->bindparam(5,$this->questions);
                 $req->bindparam(6,$this->idtopic);
                 $req->execute();
+                return true;
             }catch(Exception $ex){
-                echo $ex->getMessage();
-                die();
+                return $this->exception($ex);
+            }
+        }
+        function detailSolution($id){
+            $this->idtopic=$id;
+            $sql="SELECT s.idsolution,s.step,t.titletopic,s.description FROM `solution` s JOIN topic t ON s.idtopic=t.idtopic WHERE s.idsolution=?";
+            $req=$this->bdd->prepare($sql);
+            $req->bindparam(1,$this->idtopic);               
+            try{
+                $req->execute();
+                return $req->fetchAll();
+            }catch(Exception $ex){
+                return $this->exception($ex);
             }
         }
         function getTopics($id){
+            $req=null;;
             if($id!=null && is_integer($id)){
                 $this->idtopic=$id;
                 $sql="SELECT * FROM topic WHERE idtopic=?";
                 $req=$this->bdd->prepare($sql);
-                $req->bindparam(1,$this->idtopic);
-                $req->execute();
-                return $req->fetchAll();
-            // }elseif(is_string($id)){                
-            //     $sql="SELECT * FROM topic WHERE titletopic LIKE ?";
-            //     $req=$this->bdd->prepare($sql);
-            //     $req->bindparam(1,$id);
-            //     $req->execute();
-            //     return $req->fetchAll();
+                $req->bindparam(1,$this->idtopic);               
+                try{
+                    $req->execute();
+                    return $req->fetchAll();
+                }catch(Exception $ex){
+                    return $this->exception($ex);
+                }
+            
             }else{
                 $sql="SELECT t.idtopic,t.titletopic,t.intent,u.fname as username,t.statetopic,t.summary,t.questions,t.dateregister FROM topic t JOIN users u ON t.iduser=u.iduser ORDER BY t.idtopic DESC";
-                $req=$this->bdd->query($sql);
-                return $req->fetchAll();
+                try{
+                    $req=$this->bdd->query($sql);
+                    return $req->fetchAll();
+                }catch(Exception $ex){
+                    return $this->exception($ex);
+                }                
             }
+            return false;
         }
 
         function getSolutions($id){
+            $req=null;
             if($id!=null && is_integer($id)){
                 $this->idtopic=$id;
-                $sql="SELECT t.titletopic,s.idsolution,s.description,s.step,s.datelastupdate FROM solution s JOIN topic t ON s.idtopic=t.idtopic WHERE s.idtopic=?";
+                $sql="SELECT * FROM solution s JOIN topic t ON s.idtopic=t.idtopic WHERE s.idtopic=?";
                 $req=$this->bdd->prepare($sql);
                 $req->bindparam(1,$this->idtopic);
-                $req->execute();
-                return $req->fetchAll();
-            // }elseif(is_string(id)){
-            //     $sql="SELECT t.titletopic,s.idsolution,s.description,s.step,s.datelastupdate FROM solution s JOIN topic t ON s.idtopic=t.idtopic WHERE s.idtopic=?";
-            //     $req=$this->bdd->prepare($sql);
-            //     $req->bindparam(1,$this->idtopic);
-            //     $req->execute();
+                try{
+                    $req->execute();
+                    return $req->fetchAll();
+                }catch(Exception $ex){
+                    return $this->exception($ex);
+                }
             }else{
-                $sql="SELECT t.titletopic,s.idsolution,s.description,s.step,s.datelastupdate FROM solution s JOIN topic t ON s.idtopic=t.idtopic";
-                $req=$this->bdd->query($sql);
-                return $req->fetchAll();
+                $sql="SELECT s.idtopic,t.titletopic,s.idsolution,s.description,s.step,s.datelastupdate FROM solution s JOIN topic t ON s.idtopic=t.idtopic";
+                try{
+                    $req=$this->bdd->query($sql);                   
+                    return $req->fetchAll();
+                }catch(Exception $ex){
+                    return $this->exception($ex);
+                }
             }
+            return false;
         }
 
         function removetopic(){
@@ -102,9 +124,9 @@
             $req->bindparam(1,$this->idtopic);
             try{
                 $req->execute();
+                return true;
             }catch(Exception $ex){
-                echo $ex->getMessage();
-                die();
+                return $this->exception($ex);
             }
         }
         function addSolution($step){
@@ -115,9 +137,9 @@
             $req->bindparam(3,$step);
             try{
                 $req->execute();
+                return true;
             }catch(Exception $ex){
-                echo $ex->getMessage();
-                die();
+                return $this->exception($ex);
             }
         }
         function updateSolution($step){
@@ -128,9 +150,9 @@
             $req->bindparam(3,$this->idsolution);
             try{
                 $req->execute();
+                return true;
             }catch(Exception $ex){
-                echo $ex->getMessage();
-                die();
+                return $this->exception($ex);
             }
         }
         function randomtopic(){
@@ -138,5 +160,8 @@
             $req=$this->bdd->query($sql);
             return $req->fetchAll();
         }
+        function exception($ex){
+            return array("ErrorExeption"=>$ex->getMessage());
+         }
     }
 ?>

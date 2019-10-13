@@ -48,29 +48,21 @@
         </div>
     </div>
     <?php
-        if(isset($_GET['error'])){
-            require '../alert/message.php';
+        if(isset($_SESSION['error'])  || isset($_SESSION['success']) || isset($_SESSION['warning'])){
+            require '../alert/message.php';            
+        }
+        if(isset($_SESSION['error']) && !empty($_SESSION['error'])){            
             require '../alert/danger.php';
         }
+        if(isset($_SESSION['success']) && !empty($_SESSION['success'])){           
+            require '../alert/success.php';
+        }
+        if(isset($_SESSION['warning']) && !empty($_SESSION['warning'])){
+            require '../alert/warning.php';
+        }
+        require '../alert/question.php';
     ?>
     <script src="../js/w3.js"></script>
-    <script>
-            w3.show('#errorModal');
-            _();
-            function changeCadre(val){
-                _();
-                w3.removeClass("."+val,'w3-hide')
-            }
-            function _(){
-                w3.addClass('.controlHide','w3-hide');
-            }
-            function managTopicName(id){
-            w3.addClass(".topicStatus",'w3-hide');
-            if(id){
-                w3.removeClass(id,"w3-hide ");
-            }
-        }
-    </script>
-
+    <script src="../js/index.js"></script>
 </body>
 </html>

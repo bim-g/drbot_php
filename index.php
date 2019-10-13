@@ -248,7 +248,11 @@
     </div>
     <!-- Modal Erreur Connexion -->
     <?php
-        if(isset($_SESSION['error'])){
+        if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
+            require './alert/message.php';
+            require './alert/danger.php';
+        }
+        if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
             require './alert/message.php';
             require './alert/danger.php';
         }

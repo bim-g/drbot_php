@@ -21,34 +21,36 @@
     if(isset($_GET['training']) && !empty($_GET['training'])){
         if((int)$_GET['src']){
             $train=new Training($connexion);
-            $rows=$train->getTopics((int)$_GET['src']);
-            foreach($rows as $item){
-                $idtopic=$item['idtopic'];
-                $titletopic=$item['titletopic'];
-                $intent=$item['intent'];
-                $summary=$item['summary'];
-                $questions=$item['questions'];
-                switch($item['intent']){
-                    case "infos":$infos="checked";
-                    break;
-                    case "procedure":$procedure="checked";
-                    break;
-                    case "assistance":$assistence="checked";
-                    break;
-                    case "procedure_more":$produceM="checked";
-                    break;
+            $result=$train->getTopics((int)$_GET['src']);             
+            if(!isset($result['ErrorExeption']) && count($result)>0){            
+                foreach($result as $item){
+                    $idtopic=$item['idtopic'];
+                    $titletopic=$item['titletopic'];
+                    $intent=$item['intent'];
+                    $summary=$item['summary'];
+                    $questions=$item['questions'];
+                    switch($item['intent']){
+                        case "infos":$infos="checked";
+                        break;
+                        case "procedure":$procedure="checked";
+                        break;
+                        case "assistance":$assistence="checked";
+                        break;
+                        case "procedure_more":$produceM="checked";
+                        break;
+                    }
                 }
+                $_SESSION['success']=4;   
+            }else{
+                $_SESSION['error']=6;
+                $_SESSION['errorMessage']=$result['ErrorExeption'];
             }
         }else{
-            header("location:./topic.php?error=11");
-        }
-        
-    }else{
-        header("location:./topic.php?error=10");
+            $_SESSION['error']=10;
+        }        
     }
 ?>
     <div class="w3-light-gray w3-padding">
-
         <div class=" w3-container w3-padding " style="width:750px;">
             <?php include "./control.php";?>
             <div class="w3-margin contactUsContent w3-light-gray w3-card w3-round" id="contactUs">

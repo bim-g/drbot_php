@@ -11,7 +11,7 @@
     $questions=null;
     $summary=null;
     $description=null;
-
+    session_start();
     if(isset($_POST['training'])){
         switch($_POST['training']){
             case "addtopic":
@@ -22,7 +22,13 @@
                 $summary=$_POST['summary'];                
                 $train=new Training($connexion);
                 $train->init($idtopic,$iduser,$idsolution,$titletopic,$intent,$questions,$summary,$description);
-                $train->addTopic();
+                $result=$train->addTopic(); 
+                if($result===true){
+                    $_SESSION['success']=1;                    
+                }else{                             
+                    $_SESSION['error']=3;
+                    $_SESSION['errorMessage']=$result['ErrorExeption']; 
+                }                
                 header("location:../pages/training.php");
             break;
             case "updatetopic":
@@ -34,7 +40,13 @@
                 $summary=$_POST['summary'];                
                 $train=new Training($connexion);
                 $train->init($idtopic,$iduser,$idsolution,$titletopic,$intent,$questions,$summary,$description);
-                $train->updateTopic();
+                $result=$train->updateTopic();
+                if($result===true){
+                    $_SESSION['success']=2;                    
+                }else{                             
+                    $_SESSION['error']=4;
+                    $_SESSION['errorMessage']=$result['ErrorExeption']; 
+                }
                 header("location:../pages/training.php");
             break;
             case "removetopic":
@@ -45,7 +57,13 @@
                 $description=$_POST['description'];                               
                 $train=new Training($connexion);
                 $train->init($idtopic,$iduser,$idsolution,$titletopic,$intent,$questions,$summary,$description);
-                $train->addSolution($step);
+                $result = $train->addSolution($step);
+                if($result===true){
+                    $_SESSION['success']=2;                    
+                }else{                             
+                    $_SESSION['error']=4;
+                    $_SESSION['errorMessage']=$result['ErrorExeption']; 
+                }
                 header("location:../pages/solution.php");
             break;
             case "updatesolution":
@@ -54,20 +72,48 @@
                 $description=$_POST['description'];                               
                 $train=new Training($connexion);
                 $train->init($idtopic,$iduser,$idsolution,$titletopic,$intent,$questions,$summary,$description);
-                $train->updateSolution($step);
+                $result=$train->updateSolution($step);
+                if($result===true){
+                    $_SESSION['success']=2;                    
+                }else{                             
+                    $_SESSION['error']=4;
+                    $_SESSION['errorMessage']=$result['ErrorExeption']; 
+                }
                 header("location:../pages/solution.php");
             break;
+            case "deleteItem":
+                $idtopic=$_POST['idelemnt'];                                               
+                $train=new Training($connexion);
+                $train->init($idtopic,$iduser,$idsolution,$titletopic,$intent,$questions,$summary,$description);
+                $result=$train->removetopic(); 
+                var_dump($result);               
+                if($result===true){
+                    $_SESSION['success']=3;                    
+                }else{                             
+                    $_SESSION['error']=5;
+                    $_SESSION['errorMessage']=$result['ErrorExeption']; 
+                }
+                die();
+                header("location:../pages/training.php");
+            break;
         }
-        echo "none";
+        
     }
     
     if(isset($_GET['training'])){
         switch($_GET['training']){
-            case "delete":
-                $idtopic=$_GET['src'];                
+            case "deleteItem":
+                $idtopic=$_GET['idelemnt'];                
                 $train=new Training($connexion);
                 $train->init($idtopic,$iduser,$idsolution,$titletopic,$intent,$questions,$summary,$description);
-                $train->removetopic();
+                $result=$train->removetopic();
+                var_dump($result);               
+                if($result===true){
+                    $_SESSION['success']=3;                    
+                }else{                             
+                    $_SESSION['error']=5;
+                    $_SESSION['errorMessage']=$result['ErrorExeption']; 
+                }
                 header("location:../pages/training.php");
             break;
         }
