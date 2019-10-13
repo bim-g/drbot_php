@@ -1,4 +1,7 @@
-
+<?php
+  $message=success($_SESSION['sucess']);
+  session_unset();
+?> 
 <div id="id01" class="w3-modal">
 <div class="w3-modal-content w3-card-4">
     <div class="w3-card-4">

@@ -61,7 +61,7 @@
                 $req->execute();
                 return $req->fetchAll();
             }catch(Exception $ex){
-                echo "errorConnexion::".$ex->getMessage();
+                $this->exception($ex);
             }
         }
         function adduser($password){
@@ -91,8 +91,7 @@
                 }
                 
             }catch(Exception $ex){
-                echo $ex->getMessage();
-                die();
+                $this->exception($ex);
             }  
         }
         function updateuser(){              
@@ -108,8 +107,7 @@
                 $req->execute();                 
                 $this->updateaccount();
             }catch(Exception $ex){
-                echo $ex->getMessage();
-                die();
+                $this->exception($ex);
             }          
             
         } 
@@ -128,15 +126,14 @@
                 $req->execute();  
                 return true;    
             }catch(Exception $ex){
-                echo $ex->getMessage();
-                die();
+                $this->exception($ex);
             }
         }
         function registerUser(){
             try{
                 
             }catch(Exception $ex){
-                echo $ex->getMessage();
+                $this->exception($ex);
             }
         }
         //allow to delete a user and if the is no parametres 
@@ -150,8 +147,7 @@
                 $q->execute();
                 return true;
             }catch(Exception $ex){
-                echo $ex->getMessage();
-                die();
+                $this->exception($ex);
             }
             
         }
@@ -199,8 +195,7 @@
                 $req->execute();
                 return true;
             }catch(Exception $ex){
-                echo $ex->getMessage();
-                die();
+                $this->exception($ex);
             }            
         }
         private function _case($case){
@@ -225,8 +220,7 @@
                 $q->execute();
                 return true;
             }catch(Exception $ex){
-                echo $ex->getMessage();
-                die();
+                $this->exception($ex);
             }
         }
         function getMessages(){
@@ -236,8 +230,7 @@
                 $q->execute();
                 return $q->fetchAll();
             }catch(Exception $ex){
-                echo $ex->getMessage();
-                die();
+                $this->exception($ex);
             }
         }
         function deleteMessage($id){
@@ -248,8 +241,7 @@
                 $q->execute();
                 return true;
             }catch(Exception $ex){
-                echo $ex->getMessage();
-                die();
+                $this->exception($ex);
             }
         }
 
@@ -262,14 +254,16 @@
             $req->execute();
             return true;
             }catch(Exception $ex){
-                echo $ex->getMessage();
-                die();
+                $this->exception($ex);
             }
 
         }
         // allow to set the credention of a use
         // to define if its a admin, manager or a user
         function setCredential(){}
+        function exception($ex){
+            $this->exception($ex);
+        }
     }
 ?>
 

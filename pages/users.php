@@ -10,8 +10,7 @@
     $profil="../img/avatar/face-0.jpg";
 
 ?>
-<script>activatemenu();</script>
-    
+<script>activatemenu();</script>    
     <div class="w3-margin w3-border w3-round w3-white">
         <div class="w3-container w3-text-gray">
             <div class="w3-bar" >

@@ -23,7 +23,7 @@ header("Access-Control-Allow-Origin: *");
     $about=null;   
     $password=null;   
     $iddomain=null;   
-
+    session_start();
     if(isset($_POST['user'])){
         switch($_POST['user']){
             case 'adduser': 
@@ -65,7 +65,12 @@ header("Access-Control-Allow-Origin: *");
                 $about=$_POST['about'];           
                 $conf = new users($connexion);
                 $conf->init($id,$fname,$lname,$sexe,$birthday,$phonenumber,$company,$country,$city,$address,$nationalId,$grade,$levelStudies,$username,$email,$about,$iddomain);
-                $conf->updateuser();            
+                $result=$conf->updateuser();   
+                if($result){
+                    $_SESSION['success']="apdated";
+                }else{
+                    $_SESSION['success']="apdated";
+                }     
                 header("location:../pages/profil.php");
             break;
             case 'connection': 
@@ -74,7 +79,7 @@ header("Access-Control-Allow-Origin: *");
                 $record=$conf->connexion($_POST['loginusername'],$_POST['loginpassword']);
                 if(count($record)>0){
                     foreach($record as $item){
-                        session_start();
+                        
                         $_SESSION['connexionStatus']="ON";
                         $_SESSION['iduser']=$item['iduser'];
                         $_SESSION['fname']=$item['fname'];
@@ -83,11 +88,14 @@ header("Access-Control-Allow-Origin: *");
                         $_SESSION['avatar']=$item['link'];
                     }
                     header("location:../");
+                    //header("location:../pages/");
                 }else{
-                    header("location:../index.php?error=2");
+                    $_SESSION['error']=2;
+                    header("location:../");
                 }
             }else{
-                header("location:../index.php?error=1");
+                $_SESSION['error']=1;
+                header("location:../");
             }
             break;
             case 'contact': 

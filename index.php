@@ -116,13 +116,13 @@
                             <i class="fa fa-user"></i>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="loginusername" id="loginusername" class="w3-input" placeholder="enter email">
+                            <input type="text" name="loginusername" id="loginusername" class="w3-input" placeholder="enter email" require>
                         </div>
                     </div>
                     <div class="w3-row w3-margin w3-light-gray w3-round-xxlarge">
                         <div class="w3-col w3-padding" style="width:50px;"><i class="fa fa-key"></i></div>
                         <div class="w3-rest">
-                            <input type="password" name="loginpassword" id="loginpassword" class="w3-input" placeholder="enter password">
+                            <input type="password" name="loginpassword" id="loginpassword" class="w3-input" placeholder="enter password" require>
                         </div>
                     </div>
                 </div>
@@ -248,7 +248,7 @@
     </div>
     <!-- Modal Erreur Connexion -->
     <?php
-        if(isset($_GET['error'])){
+        if(isset($_SESSION['error'])){
             require './alert/message.php';
             require './alert/danger.php';
         }
