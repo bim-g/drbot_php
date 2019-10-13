@@ -84,7 +84,7 @@
                 try{
                     $req->bindparam(1,$iduser);
                     $req->execute();
-                    echo "success";
+                    return true;
                 }catch(Exception $ex){
                     echo $ex->getMessage();
                     die();
@@ -125,7 +125,8 @@
                 $req->bindparam(5,$this->country);
                 $req->bindparam(6,$this->address);
                 $req->bindparam(7,$this->iduser);
-                $req->execute();      
+                $req->execute();  
+                return true;    
             }catch(Exception $ex){
                 echo $ex->getMessage();
                 die();
@@ -147,6 +148,7 @@
                 $q=$this->bdd->prepare($sql);
                 $q->bindparam(1,$this->iduser);
                 $q->execute();
+                return true;
             }catch(Exception $ex){
                 echo $ex->getMessage();
                 die();
@@ -195,6 +197,7 @@
                 $req->bindparam(1,$state);
                 $req->bindparam(2,$id);
                 $req->execute();
+                return true;
             }catch(Exception $ex){
                 echo $ex->getMessage();
                 die();
@@ -220,6 +223,7 @@
                 $q->bindparam(3,$objtmsg);
                 $q->bindparam(4,$contentmsg);
                 $q->execute();
+                return true;
             }catch(Exception $ex){
                 echo $ex->getMessage();
                 die();
@@ -242,6 +246,7 @@
                 $q=$this->bdd->prepare($sql);
                 $q->bindparam(1,$id);
                 $q->execute();
+                return true;
             }catch(Exception $ex){
                 echo $ex->getMessage();
                 die();
@@ -255,6 +260,7 @@
             $req->bindparam(2,$id);
             try{
             $req->execute();
+            return true;
             }catch(Exception $ex){
                 echo $ex->getMessage();
                 die();
