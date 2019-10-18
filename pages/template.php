@@ -13,16 +13,6 @@
     <link rel="stylesheet" href="../style/index.css">
     <style></style>
     <?php echo "<title>$title</title>";?>
-    <script>
-        function activatemenu(){
-            var link=window.location.pathname;
-            link=link.replace("/drbot_client/pages/","");        
-            var pos =/.php/.exec(link);
-            link =link.slice(0,pos.index);
-            document.cookie=`activemenu=${link}`;
-        }
-        activatemenu();
-    </script>
 </head>
 <body>
     <div class="">
@@ -64,5 +54,6 @@
     ?>
     <script src="../js/w3.js"></script>
     <script src="../js/index.js"></script>
+    <script>activatemenu();</script>
 </body>
 </html>

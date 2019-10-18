@@ -5,6 +5,11 @@
     $m_users=null;
     $m_message=null;
     if(isset($_COOKIE['activemenu'])){
+        $m_profil=null;
+        $m_security=null;
+        $m_training=null;
+        $m_users=null;
+        $m_message=null;
         switch($_COOKIE['activemenu']){
             case "profil":$m_profil="active";
             break;

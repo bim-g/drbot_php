@@ -35,3 +35,10 @@ function showMessage(id,name,email,objt,content){
         w3.displayObject("respondmsg",myobject);
 
 }
+function activatemenu(){
+    var link=window.location.pathname;
+    link=link.replace("/drbot_client/pages/","");        
+    var pos =/.php/.exec(link);
+    link =link.slice(0,pos.index);
+    document.cookie=`activemenu=${link}`;
+}
