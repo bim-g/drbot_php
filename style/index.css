@@ -138,6 +138,24 @@
 #login .w3-modal-content{
     max-height: 600px;
 }
+.dash-control-button{
+    width: 150px;
+    height: 150px;
+    position:relative;
+}
+.dash-control-button .center{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    margin:auto;
+}
+.dash-control-button .bottom{
+    position: absolute;
+    bottom: 10%;
+    /* left:50%; */
+    margin:auto;
+}
 .dash-side-menu{
     width:220px;
     position:relative;

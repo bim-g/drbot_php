@@ -29,7 +29,7 @@
                 <div class="w3-dropdown-hover w3-bar-item">
                     <?php echo "<img src=\"".$avatar."\" alt=\"\" class=\"profil-image w3-circle\">"; ?>
                     <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-rounf-large" style="right:0">
-                        <a href="./pages/profil.php" class="w3-btn w3-bar-item" ><i class="fa fa-dashboard"> profil</i></a>
+                        <a href="./pages/dashboard.php" class="w3-btn w3-bar-item" ><i class="fa fa-dashboard"> Dashboard</i></a>
                         <a href="./controller/logout.php" class="w3-btn w3-bar-item w3-text-red w3-light-gray w3-border-top" ><i class="fa fa-power-off w3-xlarge w3-margin-right"></i> Logout</a>
                     </div>
                 </div>
