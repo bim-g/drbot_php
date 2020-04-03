@@ -10,7 +10,7 @@
     $avatar="../img/avatar/face-0.jpg";
     
 ?>
-    <div class="w3-light-gray w3-padding w3-row">
+    <div class="w3-row">
         <div class="w3-bar">
             <button class="w3-button w3-bar-item w3-right" onclick="w3.toggleClass('#searchopt',' ','w3-hide',w3.toggleClass('#iconbtn',' fa-close w3-text-red','fa-search'))"><i class="fa fa-search" id="iconbtn"></i></button>
 

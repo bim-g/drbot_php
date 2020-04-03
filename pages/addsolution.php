@@ -43,7 +43,7 @@
     //detail&src=8
     
 ?>
-    <div class="w3-light-gray w3-padding">
+    <div class="">
 
         <div class=" w3-container w3-padding " style="width:750px;">
             <?php include "./control.php";?>

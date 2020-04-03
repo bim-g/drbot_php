@@ -5,10 +5,9 @@
     include "./sessioncontrol.php";
 
 ?>
-            <div class="w3-light-gray w3-paddding" >   
-                <div class="w3-container w3-padding" style="width:750px;">  
-                    <div class="w3-margin w3-white w3-round w3-border">
-
+    <div class="" >   
+        <div class="w3-container w3-padding" style="width:750px;">  
+            <div class="w3-margin w3-white w3-round w3-border">
                 <form method="POST" >
                     <div class="w3-blue w3-padding">
                         <h3>Confidentiality Profil</h3>  
@@ -30,13 +29,13 @@
                             </div>
                         </div>
                     </div>
-                        <div class="w3-bar w3-padding w3-light-gray">
-                            <input type="submit" value="Update password" class="w3-button w3-bar-item w3-blue w3-round">
-                        </div>
-                    
+                    <div class="w3-bar w3-padding w3-light-gray w3-border-top">
+                        <input type="submit" value="Update password" class="w3-button w3-bar-item w3-blue w3-round">
+                    </div>                
                 </form>
             </div>  
-            </div>
+        </div>  
+    </div>
 <?php
     $contentpages=ob_get_clean();
     include "./template.php";

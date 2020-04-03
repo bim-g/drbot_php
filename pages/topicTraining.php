@@ -5,7 +5,7 @@
     include "./sessioncontrol.php";
     require '../controller/topicTrainingCtrl.php';
 ?>
-    <div class="w3-light-gray w3-padding">
+    <div class="">
         <div class=" w3-container w3-padding " style="width:750px;">
             <?php include "./control.php";?>
             <div class="w3-margin contactUsContent w3-light-gray w3-card w3-round" id="contactUs">

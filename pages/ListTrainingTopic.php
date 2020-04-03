@@ -8,7 +8,7 @@
     $train=new Training($connexion);
     $rows=$train->getTopics(null);
 ?>
-    <div class="w3-light-gray w3-padding w3-row">
+    <div class=" w3-row">
     <?php include "./control.php";?>
         <div class="w3-margin w3-border w3-round w3-white " id="showmsg">
             <div class="w3-container w3-text-gray w3-border-bottom">

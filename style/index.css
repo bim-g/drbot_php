@@ -28,6 +28,47 @@
     background:#ffffff4d!important;
     color:#fff;
 }
+.containerDashBoard{
+    position: absolute;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+}
+
+.top-bar {  
+    position: absolute; 
+    top:0;
+    left:0;
+    right: 0; 
+    height: 60px;
+    /* overflow: hidden; */
+    /* border-bottom: 1px solid #dedede; */
+}
+
+.dash-side-menu {
+    position: absolute;
+    top:60px;
+    left:0;
+    right:220px;
+    width:220px;
+}
+.dash-containt {
+    position: absolute;
+    top:60px;
+    left:220px;
+    right:0;
+    bottom:50px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.copyrightbar {
+    position: absolute;
+    bottom: 0px;
+    left:0;
+    right:0;
+    height:50px;
+}
 .title{
     text-transform: capitalize;
     display: block;
@@ -156,14 +197,7 @@
     /* left:50%; */
     margin:auto;
 }
-.dash-side-menu{
-    width:220px;
-    position:relative;
-}
-.dash-containt{
-    margin-left:220px; 
-    position: relative;   
-}
+
 .top-bar{
     height:60px;
     overflow: hidden;

@@ -6,7 +6,7 @@
     $iduser=$_SESSION['iduser'];
     
 ?>
-    <div class="w3-light-gray w3-padding">
+    <div class="">
         <a href="profil.php" class="w3-btn w3-container w3-round w3-pading w3-margin w3-white w3-text-yellow dash-control-button" >
             <i class="fa fa-user-md w3-xlarge w3-jumbo center"></i>
             <p class="w3-text-gray w3-small bottom w3-margin-left"> Profil </p>
