@@ -33,7 +33,7 @@ $rows = $train->getTopics(null);
                 echo "<tr class='items'>
                     <td style=\"width:50px;\">$i</td>
                     <td style=\"width:100%;\" class=\"w3-center\">" . $item['titletopic'] . "</td>                    
-                    <td style=\"width:50px;\"><button href=\"#\" class=\"w3-button w3-padding s4 m4 l4 w3-xlarge w3-text-green w3-padding\"><i class=\"fa fa-code-fork\"></i></button></td>                            
+                    <td style=\"width:50px;\"><button class=\"w3-button w3-padding s4 m4 l4 w3-xlarge w3-text-green w3-padding\"><i class=\"fa fa-code-fork\"></i></button></td>                            
                     <td class=\"w3-row\" style=\"width:50px;\">
                         <button class=\"w3-button w3-padding s4 m4 l4 w3-xlarge w3-text-blue-gray \"  onclick=\"\"><i class=\"fa fa-bullhorn\"></i></button>              
                     </td>
