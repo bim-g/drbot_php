@@ -38,7 +38,7 @@
         $topic=$_GET['topic'];
         $idtopic=$_GET['idtopic'];
     }else{
-        header("location:./topic.php");
+        header("location:./topicTraining.php");
     }
     //detail&src=8
     
