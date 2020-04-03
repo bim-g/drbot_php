@@ -29,7 +29,7 @@
                     $_SESSION['error']=3;
                     $_SESSION['errorMessage']=$result['ErrorExeption']; 
                 }                
-                header("location:../pages/training.php");
+                header("location:../pages/ListTrainingTopic.php");
             break;
             case "updatetopic":
                 $iduser=$_POST['idtopic'];
@@ -47,7 +47,7 @@
                     $_SESSION['error']=4;
                     $_SESSION['errorMessage']=$result['ErrorExeption']; 
                 }
-                header("location:../pages/training.php");
+                header("location:../pages/ListTrainingTopic.php");
             break;
             case "removetopic":
             break;
@@ -94,7 +94,7 @@
                     $_SESSION['errorMessage']=$result['ErrorExeption']; 
                 }
                 die();
-                header("location:../pages/training.php");
+                header("location:../pages/ListTrainingTopic.php");
             break;
         }
         
@@ -114,7 +114,7 @@
                     $_SESSION['error']=5;
                     $_SESSION['errorMessage']=$result['ErrorExeption']; 
                 }
-                header("location:../pages/training.php");
+                header("location:../pages/ListTrainingTopic.php");
             break;
         }
     }

@@ -48,7 +48,8 @@
         <div class=" w3-container w3-padding " style="width:750px;">
             <?php include "./control.php";?>
             <div class="w3-margin contactUsContent w3-light-gray w3-card w3-round" id="contactUs">
-                <form method="POST" class="w3-padding" action="../controller/training.php">                
+                <form method="POST" class="w3-padding" action="../controller/training
+                .php">                
                     <?php   echo"<input type=\"hidden\" name=\"idtopic\" value=\"$idtopic\">";
                             echo"<input type=\"hidden\" name=\"idsolution\" value=\"$idsolution\">";
                         ?>
