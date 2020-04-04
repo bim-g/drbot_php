@@ -2,37 +2,9 @@
     session_start();
     ob_start();
     $title="Topic Solution";
-    include_once "../class/training.php";
-    include "../config/connection.php";
     include "./sessioncontrol.php";
+    require "../controller/solutionCtrl.php";
     
-    $train=new Training($connexion);
-    if(isset($_GET['training']) && $_GET['training']=="detailS"){
-        if(isset($_GET['src']) && (int)$_GET['src']){
-            $result=$train->getSolutions((int)$_GET['src']);
-            if(!isset($result['ErrorExeption']) && count($result)==0){
-                $_SESSION['warning']=1;
-            }else{
-                if(isset($result['ErrorExeption'])){
-                    $_SESSION['error']=6;
-                    $_SESSION['errorMessage']=$result['ErrorExeption'];
-                }
-            }  
-        }else{
-            $_SESSION['warning']=3;
-        }
-    }else{
-        $result=$train->getSolutions(null);
-        
-        if(!isset($result['ErrorExeption']) && count($result)==0){
-            $_SESSION['warning']=1;
-        }else{
-            if(isset($result['ErrorExeption'])){
-                $_SESSION['error']=6;
-                $_SESSION['errorMessage']=$result['ErrorExeption'];
-            }
-        }
-    }
 ?>
     <div class="w3-row">
     <?php include "./control.php";?>
@@ -66,7 +38,7 @@
                     <td >".$item['step']."</td>
                     <td >".$item['datelastupdate']."</td>                           
                     <td class=\"w3-row\">
-                        <a class=\"w3-button w3-padding w3-xlarge w3-hover-text-yellow w3-col s6 m6 l6\"href=\"./addsolution.php?solution=".$item['idtopic']."\"><i class=\"fa fa-edit\"></i></a>
+                        <button class=\"w3-button w3-padding w3-xlarge w3-hover-text-yellow w3-col s6 m6 l6\" onclick=\"gotopages('addsolution.php?solution=".$item['idtopic']."')\"><i class=\"fa fa-edit\"></i></button>
                         <button class=\"w3-button w3-padding s4 m4 l4 w3-xlarge w3-text-red \"  onclick=\"getId(".$item['idtopic'].",'training');w3.show('#deleteQ')\"><i class=\"fa fa-trash\"></i></button>        
                     </td>
                 </tr>";

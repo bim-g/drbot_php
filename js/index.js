@@ -10,10 +10,19 @@ function _(){
     w3.addClass('.controlHide','w3-hide');
 }
 function managTopicName(id){
-w3.addClass(".topicStatus",'w3-hide');
-if(id){
-    w3.removeClass(id,"w3-hide ");
-}
+    w3.addClass(".topicStatus",'w3-hide');
+    if(id){
+        w3.removeClass(id,"w3-hide ");
+    }
+} 
+function gotopages(link=null,destination) {
+    let url=window.location.origin+"/drbot_client/";
+    let target="pages/"+link;
+    if(destination && destination==1 ){
+        target="controller/"+link;
+    }
+    url+=target;
+    window.location.href=url;
 }
 function getData(id,src,operation){
     let link="?"+operation+"="+id;

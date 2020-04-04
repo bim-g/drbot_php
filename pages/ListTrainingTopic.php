@@ -12,7 +12,7 @@
     <?php include "./control.php";?>
         <div class="w3-margin w3-border w3-round w3-white " id="showmsg">
             <div class="w3-container w3-text-gray w3-border-bottom">
-                <a href="./topicTraining.php" class="w3-right w3-button w3-blue "><i class="fa fa-plus"></i></a>
+                <button onclick="gotopages('topicTraining.php')" class="w3-right w3-button w3-blue "><i class="fa fa-plus"></i></button>
                 <h3>Diplay Topic Registered</h3>
                 <div class="w3-padding">
                     <input type="text" name="" id="" class="w3-input" placeholder="search" oninput="w3.filterHTML('#topiclist','.items',this.value)" style="width:50%;">
@@ -45,8 +45,8 @@
                     <td >".$item['statetopic']."</td>
                     <td >".$item['dateregister']."</td>                            
                     <td class=\"w3-row\">
-                        <a class=\"w3-button w3-padding w3-xlarge w3-text-blue s4 m4 l4\" href=\"./addsolution.php?idtopic=".$item['idtopic']."&topic=".$item['titletopic']."\"><i class=\"fa fa-plus\"></i></a>
-                        <a class=\"w3-button w3-padding w3-xlarge w3-text-blue s4 m4 l4\" href=\"./topicTraining.php?training=detail&src=".$item['idtopic']."\"><i class=\"fa fa-edit\"></i></a>
+                        <button class=\"w3-button w3-padding w3-xlarge w3-text-blue s4 m4 l4\" onclick=\"gotopages('addsolution.php?idtopic=".$item['idtopic']."&topic=".$item['titletopic']."')\"><i class=\"fa fa-plus\"></i></button>
+                        <button class=\"w3-button w3-padding w3-xlarge w3-text-blue s4 m4 l4\" onclick=\"gotopages('topicTraining.php?training=detail&src=".$item['idtopic']."')\"><i class=\"fa fa-edit\"></i></button>
                         <button class=\"w3-button w3-padding s4 m4 l4 w3-xlarge w3-text-red \"  onclick=\"getId(".$item['idtopic'].",'training');w3.show('#deleteQ')\"><i class=\"fa fa-trash\"></i></button>              
                     </td>
                 </tr>";

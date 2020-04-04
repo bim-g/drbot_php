@@ -64,8 +64,8 @@
                     }                
                 ?>
                 <td class="w3-row">
-                    <a class="w3-button w3-padding s3 l3 m3 w3-xlarge w3-text-indigo  "><i class="fa fa-unlock"></i></a>
-                    <?php echo "<a href=\"./profil.php?user=".$item['iduser']."\" class=\"w3-button w3-padding s3 l3 m3 w3-xlarge w3-text-teal   \"><i class=\"fa fa-user\"></i></a>";
+                    <button class="w3-button w3-padding s3 l3 m3 w3-xlarge w3-text-indigo  "><i class="fa fa-unlock"></i></button>
+                    <?php echo "<button onclick=\"gotopages('profil.php?user=".$item['iduser']."')\" class=\"w3-button w3-padding s3 l3 m3 w3-xlarge w3-text-teal   \"><i class=\"fa fa-user\"></i></button>";
                     if($item['iduser']!==$_SESSION['iduser']){
                     echo "<button class=\"w3-button w3-padding s3 l3 m3 w3-xlarge w3-text-red \"  onclick=\"getId(".$item['iduser'].",'users');w3.show('#deleteQ')\"><i class=\"fa fa-trash\"></i></button>"?>
                     <?php }?>

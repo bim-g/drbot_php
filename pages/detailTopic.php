@@ -1,28 +1,28 @@
 <?php
-    session_start();
-    ob_start();
-    include "./sessioncontrol.php";
-    require "../controller/detailTopicCtrl.php";
-    $title = "Detail Topic";
-    $getdetail = $getdetail['detailTopic'];
-    $topic = $getdetail['topic'];
-    $solutions = array();
-    if (count($getdetail['solutions']) > 0) {
-        $solutions = $getdetail['solutions'];
-    }
-    $questions=$topic[3][0];
+session_start();
+ob_start();
+include "./sessioncontrol.php";
+require "../controller/detailTopicCtrl.php";
+$title = "Detail Topic";
+$getdetail = $getdetail['detailTopic'];
+$topic = $getdetail['topic'];
+$solutions = array();
+if (count($getdetail['solutions']) > 0) {
+    $solutions = $getdetail['solutions'];
+}
+$questions = $topic[3][0];
 ?>
 <div class="">
     <div class=" w3-container w3-padding ">
         <div class="w3-bar ">
             <div class="w3-bar-item w3-right">
-                <a href="./ListTrainingTopic.php" class="w3-button w3-blue"><i class="fa fa-h-square"></i> Topics</a>
-                <a href="./solution.php" class="w3-button w3-green"><i class="fa fa-medkit"></i> Solutions</a>
+                <button onclick="gotopages('ListTrainingTopic.php')" class="w3-button w3-blue"><i class="fa fa-h-square"></i> Topics</button>
+                <button onclick="gotopages('solution.php')" class="w3-button w3-green"><i class="fa fa-medkit"></i> Solutions</button>
             </div>
             <div class="w3-bar-item">
                 <?php echo
-                    "<a class=\"w3-button w3-green\" href=\"topicTraining.php\"><i class=\"fa fa-plus\"></i> Add</a>
-                <a class=\"w3-button w3-blue\" href=\"topicTraining.php?training=detail&src=" . $topic[0] . "\"><i class=\" fa fa-edit\"></i> Edit</a>
+                    "<button class=\"w3-button w3-green\" onclick=\"gotopages('topicTraining.php')\"><i class=\"fa fa-plus\"></i> Add</button>
+                    <button class=\"w3-button w3-blue\" onclick=\"gotopages('topicTraining.php?training=detail&src=" . $topic[0] . "')\"><i class=\" fa fa-edit\"></i> Edit</button>
                 <button class=\"w3-button w3-red\" onclick=\"getId(" . $topic[0] . ",'training');w3.show('#deleteQ')\"><i class=\"fa fa-trash\"></i> Del</button>";
                 ?>
             </div>
@@ -34,23 +34,23 @@
             <div class="w3-row-padding ">
                 <div class="w3-col l5 m10 s12 w3-margin">
                     <div class="w3-border w3-round w3-light-gray w3-margin-bottom">
-                    <?php
-                    echo    "<div class=\" w3-border-bottom\">
+                        <?php
+                        echo    "<div class=\" w3-border-bottom\">
                             <h4 class=\"w3-padding \">$topic[1]</h4> 
                         </div>
                         <div class=\" w3-white w3-padding w3-margin-bottom\">$topic[2]</div>";
-                    ?>
+                        ?>
                     </div>
                     <div class="w3-border w3-round w3-light-gray ">
                         <div class=" w3-border-bottom">
-                            <h4 class="w3-padding ">Questions</h4> 
+                            <h4 class="w3-padding ">Questions</h4>
                         </div>
                         <p class="w3-padding">
-                    <?php 
-                    foreach($questions as $q){
-                        echo "<span class=\"w3-blue-grey w3-border w3-hover-text-yellow w3-round\" style=\"padding-left:8px;padding-right:8px;margin-right:2px;\"> $q </span>";
-                    } 
-                    ?></p>
+                            <?php
+                            foreach ($questions as $q) {
+                                echo "<span class=\"w3-blue-grey w3-border w3-hover-text-yellow w3-round\" style=\"padding-left:8px;padding-right:8px;margin-right:2px;\"> $q </span>";
+                            }
+                            ?></p>
                     </div>
                 </div>
                 <div class="w3-col l6 m10 s12 w3-border w3-round w3-light-gray w3-margin">
