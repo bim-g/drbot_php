@@ -1,7 +1,7 @@
 <?php
     session_start();
     ob_start();
-
+    $title = "Training Topic";
     include "./sessioncontrol.php";
     require '../controller/topicTrainingCtrl.php';
 ?>

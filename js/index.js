@@ -15,10 +15,32 @@ if(id){
     w3.removeClass(id,"w3-hide ");
 }
 }
-function getId(id,src){            
+function getData(id,src,operation){
+    let link="?"+operation+"="+id;
+    var myobject = {
+        "itElement": id,
+        "src": src,
+        "target": src + ".php" + link
+    };
+    w3.getHttpObject(displaymyData);
+}
+
+function displaymyData(myObject) {
+    console.log(myObject);
+    //w3.displayObject("formData",myObject);
+}
+function getId(id,src){ 
+    let question=null;
+    switch(src){
+        case "training":question="Do you want to delete this topic?";
+        break;
+        case "deleteTopic": question = "Do you want to delete this topic?";
+        break;
+    }
     var myobject={
         "id_elem":id,
-        "src":src,
+        "message":question,
+        "src": src,
         "target":src+".php"
         };
     w3.displayObject("deleteQ",myobject);    

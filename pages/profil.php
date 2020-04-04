@@ -2,7 +2,7 @@
     session_start();
     ob_start();
     include "./sessioncontrol.php";
-    require "../controller/profil.php";  
+    require "../controller/profilCtrl.php";  
 ?>
 
     <!-- <script>activatemenu();</script> -->

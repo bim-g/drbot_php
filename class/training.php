@@ -40,7 +40,7 @@
             }
         }
         function updateTopic(){
-            $sql="UPDATE topic SET titletopic=?,intent=?,iduser=?,summary=?,questions=?,dateregister=NOW() WHERE idtopic=?";
+            $sql="UPDATE topic SET titletopic=?,intent=?,iduser=?,summary=?,questions=?,dateregister=NOW() WHERE idtopic=?"; 
             try{                
                 $req=$this->bdd->prepare($sql);
                 $req->bindparam(1,$this->titletopic);
@@ -67,7 +67,7 @@
                 return $this->exception($ex);
             }
         }
-        function getTopics($id){
+        function getTopics($id=null){
             $req=null;;
             if($id!=null && is_integer($id)){
                 $this->idtopic=$id;
@@ -97,7 +97,7 @@
             $req=null;
             if($id!=null && is_integer($id)){
                 $this->idtopic=$id;
-                $sql="SELECT * FROM solution s JOIN topic t ON s.idtopic=t.idtopic WHERE s.idtopic=?";
+                $sql= "SELECT description,step FROM solution s JOIN topic t ON s.idtopic=t.idtopic WHERE s.idtopic=?";
                 $req=$this->bdd->prepare($sql);
                 $req->bindparam(1,$this->idtopic);
                 try{

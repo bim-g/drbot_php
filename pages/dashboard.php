@@ -20,9 +20,9 @@
             <p class="w3-text-gray w3-small bottom w3-margin-left"> Stattistics </p>
         </a>
         <?php  if ($_SESSION['level']=="admin" || $_SESSION['level']=="trainer" || $_SESSION['level']=="validate"){ ?>
-        <a href="ListTrainingTopic.php" class="w3-btn w3-container w3-round w3-pading w3-margin w3-white w3-text-blue-gray dash-control-button w3-center" >
+        <a href="topics.php" class="w3-btn w3-container w3-round w3-pading w3-margin w3-white w3-text-blue-gray dash-control-button w3-center" >
             <i class="fa fa-slack w3-xlarge w3-jumbo center"></i>
-            <p class="w3-text-gray w3-small bottom w3-margin-left"> Training Topic</p>
+            <p class="w3-text-gray w3-small bottom w3-margin-left"> List Topics</p>
         </a>
         <a href="notification.php" class="w3-btn w3-container w3-round w3-pading w3-margin w3-white w3-text-purple dash-control-button" >
             <i class="fa fa-heartbeat w3-xlarge w3-jumbo center"></i>

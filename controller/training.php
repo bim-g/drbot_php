@@ -22,17 +22,17 @@
                 $summary=$_POST['summary'];                
                 $train=new Training($connexion);
                 $train->init($idtopic,$iduser,$idsolution,$titletopic,$intent,$questions,$summary,$description);
-                $result=$train->addTopic(); 
+                $result=$train->addTopic();                 
                 if($result===true){
                     $_SESSION['success']=1;                    
                 }else{                             
                     $_SESSION['error']=3;
                     $_SESSION['errorMessage']=$result['ErrorExeption']; 
                 }                
-                header("location:../pages/ListTrainingTopic.php");
+                header("location:../pages/topics.php");
             break;
             case "updatetopic":
-                $iduser=$_POST['idtopic'];
+                $idtopic=$_POST['idtopic'];
                 $iduser=$_POST['iduser'];
                 $titletopic=$_POST['titletopic'];
                 $intent=$_POST['intent'];
@@ -47,7 +47,7 @@
                     $_SESSION['error']=4;
                     $_SESSION['errorMessage']=$result['ErrorExeption']; 
                 }
-                header("location:../pages/ListTrainingTopic.php");
+                header("location:../pages/topics.php");
             break;
             case "removetopic":
             break;
@@ -94,7 +94,7 @@
                     $_SESSION['errorMessage']=$result['ErrorExeption']; 
                 }
                 die();
-                header("location:../pages/ListTrainingTopic.php");
+                header("location:../pages/topics.php");
             break;
         }
         
@@ -114,7 +114,7 @@
                     $_SESSION['error']=5;
                     $_SESSION['errorMessage']=$result['ErrorExeption']; 
                 }
-                header("location:../pages/ListTrainingTopic.php");
+                header("location:../pages/topics.php");
             break;
         }
     }
