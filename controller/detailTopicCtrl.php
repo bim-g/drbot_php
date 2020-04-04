@@ -20,20 +20,22 @@
             $titletopic = null;
             $intent = null;
             $summary = null;
+            $stateTopic=null;
             $questions = array();
             foreach ($restopic as $topicitem) {
                 $titletopic = $topicitem['titletopic'];
                 $intent = $topicitem['intent'];
+                $stateTopic = $topicitem['statetopic'];
                 $summary = $topicitem['summary'];
                 $q = $topicitem['questions'];
             }
             
             array_push($questions,explode(";",$q));
             //get all available solution of the problem
-            $resSolution=$train->getSolutions((int)$idTopics);
+            $resSolution=$train->detailSolution((int)$idTopics);
             //return le topic information a
             return array("detailTopic"=>array(
-                            "topic"=>array($idTopics,$titletopic,$summary,$questions,$intent),
+                            "topic"=>array($idTopics,$titletopic,$summary,$questions,$intent,$stateTopic),
                             "solutions"=>$resSolution)
                         );
             

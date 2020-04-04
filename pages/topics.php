@@ -2,11 +2,12 @@
 session_start();
 ob_start();
 $title = "Training";
+include "./sessioncontrol.php";
 include_once "../class/training.php";
 include "../config/connection.php";
-include "./sessioncontrol.php";
 $train = new Training($connexion);
-$rows = $train->getTopics(null);
+$rows = $train->getTopics(null); 
+
 ?>
 <div class=" w3-row">
     <?php include "./control.php"; ?>
@@ -23,6 +24,7 @@ $rows = $train->getTopics(null);
                 <tr class="w3-light-grey w3-text-gray">
                     <th>No</th>
                     <th class="w3-center">Topic Title</th>
+                    <th>State</th>
                     <th>Link</th>
                     <th>Alert</th>
                 </tr>
@@ -33,8 +35,11 @@ $rows = $train->getTopics(null);
                 echo "<tr class='items'>
                     <td style=\"width:50px;\">$i</td>
                     <td style=\"width:100%;\" class=\"w3-center\">" . $item['titletopic'] . "</td>                    
+                    <td class=\"w3-center\">" . ($item['statetopic']==1?"published":"Edited") . "</td>                           
                     <td style=\"width:50px;\">
-                    <a href=\"./detailTopic.php?detailTopic=" . $item['idtopic'] . "\" class=\"w3-button w3-padding s4 m4 l4 w3-xlarge w3-text-green w3-padding\" ><i class=\"fa fa-code-fork\"></i></a></td>                            
+                        <button onclick=\"gotopages('detailTopic.php?detailTopic=" . $item['idtopic'] . "')\" class=\"w3-button w3-padding s4 m4 l4 w3-xlarge w3-text-green w3-padding\" >
+                        <i class=\"fa fa-code-fork\"></i>
+                        </button></td>                            
                     <td class=\"w3-row\" style=\"width:50px;\">
                         <button class=\"w3-button w3-padding s4 m4 l4 w3-xlarge w3-text-blue-gray \"  onclick=\"\"><i class=\"fa fa-bullhorn\"></i></button>              
                     </td>

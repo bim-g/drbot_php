@@ -13,6 +13,8 @@
     $procedure = null;
     $assistence = null;
     $produceM = null;
+    $published = null;
+    $edited = null;
     $detailTopic=array();
     //detail&src=8
     if (isset($_GET['training']) && !empty($_GET['training'])) {
@@ -39,6 +41,15 @@
                         case "procedure_more":
                             $produceM = "checked";
                             break;
+                    }
+                    switch ($item['statetopic']) {
+                        case "1":
+                            $published = "checked";
+                            break;
+                        case "0":
+                            $edited = "checked";
+                            break;
+                        
                     }
                 }
                 $_SESSION['success'] = 4;

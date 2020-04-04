@@ -6,6 +6,7 @@
         private $iduser ;
         private $idsolution ;
         private $intent ;
+        private $stateTopic ;
         private $questions ;
         private $summary;
         private $titletopic ;
@@ -25,7 +26,7 @@
             $this->description=$description ;
         }
         function addTopic(){
-            $sql="INSERT INTO topic (titletopic,intent,iduser,statetopic,summary,questions,dateregister) VALUES (?,?,?,1,?,?,NOW())";
+            $sql="INSERT INTO topic (titletopic,intent,iduser,statetopic,summary,questions,dateregister) VALUES (?,?,?,0,?,?,NOW())";
             try{                
                 $req=$this->bdd->prepare($sql);
                 $req->bindparam(1,$this->titletopic);
@@ -33,6 +34,19 @@
                 $req->bindparam(3,$this->iduser);
                 $req->bindparam(4,$this->summary);
                 $req->bindparam(5,$this->questions);
+                $req->execute();
+                return true;
+            }catch(Exception $ex){
+                return $this->exception($ex);
+            }
+        }
+        function updatestateTopic($state){
+            $sql= "UPDATE topic SET statetopic=? WHERE idtopic=?";
+            $this->stateTopic=(int)$state;
+            try{
+                $req=$this->bdd->prepare($sql);
+                $req->bindparam(1,$this->stateTopic);
+                $req->bindparam(2,$this->idtopic);
                 $req->execute();
                 return true;
             }catch(Exception $ex){
@@ -97,7 +111,7 @@
             $req=null;
             if($id!=null && is_integer($id)){
                 $this->idtopic=$id;
-                $sql= "SELECT description,step FROM solution s JOIN topic t ON s.idtopic=t.idtopic WHERE s.idtopic=?";
+                $sql= "SELECT * FROM solution s JOIN topic t ON s.idtopic=t.idtopic WHERE s.idtopic=?";
                 $req=$this->bdd->prepare($sql);
                 $req->bindparam(1,$this->idtopic);
                 try{

@@ -42,7 +42,7 @@
                     <td >".$item['questions']."</td>
                     <td >".$item['intent']."</td>
                     <td >".$item['username']."</td>
-                    <td >".$item['statetopic']."</td>
+                    <td >".($item['statetopic']==1?'published':'edited')."</td>
                     <td >".$item['dateregister']."</td>                            
                     <td class=\"w3-row\">
                         <button class=\"w3-button w3-padding w3-xlarge w3-text-blue s4 m4 l4\" onclick=\"gotopages('addsolution.php?idtopic=".$item['idtopic']."&topic=".$item['titletopic']."')\"><i class=\"fa fa-plus\"></i></button>

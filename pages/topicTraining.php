@@ -9,11 +9,27 @@
         <div class=" w3-container w3-padding " style="width:750px;">
             <?php include "./control.php";?>
             <div class="w3-margin contactUsContent w3-light-gray w3-card w3-round" id="contactUs">
-                <form method="POST" class="w3-padding" action="../controller/training.php">
+                <?php if(isset($_GET['training']) && !empty($_GET['training'])){?>
+                    <div class="w3-padding w3-right w3-margin-top w3-margin-bottom w3-border w3-round" style="width:50%;">
+                        <form method="POST" action="../controller/training.php">
+                            <?php echo"<input type=\"hidden\" name=\"idtopic\" value=\"$idtopic\">";?>
+                            <div class="w3-row">
+                                <div class="w3-col l4 m4 s4">
+                                    Publiched<input type="radio" name="state" class="w3-radio" value="1" <?php echo $published;?>>
+                                </div>
+                                <div class="w3-col l4 m4 s4">
+                                    edite<input type="radio" name="state" class="w3-radio" value="0" <?php echo $edited;?>>
+                                </div>                            
+                                <input type="submit" name="training" class="w3-button w3-blue w3-col l4 m4 s4" value="updateState">                            
+                            </div>
+                        </form>
+                    </div>
+                <?php }?>
+                <form method="POST" class="w3-padding " action="../controller/training.php">
                 <?php if(isset($_GET['training']) && !empty($_GET['training'])){
-                    echo "<a href=\"./solution.php?training=detailS&src=".$_GET['src']."\" class=\"w3-button w3-right  w3-blue\"><i class=\"fa fa-reply-all\"></i></a>";
+                    echo "<button onclick=\"gotopages('solution.php?training=detailS&src=".$_GET['src']."')\" class=\"w3-button w3-right  w3-blue\"><i class=\"fa fa-reply-all\"></i> Solutions</button>";
                     echo"<input type=\"hidden\" name=\"idtopic\" value=\"$idtopic\">";
-                 } ?>
+                    } ?>
                     <h3>Training Topics</h3> 
                     <?php echo"<input type=\"hidden\" name=\"iduser\" value=\"$iduser\">";?>
                     <div class="" id="nameNewTopic">
@@ -50,12 +66,10 @@
                                 echo "<button type=\"submit\" class=\"w3-button w3-blue\" name=\"training\" value=\"addtopic\">Save Topic <i class=\"fa fa-save\"></i></button>";
                             }
                         ?>
-
                     </div>
                 </form>
                 <div class="w3-padding">
                     <span class="w3-text-blue">*</span><span class="w3-tiny w3-text-gray">for different learning value, you have to separeate with a semi-colom ";" </span>
-
                 </div>
             </div>
         </div> 

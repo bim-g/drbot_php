@@ -96,6 +96,20 @@
                 die();
                 header("location:../pages/topics.php");
             break;
+            case "updateState":
+                $idtopic=(int)$_POST['idtopic'];                                               
+                $stateTopic=(int)$_POST['state'];                                              
+                $train=new Training($connexion);
+                $train->init($idtopic,$iduser,$idsolution,$titletopic,$intent,$questions,$summary,$description);
+                $result=$train->updatestateTopic($stateTopic);              
+                if($result===true){
+                    $_SESSION['success']=2;                    
+                }else{                             
+                    $_SESSION['error']=5;
+                    $_SESSION['errorMessage']=$result['ErrorExeption']; 
+                }
+                header("location:../pages/topics.php");
+            break;
         }
         
     }
@@ -106,10 +120,23 @@
                 $idtopic=$_GET['idelemnt'];                
                 $train=new Training($connexion);
                 $train->init($idtopic,$iduser,$idsolution,$titletopic,$intent,$questions,$summary,$description);
-                $result=$train->removetopic();
-                var_dump($result);               
+                $result=$train->removetopic();              
                 if($result===true){
                     $_SESSION['success']=3;                    
+                }else{                             
+                    $_SESSION['error']=5;
+                    $_SESSION['errorMessage']=$result['ErrorExeption']; 
+                }
+                header("location:../pages/topics.php");
+            break;
+            case "udpdateitem":
+                $idtopic=$_GET['idtopic'];                
+                $stateTopic=$_GET['stateTopic'];                
+                $train=new Training($connexion);
+                $train->init($idtopic,$iduser,$idsolution,$titletopic,$intent,$questions,$summary,$description);
+                $result=$train->updatestateTopic($stateTopic);    
+                if($result===true){
+                    $_SESSION['success']=2;                    
                 }else{                             
                     $_SESSION['error']=5;
                     $_SESSION['errorMessage']=$result['ErrorExeption']; 

@@ -38,8 +38,8 @@
                     <td >".$item['step']."</td>
                     <td >".$item['datelastupdate']."</td>                           
                     <td class=\"w3-row\">
-                        <button class=\"w3-button w3-padding w3-xlarge w3-hover-text-yellow w3-col s6 m6 l6\" onclick=\"gotopages('addsolution.php?solution=".$item['idtopic']."')\"><i class=\"fa fa-edit\"></i></button>
-                        <button class=\"w3-button w3-padding s4 m4 l4 w3-xlarge w3-text-red \"  onclick=\"getId(".$item['idtopic'].",'training');w3.show('#deleteQ')\"><i class=\"fa fa-trash\"></i></button>        
+                        <button class=\"w3-button w3-padding w3-xlarge w3-hover-text-yellow w3-col s6 m6 l6\" onclick=\"gotopages('addsolution.php?solution=".$item['idsolution']."')\"><i class=\"fa fa-edit\"></i></button>
+                        <button class=\"w3-button w3-padding s4 m4 l4 w3-xlarge w3-text-red \"  onclick=\"getId(".$item['idsolution'].",'training');w3.show('#deleteQ')\"><i class=\"fa fa-trash\"></i></button>        
                     </td>
                 </tr>";
                  $i++;
