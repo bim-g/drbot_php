@@ -43,7 +43,7 @@ $avatar = "../" . $_SESSION['avatar'];
     </div>
     <?php
     if (isset($_SESSION['error'])  || isset($_SESSION['success']) || isset($_SESSION['warning'])) {
-        require '../alert/message.php';
+        require '../class/message.php';
     }
     if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
         require '../alert/danger.php';

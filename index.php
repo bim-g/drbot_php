@@ -249,13 +249,13 @@
     <!-- Modal Erreur Connexion -->
     <?php
         if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
-            require './alert/message.php';
+            require './class/message.php';
             require './alert/danger.php';
         }
-        if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
-            require './alert/message.php';
-            require './alert/danger.php';
-        }
+        // if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
+        //     require './class/message.php';
+        //     require './alert/danger.php';
+        // }
     ?>
     <!-- <div class="w3-modal" id="error">
         <div class="w3-modal-content w3-card-4">

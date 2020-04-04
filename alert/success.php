@@ -1,5 +1,6 @@
 <?php
-  $message=success($_SESSION['success']);
+  $mssage=new Message();
+  $message=$mssage->success($_SESSION['success']);
   $_SESSION['success']=null;
 ?> 
 <div id="succesModal" class="w3-modal">

@@ -1,5 +1,6 @@
 <?php
-  $message=warning($_SESSION['warning']);
+  $mssage=new Message();
+  $message=$mssage->warning($_SESSION['warning']);
   $_SESSION['warning']=null;
 ?>
 <div id="warning" class="w3-modal">

@@ -3,7 +3,8 @@
   if($_SESSION['error']>2 && (isset($_SESSION['errorMessage']) && !empty($_SESSION['errorMessage']))){
     $exception=$_SESSION['errorMessage'];
   }  
-  $message=errors($_SESSION['error'],$exception);  
+  $mssage=new Message();
+  $message=$mssage->errors($_SESSION['error'],$exception);  
   $_SESSION['error']=null;
 ?>  
   <div id="errorModal" class="w3-modal">
