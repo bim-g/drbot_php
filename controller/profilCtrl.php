@@ -3,12 +3,12 @@ include_once "../class/users.php";
 include_once "../class/control.php";
 include "../config/connection.php";
 $title = "Profile";
-$avatar = "../img/avatar/face-0.jpg";
+$avatar = null;
 if (isset($_GET['user']) && !empty($_GET['user'])) {
     $iduser = $_GET['user'];
 } else {
     if ($_SESSION['avatar'] != null) {
-        $avatar = "../" . $_SESSION['avatar'];
+        $avatar =$_SESSION['avatar'];
     }
     $fullname = $_SESSION['fname'] . " " . $_SESSION['lname'];
     $iduser = $_SESSION['iduser'];
@@ -49,7 +49,10 @@ foreach ($rows as $item) {
     $level = $item['level'];
     if ($item['avatar'] != null) {
         $avatar = "../" . $item['avatar'];
+    }else{
+        $avatar="../img/avatar/". $item['sexe'].".png";
     }
+    $_SESSION['avatar']=$avatar;
 }
 
 ?>

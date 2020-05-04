@@ -50,6 +50,8 @@
                 break; 
                 case 4: $message=array('type'=>'found','text'=>'Result found');
                 break; 
+                case 5: $message=array('type'=>'Success','text'=>'Operation Success');
+                break; 
             }
             return $message;        
         }

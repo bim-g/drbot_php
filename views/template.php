@@ -1,6 +1,6 @@
 <?php
 $fullname = $_SESSION['fname'] . " " . $_SESSION['lname'];
-$avatar = "../" . $_SESSION['avatar'];
+$avatar = $_SESSION['avatar'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +23,8 @@ $avatar = "../" . $_SESSION['avatar'];
             <div class="w3-right">
                 <button onclick="gotopages('logout.php',1)" class="w3-bar-item w3-text-blue btn w3-hover-text-red w3-large pointer">Logout</button>
                 <?php
-                echo "<div class=\"w3-bar-item w3-text-blue w3-large\">$fullname</div>";
-                echo "<img src=\"$avatar\" alt=\"\" class=\"profil-image w3-margin-right w3-circle\" >"; ?>
+                echo "<div class=\"w3-bar-item w3-text-blue w3-large\">$fullname</div> <div class=\" w3-bar-item \" style=\"width:100px;\">";
+                echo "<img src=\"$avatar\" alt=\"\" class=\"profil-image w3-round-xxlarge w3-margin-right\" style=\"width:100%;\"></div>"; ?>
             </div>
         </div>
         <div class="w3-sidebar w3-bar-block w3-light-grey w3-card dasheader dash-side-menu" id="sideMenu">
