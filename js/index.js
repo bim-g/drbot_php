@@ -17,7 +17,7 @@ function managTopicName(id){
 } 
 function gotopages(link=null,destination) {
     let url=window.location.origin+"/drbot_client/";
-    let target="pages/"+link;
+    let target="views/"+link;
     if(destination && destination==1 ){
         target="controller/"+link;
     }

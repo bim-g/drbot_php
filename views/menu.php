@@ -1,4 +1,5 @@
 <?php
+$m_home = null;
 $m_profil = null;
 $m_security = null;
 $m_training = null;
@@ -36,7 +37,7 @@ if (isset($_COOKIE['activemenu'])) {
 <div class="w3-padding">
     <div class="w3-bar-block w3-text-white">
         <div class="w3-bar-block w3-text-white ">
-            <button onclick="gotopages('dashboard.php')" class="w3-bar-item dasHover w3-round <?php echo $m_home; ?>"><i class="fa fa-home w3-xlarge w3-margin-right"></i><span class="w3-center"> Home</span></button>
+            <button onclick="gotopages('dashboard.php')" class="w3-bar-item dasHover w3-round"><i class="fa fa-object-group w3-xlarge w3-margin-right"></i><span class="w3-center"> DashBoard</span></button>
             <button onclick="gotopages('profil.php')" class="w3-bar-item dasHover w3-round <?php echo $m_profil; ?>"><i class="fa fa-user-md w3-xlarge w3-margin-right"></i><span class="w3-center"> Profil</span></button>
             <button onclick="gotopages('security.php')" class="w3-bar-item dasHover w3-round <?php echo $m_security; ?>"><i class="fa fa-expeditedssl w3-xlarge w3-margin-right"></i><span class="w3-center"> security</span></button>
             <a href="#" class="w3-bar-item dasHover w3-round"><i class="fa fa-line-chart w3-xlarge w3-margin-right"></i><span class="w3-center"> Statistics</span></a>
