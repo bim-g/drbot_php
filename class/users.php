@@ -180,7 +180,7 @@
                 return $req->fetchAll();
             }
             else{
-                $sql=" SELECT u.iduser,u.fname,u.lname,u.patientid as src,a.city,a.country,a.grade,a.company,m.link as avatar,u.dateregister,l.designation as level FROM users u LEFT JOIN account a ON u.iduser=a.iduser LEFT jOIN media m ON u.idavatar=m.idmedia LEFT JOIN userlevel l ON u.iduserlevel=l.iduserlevel ORDER BY u.iduser DESC";
+                $sql= " SELECT u.sexe,u.iduser,u.fname,u.lname,u.patientid as src,a.city,a.country,a.grade,a.company,m.link as avatar,u.dateregister,l.designation as level FROM users u LEFT JOIN account a ON u.iduser=a.iduser LEFT jOIN media m ON u.idavatar=m.idmedia LEFT JOIN userlevel l ON u.iduserlevel=l.iduserlevel ORDER BY u.iduser DESC";
                 $req=$this->bdd->query($sql);
                 return $req->fetchAll();
             }

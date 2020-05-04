@@ -7,10 +7,10 @@
     include "./sessioncontrol.php";
     $user= new users($connexion);
     $rows=$user->getusers(null);
-    $profil="../img/avatar/face-0.jpg";
+    $profil=null;
 
 ?>
-<script>activatemenu();</script>    
+  
     <div class="w3-margin w3-border w3-round w3-white">
         <div class="w3-container w3-text-gray">
             <div class="w3-bar" >
@@ -50,6 +50,8 @@
                 foreach($rows as $item){
                     if($item['avatar']!=null){
                         $profil="../".$item['avatar'];
+                    }else{
+                        $profil = "../img/avatar/" . $item['sexe'].".png";
                     }
             ?>
             <tr class="useritem">

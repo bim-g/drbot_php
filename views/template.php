@@ -58,9 +58,6 @@ $avatar = "../" . $_SESSION['avatar'];
     ?>
     <script src="../js/w3.js"></script>
     <script src="../js/index.js"></script>
-    <script>
-        // activatemenu();
-    </script>
 </body>
 
 </html>
