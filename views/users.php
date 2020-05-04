@@ -14,16 +14,25 @@
     <div class="w3-margin w3-border w3-round w3-white">
         <div class="w3-container w3-text-gray">
             <div class="w3-bar" >
+                <h3 class="w3-bar-item">List Of All Users Registed</h3> 
                 <button type="submit" class="w3-button w3-bar-item w3-right w3-white"  onclick=" w3.toggleClass('#researchForm','w3-hide')">
                     <i class="fa fa-search"></i></button>
-                <h3 class="w3-bar-item">List Of All Users Registed</h3> 
             </div>
         </div>
         <div class="w3-margin w3-hide" id="researchForm">
             <p class="w3-text-gray">Your research</p>
             <input type="text" style="width:30%;"  class="w3-input w3-border w3-round w3-animate-input" placeholder="Search for names.." oninput="w3.filterHTML('#usersList', '.useritem', this.value)">
         </div>
-        
+        <div class="w3-padding w3-border-bottom w3-margin-bottom " style="width:450px;">
+            <form >
+                <label class="w3-margin-left">All</label>
+                <input type="radio" name="filterBy" id="" value="" class="w3-radio" onclick="w3.filterHTML('#usersList', '.useritem', this.value)" checked>
+                <label class="w3-margin-left">Operatuer</label>
+                <input type="radio" name="filterBy" id="" value="regular" class="w3-radio" onclick="w3.filterHTML('#usersList', '.useritem', this.value)">
+                <label class="w3-margin-left">Contreleur</label>
+                <input type="radio" name="filterBy" id="" value="admin" class="w3-radio" onclick="w3.filterHTML('#usersList', '.useritem', this.value)">
+            </form>
+        </div>
         <table class="w3-table-all w3-hoverable w3-border-0" id="usersList">
             <thead>
                 <tr class="w3-light-grey w3-text-gray">
@@ -56,7 +65,7 @@
                 <?php echo "<td>".$item['company']."</td>
                             <td>".$item['city']."/".$item['country']."</td>
                             <td>".$item['grade']."</td>
-                            <td>".$item['level']."</td>";
+                            <td id=\"level\">".$item['level']."</td>";
                     if($item['src']!=null){
                         echo "<td><i class=\"fa fa-facebook-square w3-xlarge w3-text-blue\"></td>";
                     }else{
