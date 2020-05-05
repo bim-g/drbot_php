@@ -85,7 +85,9 @@
             $req=null;;
             if($id!=null && is_integer($id)){
                 $this->idtopic=$id;
-                $sql="SELECT * FROM topic WHERE idtopic=?";
+                
+                $sql= "SELECT t.idtopic,t.titletopic,t.intent,t.statetopic,t.summary,t.questions,t.dateregister,m.link as linkmedia FROM topic t LEFT JOIN media m ON t.imagerefernce=m.idmedia WHERE idtopic=?";
+                // $sql="SELECT * FROM topic";
                 $req=$this->bdd->prepare($sql);
                 $req->bindparam(1,$this->idtopic);               
                 try{

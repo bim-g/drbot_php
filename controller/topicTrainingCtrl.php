@@ -28,6 +28,10 @@
                     $intent = $item['intent'];
                     $summary = $item['summary'];
                     $questions = $item['questions'];
+                    $imgTopic ="../".$item['linkmedia'];                        
+                    if($item['linkmedia']==null){
+                        $imgTopic="../img/tbg.jpg";
+                    }
                     switch ($item['intent']) {
                         case "infos":
                             $infos = "checked";
